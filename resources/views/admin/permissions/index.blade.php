@@ -6,6 +6,14 @@
 
 <div class="card mt-2 ml-2 mr-2">
 
+    <!-- Message -->
+    @if(session('status'))
+    <div class="alert alert-success">
+        {{session('status')}}
+    </div>
+    @endif
+
+
     <div class="card mb-2 mt-2 text-center">
         <h5>Master Data Permission</h5>
     </div>
@@ -38,7 +46,12 @@
 
                 <td>{{$pm->name}}</td>
                 <td>
-                
+                    <a class="btn btn-info text-white btn-sm" href="{{route('admin.permissions.edit', $pm->id)}}"><span class="ft-edit font-small-2"></span></a>
+                    <form onsubmit="return confirm('Really ??')" class="d-inline" action="{{route('admin.permissions.destroy', $pm->id)}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button class="btn btn-sm btn-danger"><span class="ft-trash-2"></span></button>
+                    </form>
                 </td>
 
             </tr>

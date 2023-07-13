@@ -27,6 +27,10 @@
                 <li class=" nav-item"><a href="{{ route('admin.permissions.index') }}"><i class="ft-info"></i><span class="menu-title" data-i18n="">Permission</span></a>
                 </li>
             </ul>
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                <li class=" nav-item"><a href="{{ route('admin.users.index') }}"><i class="ft-user"></i><span class="menu-title" data-i18n="">Users</span></a>
+                </li>
+            </ul>
 
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 

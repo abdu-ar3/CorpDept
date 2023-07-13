@@ -1,6 +1,6 @@
 @extends('layouts.admin') 
 
-@section('title') Role @endsection
+@section('title') Users @endsection
 
 @section('content')
 
@@ -15,38 +15,29 @@
 
 
     <div class="card mb-2 mt-2 text-center">
-        <h5>Master Data Role</h5>
+        <h5>Data Users</h5>
     </div>
 
     <div class="card-body">
-
-        <div class="row mb-2">
-            <div class="col-md-12 text-right">
-                <a href=""
-                                class="btn btn-sm btn-info"
-                                data-toggle="modal"
-                                data-target="#exampleModal"
-                                ><span class="ft-plus-square font-medium-2"></span
-                            ></a>
-            </div>
-        </div>
 
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">Name</th>
+                    <th scope="col">Email</th>
                     <th scope="col">ACTION</th>
                 </tr>
             </thead>
             <tbody>
             
-            @foreach($roles as $role)
+            @foreach($users as $user)
             <tr>
 
-                <td>{{$role->name}}</td>
+                <td>{{$user->name}}</td>
+                <td>{{$user->email}}</td>
                 <td>
-                    <a class="btn btn-info text-white btn-sm" href="{{route('admin.roles.edit', $role->id)}}"><span class="ft-edit font-small-2"></span></a>
-                    <form onsubmit="return confirm('Really ??')" class="d-inline" action="{{route('admin.roles.destroy', $role->id)}}" method="POST">
+                    <a class="btn btn-info text-white btn-sm" href="{{route('admin.users.show', $user->id)}}">Role</a>
+                    <form onsubmit="return confirm('Really ??')" class="d-inline" action="{{route('admin.users.destroy', $user->id)}}" method="POST">
                             @csrf
                             <input type="hidden" name="_method" value="DELETE">
                             <button class="btn btn-sm btn-danger"><span class="ft-trash-2"></span></button>
@@ -114,59 +105,5 @@
         </div>
     </div>
 </div>
-
-
-<!-- Modal Edit -->
-<!-- <div
-    class="modal fade"
-    id="editModal"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="editModalLabel"
-    aria-hidden="true"
->
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editModalLabel">Edit Role</h5>
-                <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                >
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-                <form
-                    enctype="multipart/form-data"
-                    class="bg-white shadow-sm p-3"
-                    action="{{route('admin.roles.update', $role)}}"
-                    method="POST"
-                >
-                @csrf
-                <input type="hidden" value="PUT" name="_method">
-
-                    <label for="name"> Name</label>
-                    <div class="input-group mb-3">
-                       <!--  Name -->
-                        <!-- <input value="{{old('name')}}" class="form-control {{$errors->first('name')? "is-invalid": ""}}" placeholder="Name" type="text" name="name" id="name" />
-                        <div class="invalid-feedback">
-                            {{$errors->first('name')}}
-                        </div>
-                    </div> -->
-<!-- 
-                    <button type="submit" class="btn btn-sm btn-primary">
-                        Submit
-                    </button>
-                </form>
-            </div>
-            <div class="modal-footer"></div>
-        </div>
-    </div> -->
-<!-- </div> --> 
-
 
 @endsection

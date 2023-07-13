@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class PermissionController extends Controller
 {
@@ -67,9 +68,10 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Permission $permission)
     {
-        //
+        $roles = Role::all();
+        return view('admin.permissions.edit', compact('permission', 'roles'));
     }
 
     /**
@@ -81,7 +83,17 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd('test');
+        \Validator::make($request->all(), [
+            "name" => "required",
+        
+        ])->validate();
+
+        $permission = \Spatie\Permission\Models\Permission::findOrFail($id);
+        $permission->name = $request->get('name');
+        $permission->save();
+
+        return redirect()->route('admin.permissions.index', [$id])->with('status', 'Edit Permission succesfully updated');
     }
 
     /**
@@ -90,8 +102,30 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Permission $permission)
     {
-        //
+        // dd('TYets');
+        $permission->delete();
+        return back()->with('status', 'Permission Deleted.');
+    }
+
+    public function assignRole(Request $request, Permission $permission)
+    {
+        if($permission->hasRole($request->role)){
+            return back()->with('status', 'Role exists.');
+        }
+
+        $permission->assignRole($request->role);
+        return back()->with('status', 'Role Assigned.');
+    }
+
+    public function removeRole(Permission $permission, Role $role)
+    {
+        if($permission->hasRole($role)){
+            $permission->removeRole($role);
+            return back()->with('status', 'Role Removed.');
+        }
+
+        return back()->with('status', 'Role not exists.');
     }
 }
