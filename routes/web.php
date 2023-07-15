@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\AppsController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,14 @@ Route::get('/admin', function () {
     return view('admin.index');
 })->middleware(['auth', 'role:admin'])->name('admin.index');
 
+Route::get('/user', function () {
+    return view('admin.index');
+})->middleware(['auth', 'role:user'])->name('user.index');
+
+
+
+
+// Route Admin
 Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::resource('/roles', RoleController::class);
     Route::post('/roles/{role}/permissions', [RoleController::class, 'givePermission'])->name('roles.permissions');
@@ -43,8 +52,23 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::delete('/users{user}/roles{role}', [UserController::class, 'removeRole'])->name('users.roles.remove');
     Route::post('/users{user}/permissions', [UserController::class, 'givePermission'])->name('users.permissions');
     Route::delete('/users{user}/permissions{permission}', [UserController::class, 'revokePermission'])->name('users.permissions.revoke');
-
 });
+
+// Route MANAGER
+Route::middleware(['auth', 'role:manager'])->name('manager.')->prefix('manager')->group(function () {
+    Route::get('/', [AppsController::class, 'manager'])->name('index');
+});
+
+// Route Spv
+Route::middleware(['auth', 'role:supervisor'])->name('spv.')->prefix('spv')->group(function () {
+    Route::get('/', [AppsController::class, 'supervisor'])->name('index');
+});
+
+// Route Staff
+Route::middleware(['auth', 'role:staff'])->name('staff.')->prefix('staff')->group(function () {
+    Route::get('/', [AppsController::class, 'staff'])->name('index');
+});
+
 
 
 Route::middleware('auth')->group(function () {
