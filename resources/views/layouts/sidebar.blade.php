@@ -2,8 +2,8 @@
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html">
-                    <img class="brand-logo" width="90%" alt="Chameleon admin logo" src="{{asset('app-assets/images/logo/prasetia1.png')}}" />
-                        <h3 class="brand-text">Admin</h3>
+                    <img class=""  width="77px" alt="admin logo" src="{{asset('app-assets/images/logo/prasetia1.png')}}" />
+                        <h3 class="brand-text">KPI INDIVIDU</h3>
                     </a></li>
                 <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
             </ul>
