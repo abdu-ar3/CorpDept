@@ -5,6 +5,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\AppsController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Improve\BiodataController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,6 +68,7 @@ Route::middleware(['auth', 'role:supervisor'])->name('spv.')->prefix('spv')->gro
 // Route Staff
 Route::middleware(['auth', 'role:staff'])->name('staff.')->prefix('staff')->group(function () {
     Route::get('/', [AppsController::class, 'staff'])->name('index');
+    Route::get('/bio', [BiodataController::class, 'index'])->name('biodata');
 });
 
 

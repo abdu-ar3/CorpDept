@@ -41,10 +41,11 @@
                         @role('staff')
                         <li><a class="menu-item" href="#">Staff</a>
                             <ul class="menu-content">
-                                <li class="{{ Request::routeIs('staff.index') ?  'active' : '' }}"><a class="menu-item {{ Request::routeIs('staff.index') ?  'active' : '' }}" href="{{ route('staff.index') }}">BIODATA</a>
+                                <li class="{{ Request::routeIs('staff.index') ?  'active' : '' }}"><a class="menu-item {{ Request::routeIs('staff.index') ?  'active' : '' }}" href="{{ route('staff.index') }}">Role</a>
                                 </li>
-                                <li><a class="menu-item" href="timeline-horizontal.html">Timelines Horizontal</a>
+                                <li class="{{ Request::routeIs('staff.biodata') ?  'active' : '' }}"><a class="menu-item {{ Request::routeIs('staff.biodata') ?  'active' : '' }}" href="{{ route('staff.biodata') }}">Bio</a>
                                 </li>
+                            
                             </ul>
                         </li>
                         @endrole
