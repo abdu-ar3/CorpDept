@@ -52,4 +52,15 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Department::class);
     }
+
+    public function itemKpis()
+    {
+        return $this->hasMany(ItemKpi::class);
+    }
+
+    public function realizations()
+    {
+        return $this->hasMany(Realization::class);
+    }
+
 }

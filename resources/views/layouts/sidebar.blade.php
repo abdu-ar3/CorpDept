@@ -27,6 +27,10 @@
                 </li>
                 <li class="nav-item {{ Request::routeIs('admin.users.index') ?  'has-sub open' : '' }}"><a href="{{ route('admin.users.index') }}"><i class="ft-user"></i><span class="menu-title" data-i18n="">Users</span></a>
                 </li>
+                <li class="nav-item {{ Request::routeIs('admin.item.kpi') ?  'has-sub open' : '' }}"><a href="{{ route('admin.item.kpi') }}"><i class="ft-server"></i><span class="menu-title" data-i18n="">Item KPI</span></a>
+                </li>
+                <li class="nav-item {{ Request::routeIs('admin.realization') ?  'has-sub open' : '' }}"><a href="{{ route('admin.realization') }}"><i class="ft-server"></i><span class="menu-title" data-i18n="">Realization</span></a>
+                </li>
                 @endrole
                 <li class=" nav-item {{ Request::routeIs('dashboardVI.index') ?  'has-sub open' : '' }}"><a href="#"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Apps</span></a>
                     <ul class="menu-content">

@@ -6,6 +6,9 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\AppsController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Improve\BiodataController;
+use App\Http\Controllers\Improve\ItemKpiController;
+use App\Http\Controllers\Improve\RealisasiController;
+use App\Http\Controllers\Improve\RealizationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,7 +56,11 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::delete('/users{user}/roles{role}', [UserController::class, 'removeRole'])->name('users.roles.remove');
     Route::post('/users{user}/permissions', [UserController::class, 'givePermission'])->name('users.permissions');
     Route::delete('/users{user}/permissions{permission}', [UserController::class, 'revokePermission'])->name('users.permissions.revoke');
+    Route::get('/itemkpi', [ItemKpiController::class, 'index'])->name('item.kpi');
+    Route::get('/realisasi', [RealisasiController::class, 'index'])->name('realisasi');
+    Route::get('/realization', [RealizationController::class, 'index'])->name('realization');
 });
+
 
 // Route MANAGER
 Route::middleware(['auth', 'role:manager'])->name('manager.')->prefix('manager')->group(function () {
