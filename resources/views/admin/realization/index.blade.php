@@ -106,7 +106,7 @@
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
 >
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg mr-2" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Create</h5>
@@ -120,6 +120,8 @@
                 </button>
             </div>
             <div class="modal-body">
+
+               
                 <form
                     enctype="multipart/form-data"
                     class="bg-white shadow-sm p-3"
@@ -127,6 +129,45 @@
                     method="POST"
                 >
                     @csrf
+
+
+                    <div class="form-group">
+                        <label for="period_id">Pilih Periode:</label>
+
+                        <select name="period_id" id="period_id" class="form-control">
+                            <option value="">Pilih Periode</option>
+                            @foreach ($periods as $period)
+                                <option value="{{ $period->id }}" {{ $selectedPeriod && $selectedPeriod->id == $period->id ? 'selected' : '' }}>{{ $period->start_month }} {{ $period->start_year }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    
+                    <div id="realization-form-container">
+                        @if ($selectedPeriod)
+                            <h2>Data Realisasi untuk Periode: {{ $period->start_month }}</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Item KPI</th>
+                                        <th>Target</th>
+                                        <th>Realisasi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($item_kpi as $item)
+                                        <tr>
+                                            <td>{{ $item->item }}</td>
+                                            <td>{{ $item->target }}</td>
+                                            <td>
+                                                <input type="number" name="realizations[{{ $item->id }}]" class="form-control" value="{{ $realizations->where('item_kpi_id', $item->id)->first()->value ?? '' }}">
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @endif
+                    </div>
+
 
                     <button type="submit" class="btn btn-sm btn-primary">
                         Submit
@@ -137,6 +178,49 @@
         </div>
     </div>
 </div>
+
+    <script>
+        // Tambahkan event listener pada dropdown periode untuk menampilkan form sesuai periode
+        const periodDropdown = document.getElementById('period_id');
+        const realizationFormContainer = document.getElementById('realization-form-container');
+
+        periodDropdown.addEventListener('change', function() {
+            const selectedPeriodId = this.value;
+            const selectedPeriod = {!! json_encode($periods->keyBy('id')) !!}[selectedPeriodId];
+
+            realizationFormContainer.innerHTML = '';
+
+            if (selectedPeriod) {
+                const header = document.createElement('h2');
+                header.textContent = 'Data Realisasi untuk Periode: ' + selectedPeriod.nama;
+
+                const table = document.createElement('table');
+                table.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Item KPI</th>
+                            <th>Target</th>
+                            <th>Realisasi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($item_kpi as $item)
+                            <tr>
+                                <td>{{ $item->nama }}</td>
+                                <td>{{ $item->target }}</td>
+                                <td>
+                                    <input type="number" name="realizations[{{ $item->id }}]" class="form-control" value="">
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                `;
+
+                realizationFormContainer.appendChild(header);
+                realizationFormContainer.appendChild(table);
+            }
+        });
+    </script>
 
 
 

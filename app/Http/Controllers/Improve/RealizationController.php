@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Realization;
 use App\Models\Period;
+use App\Models\ItemKpi;
 use Illuminate\Support\Facades\Auth;
 
 class RealizationController extends Controller
@@ -20,10 +21,28 @@ class RealizationController extends Controller
         // dd('Test');
         // Ambil data pengguna yang sedang login
         $user = Auth::user();
+        $periods = Period::all();
+        $selectedPeriod = null;
+        $item_kpi = ItemKpi::all();
 
-        // Ambil semua data realisasi yang terhubung dengan pengguna yang login
-        $realization = $user->realizations()->with('itemKpi')->get();
-        return view('admin.realization.index', compact('realization'));
+        if (request()->has('period_id')) {
+            $selectedPeriodId = request('period_id');
+            $selectedPeriod = Period::find($selectedPeriodId);
+        }
+
+        $realization = collect();
+
+        if ($selectedPeriod) {
+            // Jika periode dipilih, ambil data realisasi yang sesuai dengan periode
+            $realization = $user->realizations()
+                ->where('period_id', $selectedPeriod->id)
+                ->with('itemKpi')
+                ->get()
+                ->keyBy('itemKpi.id');
+        }
+
+        return view('admin.realization.index', compact('realization', 'periods', 'item_kpi', 'selectedPeriod'));
+        
     }
 
     /**
