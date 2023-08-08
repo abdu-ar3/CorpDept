@@ -67,7 +67,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($realization as $real)
+                                                @foreach($realizations as $real)
                                                 <tr>
                                                     <td>{{$real->itemKpi->item}}</td>
                                                     <td>{{$real->period->start_month}} {{$real->period->start_year}} s/d {{$real->period->end_month}} {{$real->period->end_year}} </td>
@@ -133,39 +133,37 @@
 
                     <div class="form-group">
                         <label for="period_id">Pilih Periode:</label>
-
                         <select name="period_id" id="period_id" class="form-control">
                             <option value="">Pilih Periode</option>
                             @foreach ($periods as $period)
-                                <option value="{{ $period->id }}" {{ $selectedPeriod && $selectedPeriod->id == $period->id ? 'selected' : '' }}>{{ $period->start_month }} {{ $period->start_year }}</option>
+                                <option value="{{ $period->id }}" {{ $selectedPeriod && $selectedPeriod->id == $period->id ? 'selected' : '' }}>
+                                    {{ $period->start_month }} {{ $period->start_year }} - {{ $period->end_month }} {{ $period->end_year }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
                     
                     <div id="realization-form-container">
-                        @if ($selectedPeriod)
-                            <h2>Data Realisasi untuk Periode: {{ $period->start_month }}</h2>
-                            <table>
-                                <thead>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Item</th>
+                                    <th scope="col">Target</th>
+                                    <th scope="col">Realization</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($item_kpi as $ik)
                                     <tr>
-                                        <th>Item KPI</th>
-                                        <th>Target</th>
-                                        <th>Realisasi</th>
+                                        <td>{{ $ik->item }}</td>
+                                        <td>{{ $ik->target }}</td>
+                                        <td>
+                                           <input type="number" name="realizations[{{ $ik->id }}]" class="form-control" value="{{ $realization->get($ik->id)->realization ?? '' }}">
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($item_kpi as $item)
-                                        <tr>
-                                            <td>{{ $item->item }}</td>
-                                            <td>{{ $item->target }}</td>
-                                            <td>
-                                                <input type="number" name="realizations[{{ $item->id }}]" class="form-control" value="{{ $realizations->where('item_kpi_id', $item->id)->first()->value ?? '' }}">
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        @endif
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
 
 
@@ -179,49 +177,41 @@
     </div>
 </div>
 
-    <script>
-        // Tambahkan event listener pada dropdown periode untuk menampilkan form sesuai periode
-        const periodDropdown = document.getElementById('period_id');
-        const realizationFormContainer = document.getElementById('realization-form-container');
+<script>
+    // Tambahkan event listener pada dropdown periode untuk menampilkan form sesuai periode
+    const periodDropdown = document.getElementById('period_id');
+    const realizationFormContainer = document.getElementById('realization-form-container');
 
-        periodDropdown.addEventListener('change', function() {
-            const selectedPeriodId = this.value;
-            const selectedPeriod = {!! json_encode($periods->keyBy('id')) !!}[selectedPeriodId];
+    periodDropdown.addEventListener('change', function() {
+        const selectedPeriodId = this.value;
+        const selectedPeriod = {!! json_encode($periods->keyBy('id')) !!}[selectedPeriodId];
 
-            realizationFormContainer.innerHTML = '';
+        realizationFormContainer.innerHTML = '';
 
-            if (selectedPeriod) {
-                const header = document.createElement('h2');
-                header.textContent = 'Data Realisasi untuk Periode: ' + selectedPeriod.nama;
+        if (selectedPeriod) {
+            const header = document.createElement('h2');
+            header.textContent = 'Data Realisasi untuk Periode: ' + selectedPeriod.start_month + ' ' + selectedPeriod.start_year + ' - ' + selectedPeriod.end_month + ' ' + selectedPeriod.end_year;
 
-                const table = document.createElement('table');
-                table.innerHTML = `
-                    <thead>
-                        <tr>
-                            <th>Item KPI</th>
-                            <th>Target</th>
-                            <th>Realisasi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($item_kpi as $item)
-                            <tr>
-                                <td>{{ $item->nama }}</td>
-                                <td>{{ $item->target }}</td>
-                                <td>
-                                    <input type="number" name="realizations[{{ $item->id }}]" class="form-control" value="">
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                `;
+            const table = document.createElement('table');
+            table.innerHTML = `
+                <thead>
+                    <tr>
+                        <th>Item KPI</th>
+                        <th>Target</th>
+                        <th>Realisasi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            `;
 
-                realizationFormContainer.appendChild(header);
-                realizationFormContainer.appendChild(table);
-            }
-        });
-    </script>
+            realizationFormContainer.appendChild(header);
+            realizationFormContainer.appendChild(table);
+        }
+    });
+</script>
+@endsection
 
-
+@section('script')
 
 @endsection

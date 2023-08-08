@@ -22,15 +22,23 @@ class RealizationController extends Controller
         // Ambil data pengguna yang sedang login
         $user = Auth::user();
         $periods = Period::all();
+        $realizations = Realization::all();
         $selectedPeriod = null;
-        $item_kpi = ItemKpi::all();
+        $item_kpi = collect();
+
 
         if (request()->has('period_id')) {
-            $selectedPeriodId = request('period_id');
-            $selectedPeriod = Period::find($selectedPeriodId);
+        $selectedPeriodId = request('period_id');
+        $selectedPeriod = Period::find($selectedPeriodId);
+
+        if ($selectedPeriod) {
+            $item_kpi = $selectedPeriod->itemKpi;
+            }
         }
+        
 
         $realization = collect();
+
 
         if ($selectedPeriod) {
             // Jika periode dipilih, ambil data realisasi yang sesuai dengan periode
@@ -38,10 +46,10 @@ class RealizationController extends Controller
                 ->where('period_id', $selectedPeriod->id)
                 ->with('itemKpi')
                 ->get()
-                ->keyBy('itemKpi.id');
+                ->groupBy('item_kpi_id');
         }
 
-        return view('admin.realization.index', compact('realization', 'periods', 'item_kpi', 'selectedPeriod'));
+        return view('admin.realization.index', compact('realization', 'periods', 'item_kpi', 'selectedPeriod', 'realizations'));
         
     }
 

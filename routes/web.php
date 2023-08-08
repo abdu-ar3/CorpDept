@@ -57,6 +57,9 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::post('/users{user}/permissions', [UserController::class, 'givePermission'])->name('users.permissions');
     Route::delete('/users{user}/permissions{permission}', [UserController::class, 'revokePermission'])->name('users.permissions.revoke');
     Route::get('/itemkpi', [ItemKpiController::class, 'index'])->name('item.kpi');
+    Route::get('/itemkpi/filter', [ItemKpiController::class, 'filter'])->name('itemkpi.filter');
+    Route::post('/itemkpi', [ItemKpiController::class, 'store'])->name('itemkpi.store');
+    Route::get('/get-data-by-periode', [ItemKpiController::class, 'getDataByPeriode'])->name('item.kpi.by.periode');
     Route::get('/realisasi', [RealisasiController::class, 'index'])->name('realisasi');
     Route::get('/realization', [RealizationController::class, 'index'])->name('realization');
 });

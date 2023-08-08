@@ -78,6 +78,8 @@
     <script src="{{asset('app-assets/js/scripts/pages/dashboard-analytics.js')}}" type="text/javascript"></script>
     <!-- END: Page JS-->
 
+    @yield('script')
+
 
 </body>
 <!-- END: Body-->
