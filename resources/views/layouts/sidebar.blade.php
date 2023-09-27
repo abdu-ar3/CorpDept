@@ -3,7 +3,7 @@
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html">
                     <img class=""  width="77px" alt="admin logo" src="{{asset('app-assets/images/logo/prasetia1.png')}}" />
-                        <h3 class="brand-text">KPI INDIVIDU</h3>
+                        <h3 class="brand-text">Page Admin</h3>
                     </a></li>
                 <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
             </ul>
@@ -34,6 +34,10 @@
                 @endrole
                 <li class=" nav-item {{ Request::routeIs('dashboardVI.index') ?  'has-sub open' : '' }}"><a href="#"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Apps</span></a>
                     <ul class="menu-content">
+                        @role('direction')
+                        <li class="{{ Request::routeIs('manager.index') ?  'active' : '' }}"><a class="menu-item" href="{{ route('manager.index') }}">Manager</a>
+                        </li>
+                        @endrole
                         @role('manager')
                         <li class="{{ Request::routeIs('manager.index') ?  'active' : '' }}"><a class="menu-item" href="{{ route('manager.index') }}">Manager</a>
                         </li>

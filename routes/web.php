@@ -5,10 +5,12 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\AppsController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Department\DashboardController;
 use App\Http\Controllers\Improve\BiodataController;
 use App\Http\Controllers\Improve\ItemKpiController;
 use App\Http\Controllers\Improve\RealisasiController;
 use App\Http\Controllers\Improve\RealizationController;
+use App\Http\Controllers\User\VisitController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,8 +41,6 @@ Route::get('/user', function () {
 })->middleware(['auth', 'role:user'])->name('user.index');
 
 
-
-
 // Route Admin
 Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::resource('/roles', RoleController::class);
@@ -65,9 +65,19 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
 });
 
 
+
+
 // Route MANAGER
 Route::middleware(['auth', 'role:manager'])->name('manager.')->prefix('manager')->group(function () {
     Route::get('/', [AppsController::class, 'manager'])->name('index');
+});
+
+// Route MANAGER
+Route::middleware(['auth', 'role:direction'])->name('manager.')->prefix('us')->group(function () {
+    Route::get('/', [AppsController::class, 'manager'])->name('index');
+    Route::get('/visit', [VisitController::class, 'index'])->name('index'); 
+    Route::get('/dept', [VisitController::class, 'dept'])->name('dept'); 
+    Route::get('/dash', [DashboardController::class, 'index'])->name('index'); 
 });
 
 // Route Spv
