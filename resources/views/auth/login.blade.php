@@ -79,9 +79,16 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('custom.login') }}">
         @csrf
 
+            <div class="form-group">
+                <label for="login_type">Pilih Tipe Login:</label>
+                <select name="login_type" id="login_type" class="form-control">
+                    <option value="admin">Admin</option>
+                    <option value="department">Pengguna Departemen</option>
+                </select>
+            </div>
 
             <div class="form-group">
                 <label for="email">Email:</label>

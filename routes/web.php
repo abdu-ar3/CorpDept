@@ -5,6 +5,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\AppsController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Department\DashboardController;
 use App\Http\Controllers\Improve\BiodataController;
 use App\Http\Controllers\Improve\ItemKpiController;
@@ -41,6 +42,9 @@ Route::get('/user', function () {
 })->middleware(['auth', 'role:user'])->name('user.index');
 
 
+Route::post('/custom', [LoginController::class, 'customLogin'])->name('custom.login');
+
+
 // Route Admin
 Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::resource('/roles', RoleController::class);
@@ -73,11 +77,11 @@ Route::middleware(['auth', 'role:manager'])->name('manager.')->prefix('manager')
 });
 
 // Route MANAGER
-Route::middleware(['auth', 'role:direction'])->name('manager.')->prefix('us')->group(function () {
+Route::middleware(['auth', 'role:direction'])->name('dept.')->prefix('us')->group(function () {
     Route::get('/', [AppsController::class, 'manager'])->name('index');
     Route::get('/visit', [VisitController::class, 'index'])->name('index'); 
     Route::get('/dept', [VisitController::class, 'dept'])->name('dept'); 
-    Route::get('/dash', [DashboardController::class, 'index'])->name('dash4'); 
+    Route::get('/dash', [DashboardController::class, 'index'])->name('dash'); 
 });
 
 // Route Spv

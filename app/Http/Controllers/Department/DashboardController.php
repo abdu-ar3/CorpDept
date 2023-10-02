@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\KpiItem;
 use App\Models\Department;
 use App\Models\Event;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
@@ -21,6 +22,7 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
 
+        $departmentId = Auth::user()->department_id;
         $filterEvent = $request->input('selectEvent'); // Ubah filterPeriod menjadi filterEvent
 
         $events = Event::all(); // Ganti $periods
@@ -31,6 +33,7 @@ class DashboardController extends Controller
                 ->when($filterEvent, function ($query) use ($filterEvent) {
                 $query->where('event_id', $filterEvent); // Menggunakan event_id sebagai filter
             })
+            ->where('department_id', $departmentId)
             ->select('kpi_items.*', DB::raw('(realization / target) * 100 as percentage'), DB::raw('((realization / target) * 100) * weight / 100 as weight_percentage'))
             ->get();
 
