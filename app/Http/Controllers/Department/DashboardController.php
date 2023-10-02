@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\KpiItem;
 use App\Models\Department;
+use App\Models\Event;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
@@ -17,14 +18,22 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        $filterEvent = $request->input('selectEvent'); // Ubah filterPeriod menjadi filterEvent
+
+        $events = Event::all(); // Ganti $periods
+
+
         $dept = Department::all();
         $pditems = KpiItem::with('department')
+                ->when($filterEvent, function ($query) use ($filterEvent) {
+                $query->where('event_id', $filterEvent); // Menggunakan event_id sebagai filter
+            })
             ->select('kpi_items.*', DB::raw('(realization / target) * 100 as percentage'), DB::raw('((realization / target) * 100) * weight / 100 as weight_percentage'))
             ->get();
 
-        
 
         $pditemsByDepartment = $pditems->groupBy('department_id');
         $sumByDepartment = $pditemsByDepartment->map(function ($items) {
@@ -37,7 +46,7 @@ class DashboardController extends Controller
         $totalDepartements = $sumByDepartment->count();
         $avgsummary = $totalDepartements > 0 ?  $total / $totalDepartements : 0;
 
-        return view('visit.dept', compact('dept', 'pditemsByDepartment', 'total', 'totalDepartements', 'avgsummary', 'sumByDepartment'));
+        return view('visit.dept', compact('dept', 'pditemsByDepartment', 'total', 'totalDepartements', 'avgsummary', 'sumByDepartment', 'events'));
 
 
     }

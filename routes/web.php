@@ -77,7 +77,7 @@ Route::middleware(['auth', 'role:direction'])->name('manager.')->prefix('us')->g
     Route::get('/', [AppsController::class, 'manager'])->name('index');
     Route::get('/visit', [VisitController::class, 'index'])->name('index'); 
     Route::get('/dept', [VisitController::class, 'dept'])->name('dept'); 
-    Route::get('/dash', [DashboardController::class, 'index'])->name('index'); 
+    Route::get('/dash', [DashboardController::class, 'index'])->name('dash4'); 
 });
 
 // Route Spv

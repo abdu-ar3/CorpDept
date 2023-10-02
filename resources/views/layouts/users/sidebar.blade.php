@@ -15,7 +15,7 @@
                         <li class="nav-item d-none d-md-block"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu"></i></a></li>
                         <li class="nav-item d-none d-md-block"><a class="nav-link nav-link-expand" href="#"><i class="ficon ft-maximize"></i></a></li>
                         <li class="dropdown d-none d-md-block mr-1"><a class="dropdown-toggle nav-link" id="apps-navbar-links" href="#" data-toggle="dropdown">
-                            <img class="brand-logo" width="45%" alt="creaative admin logo" src="{{asset('app-assets/images/logo/prasetia 2.png')}}"></a>
+                            <img class="brand-logo" width="40%" alt="creaative admin logo" src="{{asset('visit-assets/images/logo/prasetia 2.png')}}"></a>
                             <!-- <div class="dropdown-menu">
                                 <div class="arrow_box"><a class="dropdown-item" href="email-application.html"><i class="ft-user"></i> Email</a><a class="dropdown-item" href="chat-application.html"><i class="ft-mail"></i> Chat</a><a class="dropdown-item" href="project-summary.html"><i class="ft-briefcase"></i> Project Summary </a><a class="dropdown-item" href="full-calender.html"><i class="ft-calendar"></i> Calendar </a></div>
                             </div> -->

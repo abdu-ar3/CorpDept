@@ -1,75 +1,15 @@
-<!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="ltr">
-<!-- BEGIN: Head-->
-
-<head>
-
-    @yield('style')
-
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="Chameleon Admin is a modern Bootstrap 4 webapp &amp; admin dashboard html template with a large number of components, elegant design, clean and organized code.">
-    <meta name="keywords" content="admin template, Chameleon admin template, dashboard template, gradient admin template, responsive admin template, webapp, eCommerce dashboard, analytic dashboard">
-    <meta name="author" content="ThemeSelect">
-    <title>Prasetia @yield("title")</title>  
-    
-    <link rel="apple-touch-icon" href="{{asset('visit-assets/images/ico/prasetia.png')}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('visit-assets/images/ico/prasetia.png')}}
-">
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
-
-    <!-- DataTables -->
-    <link href="https://cdn.datatables.net/v/bs4/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
-    <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('visit-assets/vendors/css/vendors.min.css')}}">
-    <!-- END: Vendor CSS-->
-
-    <!-- CSS Status -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/status.css')}}">
-
-    <!-- BEGIN: Theme CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('visit-assets/css/bootstrap.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('visit-assets/css/bootstrap-extended.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('visit-assets/css/colors.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('visit-assets/css/components.css')}}">
-    <!-- END: Theme CSS-->
-
-    <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('visit-assets/css/core/menu/menu-types/horizontal-menu.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('visit-assets/css/core/colors/palette-gradient.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('visit-assets/css/core/colors/palette-gradient.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('visit-assets/css/pages/chat-application.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('visit-assets/css/icon/simple-line-icons.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('visit-assets/css/pages/dashboard-analytics.css')}}">
-    <!-- END: Page CSS-->
-
-    <!-- Option 1: Include in HTML -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-
-    <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
-    <!-- END: Custom CSS-->
-    
-</head>
-<!-- END: Head-->
-
-<!-- BEGIN: Body-->
-
-<body class="horizontal-layout horizontal-menu 2-columns  " data-open="hover" data-menu="horizontal-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
-
-    <!-- BEGIN: Header-->
-    <!-- fixed-top-->
-    @include('layouts.users.sidebar')
-
-
-    <!-- BEGIN: Main Menu-->
-    @include('layouts.users.navbar')
-    <!-- END: Main Menu-->
-
-    <!-- BEGIN: Content-->
-    <div class="app-content content">
-        <div class="content-wrapper">
+@extends('layouts.users.main') 
+ 
+@section('title') BIODATA @endsection
+ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+ 
+<script src="https://code.highcharts.com/highcharts.js"></script><script src="https://code.highcharts.com/highcharts-more.js"></script><script src="https://code.highcharts.com/highcharts-3d.js"></script><script src="https://code.highcharts.com/modules/stock.js"></script><script src="https://code.highcharts.com/maps/modules/map.js"></script><script src="https://code.highcharts.com/modules/gantt.js"></script><script src="https://code.highcharts.com/modules/exporting.js"></script><script src="https://code.highcharts.com/modules/parallel-coordinates.js"></script><script src="https://code.highcharts.com/modules/accessibility.js"></script><script src="https://code.highcharts.com/modules/annotations-advanced.js"></script><script src="https://code.highcharts.com/modules/data.js"></script><script src="https://code.highcharts.com/modules/draggable-points.js"></script><script src="https://code.highcharts.com/modules/static-scale.js"></script><script src="https://code.highcharts.com/modules/broken-axis.js"></script><script src="https://code.highcharts.com/modules/heatmap.js"></script><script src="https://code.highcharts.com/modules/tilemap.js"></script><script src="https://code.highcharts.com/modules/timeline.js"></script><script src="https://code.highcharts.com/modules/treemap.js"></script><script src="https://code.highcharts.com/modules/treegraph.js"></script><script src="https://code.highcharts.com/modules/item-series.js"></script><script src="https://code.highcharts.com/modules/drilldown.js"></script><script src="https://code.highcharts.com/modules/histogram-bellcurve.js"></script><script src="https://code.highcharts.com/modules/bullet.js"></script><script src="https://code.highcharts.com/modules/funnel.js"></script><script src="https://code.highcharts.com/modules/funnel3d.js"></script><script src="https://code.highcharts.com/modules/pyramid3d.js"></script><script src="https://code.highcharts.com/modules/networkgraph.js"></script><script src="https://code.highcharts.com/modules/pareto.js"></script><script src="https://code.highcharts.com/modules/pattern-fill.js"></script><script src="https://code.highcharts.com/modules/price-indicator.js"></script><script src="https://code.highcharts.com/modules/sankey.js"></script><script src="https://code.highcharts.com/modules/arc-diagram.js"></script><script src="https://code.highcharts.com/modules/dependency-wheel.js"></script><script src="https://code.highcharts.com/modules/series-label.js"></script><script src="https://code.highcharts.com/modules/solid-gauge.js"></script><script src="https://code.highcharts.com/modules/sonification.js"></script><script src="https://code.highcharts.com/modules/stock-tools.js"></script><script src="https://code.highcharts.com/modules/streamgraph.js"></script><script src="https://code.highcharts.com/modules/sunburst.js"></script><script src="https://code.highcharts.com/modules/variable-pie.js"></script><script src="https://code.highcharts.com/modules/variwide.js"></script><script src="https://code.highcharts.com/modules/vector.js"></script><script src="https://code.highcharts.com/modules/venn.js"></script><script src="https://code.highcharts.com/modules/windbarb.js"></script><script src="https://code.highcharts.com/modules/wordcloud.js"></script><script src="https://code.highcharts.com/modules/xrange.js"></script><script src="https://code.highcharts.com/modules/no-data-to-display.js"></script><script src="https://code.highcharts.com/modules/drag-panes.js"></script><script src="https://code.highcharts.com/modules/debugger.js"></script><script src="https://code.highcharts.com/modules/dumbbell.js"></script><script src="https://code.highcharts.com/modules/lollipop.js"></script><script src="https://code.highcharts.com/modules/cylinder.js"></script><script src="https://code.highcharts.com/modules/organization.js"></script><script src="https://code.highcharts.com/modules/dotplot.js"></script><script src="https://code.highcharts.com/modules/marker-clusters.js"></script><script src="https://code.highcharts.com/modules/hollowcandlestick.js"></script><script src="https://code.highcharts.com/modules/heikinashi.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
+@section('content')
+ 
+<div class="content-wrapper">
             <div class="content-wrapper-before"></div>
             <div class="content-header row">
                 <div class="content-header-left col-md-4 col-12 mb-2">
@@ -96,6 +36,7 @@
                 <!-- Card Utama -->
                 <div class="card">
                     <div class="card-body">
+ 
                             <div class="from-group mb-2 ml-2 col-sm-4">
                                         <form action="#" method="get">
                                             <div class="form-group">
@@ -117,6 +58,94 @@
                             <div class="col-md-4">
                                 <div id="what-is" class="card">
                                     <div id="container"></div>
+ 
+                                    <script>
+                                            Highcharts.setOptions({
+                                    chart: {
+                                        type: 'gauge',
+                                        plotBackgroundColor: null,
+                                        plotBackgroundImage: null,
+                                        plotBorderWidth: 0,
+                                        plotShadow: false,
+                                        height: '80%'
+                                    },
+                                    title: {
+                                        text: 'Summary'
+                                    },
+                                    pane: {
+                                        startAngle: -90,
+                                        endAngle: 89.9,
+                                        background: null,
+                                        center: ['50%', '75%'],
+                                        size: '110%'
+                                    },
+                                    yAxis: {
+                                        min: 0,
+                                        max: 100,
+                                        tickPixelInterval: 72,
+                                        tickPosition: 'inside',
+                                        tickColor: Highcharts.getOptions().chart.backgroundColor || '#FFFFFF',
+                                        tickLength: 20,
+                                        tickWidth: 2,
+                                        minorTickInterval: null,
+                                        labels: {
+                                            distance: 20,
+                                            style: {
+                                                fontSize: '14px'
+                                            }
+                                        },
+                                        lineWidth: 0,
+                                        plotBands: [{
+                                            from: 0,
+                                            to: 59,
+                                            color: '#DF5353', // red
+                                            thickness: 20
+                                        }, {
+                                            from: 60,
+                                            to: 79,
+                                            color: '#DDDF0D', // yellow
+                                            thickness: 20
+                                        }, {
+                                            from: 80,
+                                            to: 100,
+                                            color: '#55BF3B', // green
+                                            thickness: 20
+                                        }]
+                                    },
+                                    series: [{
+                                        name: 'Speed',
+                                        data: [50], // Nilai default diatur ke 50
+                                        tooltip: {
+                                            valueSuffix: '%'
+                                        },
+                                        dataLabels: {
+                                            format: '{y} %',
+                                            borderWidth: 0,
+                                            color: (
+                                                Highcharts.getOptions().title &&
+                                                Highcharts.getOptions().title.style &&
+                                                Highcharts.getOptions().title.style.color
+                                            ) || '#333333',
+                                            style: {
+                                                fontSize: '16px'
+                                            }
+                                        },
+                                        dial: {
+                                            radius: '80%',
+                                            backgroundColor: 'gray',
+                                            baseWidth: 12,
+                                            baseLength: '0%',
+                                            rearLength: '0%'
+                                        },
+                                        pivot: {
+                                            backgroundColor: 'gray',
+                                            radius: 6
+                                        }
+                                    }]
+                                });
+ 
+                                Highcharts.chart('container', {});
+                                                </script>
                                                 </div>
                                 </div>
                             
@@ -209,7 +238,7 @@
                                 {{-- ini table untuk isi table kpi pd --}}
                                 <thead>
                                     <tr>
-                                        <th></th>
+                                        <th>&nbsp;</th>
                                         {{-- <th>Periode</th> --}}
                                         <th style="font-weight: bold; font-size: 14px">KPI</th>
                                         <th style="font-weight: bold; font-size: 14px">Achievement</th>
@@ -220,7 +249,7 @@
                                     @forelse ($pditems as $pditem)
                                     {{-- @dd($pditem) --}}
                                     <tr data-toggle="collapse" data-target="#demo{{ $pditem->id }}" class="accordion-toggle">
-                                        <td width="5%"><button class="btn btn-default btn-xs"><i class="ficon ft-eye"></i></i></button></td>
+                                        <td><button class="btn btn-default btn-xs"><i class="fa fa-low-vision"></i></button></td>
                                         {{-- <td>{{ $pditem->period['month'] }} {{ $pditem->period['year'] }}</td> --}}
                                         <td>{{ $pditem->kpi }}</td>
                                         <td>{{ number_format($pditem->percentage, 2) }}%</td>
@@ -307,52 +336,6 @@
 </div>
  
  
-
- 
-        
-    </div>
-    <!-- END: Content-->
-
-
-    <!-- BEGIN: Footer-->
-    @include('layouts.users.footer')
-    <!-- END: Footer-->
-
-    <!-- BEGIN: Vendor JS-->
-    <script src="{{asset('visit-assets/vendors/js/vendors.min.js')}}" type="text/javascript"></script>
-    
-    <!-- BEGIN Vendor JS-->
-
-    <!-- BEGIN: Page Vendor JS-->
-    <script type="text/javascript" src="{{asset('visit-assets/vendors/js/ui/jquery.sticky.js')}}"></script>
-    <script src="{{asset('visit-assets/vendors/js/charts/chartist.min.js')}}" type="text/javascript"></script>
-    <script src=" {{asset('visit-assets/vendors/js/charts/chartist-plugin-tooltip.min.js')}}" type="text/javascript"></script>
-    <!-- END: Page Vendor JS-->
-
-    <!-- BEGIN: Theme JS-->
-    <script src="{{asset('visit-assets/js/core/app-menu.js')}}" type="text/javascript"></script>
-    <script src="{{asset('visit-assets/js/core/app.js')}}" type="text/javascript"></script>
-    <!-- END: Theme JS-->
-
-    <!-- BEGIN: Page JS-->
-    <script src="{{asset('visit-assets/js/scripts/pages/dashboard-analytics.js')}}" type="text/javascript"></script>
-    <!-- END: Page JS-->
-    <script type="text/javascript" src="{{asset('visit-assets/vendors/charts/chart.js')}}"></script>
-
-
-
-    <!-- Script Js-->
-    <!-- Chart Js-->
-  <script src="https://code.highcharts.com/highcharts.js"></script><script src="https://code.highcharts.com/highcharts-more.js"></script><script src="https://code.highcharts.com/highcharts-3d.js"></script><script src="https://code.highcharts.com/modules/stock.js"></script><script src="https://code.highcharts.com/maps/modules/map.js"></script><script src="https://code.highcharts.com/modules/gantt.js"></script><script src="https://code.highcharts.com/modules/exporting.js"></script><script src="https://code.highcharts.com/modules/parallel-coordinates.js"></script><script src="https://code.highcharts.com/modules/accessibility.js"></script><script src="https://code.highcharts.com/modules/annotations-advanced.js"></script><script src="https://code.highcharts.com/modules/data.js"></script><script src="https://code.highcharts.com/modules/draggable-points.js"></script><script src="https://code.highcharts.com/modules/static-scale.js"></script><script src="https://code.highcharts.com/modules/broken-axis.js"></script><script src="https://code.highcharts.com/modules/heatmap.js"></script><script src="https://code.highcharts.com/modules/tilemap.js"></script><script src="https://code.highcharts.com/modules/timeline.js"></script><script src="https://code.highcharts.com/modules/treemap.js"></script><script src="https://code.highcharts.com/modules/treegraph.js"></script><script src="https://code.highcharts.com/modules/item-series.js"></script><script src="https://code.highcharts.com/modules/drilldown.js"></script><script src="https://code.highcharts.com/modules/histogram-bellcurve.js"></script><script src="https://code.highcharts.com/modules/bullet.js"></script><script src="https://code.highcharts.com/modules/funnel.js"></script><script src="https://code.highcharts.com/modules/funnel3d.js"></script><script src="https://code.highcharts.com/modules/pyramid3d.js"></script><script src="https://code.highcharts.com/modules/networkgraph.js"></script><script src="https://code.highcharts.com/modules/pareto.js"></script><script src="https://code.highcharts.com/modules/pattern-fill.js"></script><script src="https://code.highcharts.com/modules/price-indicator.js"></script><script src="https://code.highcharts.com/modules/sankey.js"></script><script src="https://code.highcharts.com/modules/arc-diagram.js"></script><script src="https://code.highcharts.com/modules/dependency-wheel.js"></script><script src="https://code.highcharts.com/modules/series-label.js"></script><script src="https://code.highcharts.com/modules/solid-gauge.js"></script><script src="https://code.highcharts.com/modules/sonification.js"></script><script src="https://code.highcharts.com/modules/stock-tools.js"></script><script src="https://code.highcharts.com/modules/streamgraph.js"></script><script src="https://code.highcharts.com/modules/sunburst.js"></script><script src="https://code.highcharts.com/modules/variable-pie.js"></script><script src="https://code.highcharts.com/modules/variwide.js"></script><script src="https://code.highcharts.com/modules/vector.js"></script><script src="https://code.highcharts.com/modules/venn.js"></script><script src="https://code.highcharts.com/modules/windbarb.js"></script><script src="https://code.highcharts.com/modules/wordcloud.js"></script><script src="https://code.highcharts.com/modules/xrange.js"></script><script src="https://code.highcharts.com/modules/no-data-to-display.js"></script><script src="https://code.highcharts.com/modules/drag-panes.js"></script><script src="https://code.highcharts.com/modules/debugger.js"></script><script src="https://code.highcharts.com/modules/dumbbell.js"></script><script src="https://code.highcharts.com/modules/lollipop.js"></script><script src="https://code.highcharts.com/modules/cylinder.js"></script><script src="https://code.highcharts.com/modules/organization.js"></script><script src="https://code.highcharts.com/modules/dotplot.js"></script><script src="https://code.highcharts.com/modules/marker-clusters.js"></script><script src="https://code.highcharts.com/modules/hollowcandlestick.js"></script><script src="https://code.highcharts.com/modules/heikinashi.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- End Chart Js-->
-
-    <!-- Add Bootstrap JS and jQuery -->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    @yield('script')
-
     <script>
       // Data target dan pencapaian
       const labels = ["Target", "Pencapaian"];
@@ -386,7 +369,9 @@
     </script>
     
     
-@forelse ($pditemsByDepartment as $departmentId => $pditems)   
+   @forelse ($pditemsByDepartment as $departmentId => $pditems)
+ 
+    
     @foreach ($pditems as $pditem)
     
         <script>
@@ -519,6 +504,7 @@
                                 return '' + Highcharts.numberFormat(Math.abs(this.y), 0);
                             }
                         },
+                        color: 'white' // Atur warna latar belakang patch fill menjadi putih
                     }
                 },
                 credits: {
@@ -572,97 +558,8 @@
     @endforeach
 @empty
 @endforelse
-
-
- <script>
-                                            Highcharts.setOptions({
-                                    chart: {
-                                        type: 'gauge',
-                                        plotBackgroundColor: null,
-                                        plotBackgroundImage: null,
-                                        plotBorderWidth: 0,
-                                        plotShadow: false,
-                                        height: '80%'
-                                    },
-                                    title: {
-                                        text: 'Summary'
-                                    },
-                                    pane: {
-                                        startAngle: -90,
-                                        endAngle: 89.9,
-                                        background: null,
-                                        center: ['50%', '75%'],
-                                        size: '110%'
-                                    },
-                                    yAxis: {
-                                        min: 0,
-                                        max: 100,
-                                        tickPixelInterval: 72,
-                                        tickPosition: 'inside',
-                                        tickColor: Highcharts.getOptions().chart.backgroundColor || '#FFFFFF',
-                                        tickLength: 20,
-                                        tickWidth: 2,
-                                        minorTickInterval: null,
-                                        labels: {
-                                            distance: 20,
-                                            style: {
-                                                fontSize: '14px'
-                                            }
-                                        },
-                                        lineWidth: 0,
-                                        plotBands: [{
-                                            from: 0,
-                                            to: 59,
-                                            color: '#DF5353', // red
-                                            thickness: 20
-                                        }, {
-                                            from: 60,
-                                            to: 79,
-                                            color: '#DDDF0D', // yellow
-                                            thickness: 20
-                                        }, {
-                                            from: 80,
-                                            to: 100,
-                                            color: '#55BF3B', // green
-                                            thickness: 20
-                                        }]
-                                    },
-                                    series: [{
-                                        name: 'Speed',
-                                        data: [50], // Nilai default diatur ke 50
-                                        tooltip: {
-                                            valueSuffix: '%'
-                                        },
-                                        dataLabels: {
-                                            format: '{y} %',
-                                            borderWidth: 0,
-                                            color: (
-                                                Highcharts.getOptions().title &&
-                                                Highcharts.getOptions().title.style &&
-                                                Highcharts.getOptions().title.style.color
-                                            ) || '#333333',
-                                            style: {
-                                                fontSize: '16px'
-                                            }
-                                        },
-                                        dial: {
-                                            radius: '80%',
-                                            backgroundColor: 'gray',
-                                            baseWidth: 12,
-                                            baseLength: '0%',
-                                            rearLength: '0%'
-                                        },
-                                        pivot: {
-                                            backgroundColor: 'gray',
-                                            radius: 6
-                                        }
-                                    }]
-                                });
  
-                                Highcharts.chart('container', {});
-                                                </script>
-
-</body>
-<!-- END: Body-->
-
-</html>
+ 
+ 
+ 
+@endsection
