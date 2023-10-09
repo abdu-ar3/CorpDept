@@ -34,6 +34,7 @@ class LoginController extends Controller
 
         // Cek apakah pengguna mencoba login sebagai departemen
         if ($request->input('login_type') === 'department') {
+            
             if (Auth::attempt($credentials)) {
                 // Login sukses sebagai departemen, dapatkan ID departemen pengguna
                 $user = Auth::user();
@@ -52,6 +53,16 @@ class LoginController extends Controller
 
         // Jika tipe login tidak valid, tampilkan pesan error
         return back()->withErrors(['login_type' => 'Tipe login tidak valid']);
+    }
+
+    public function customLogout(Request $request)
+    {
+
+        // dd('Test');
+        Auth::logout();
+        return redirect('login')->with('status', 'Berhasil Logout');
+
+    
     }
 
 }

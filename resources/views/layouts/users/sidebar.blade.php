@@ -100,7 +100,7 @@
                                 @endif
                              </span></span></a>
                                     <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a><a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a><a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a><a class="dropdown-item" href="#"><i class="ft-message-square"></i> Chats</a>
-                                    <form action="#" >
+                                    <form action="{{ route('custom.logout') }}" >
                                     @csrf
                                     <button class="dropdown-item" style="cursor:pointer">Sign Out</button>
                                     </form>

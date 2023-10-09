@@ -22,18 +22,29 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
 
-        $departmentId = Auth::user()->department_id;
-        $filterEvent = $request->input('selectEvent'); // Ubah filterPeriod menjadi filterEvent
-
         $events = Event::all(); // Ganti $periods
+        // Ambil event terakhir sebagai event default
+        $defaultEvent = $events->last();
 
+        // Ambil event yang dipilih dari request
+        $selectedEventId  = $request->input('selectEvent');
 
-        $dept = Department::all();
+        // Gunakan event terakhir sebagai default jika selectEvent tidak ada atau tidak valid
+        $selectedEventId  = $selectedEventId  ?? $defaultEvent->id;
+        $selectedEvent = Event::find($selectedEventId);
+
+        $user = Auth::user();
+        $departmentIds = Auth::user()->departments->pluck('id'); 
+
+       // Pastikan bahwa selectedEventId  adalah event yang valid
+        if (!$events->contains('id', $selectedEventId )) {
+            $selectedEventId  = $defaultEvent->id;
+        }
+
+        // Lanjutkan dengan mengambil data KpiItem sesuai dengan selectedEventId 
         $pditems = KpiItem::with('department')
-                ->when($filterEvent, function ($query) use ($filterEvent) {
-                $query->where('event_id', $filterEvent); // Menggunakan event_id sebagai filter
-            })
-            ->where('department_id', $departmentId)
+            ->where('event_id', $selectedEventId ) // Filter berdasarkan event yang dipilih
+            ->whereIn('department_id', $departmentIds)
             ->select('kpi_items.*', DB::raw('(realization / target) * 100 as percentage'), DB::raw('((realization / target) * 100) * weight / 100 as weight_percentage'))
             ->get();
 
@@ -49,7 +60,7 @@ class DashboardController extends Controller
         $totalDepartements = $sumByDepartment->count();
         $avgsummary = $totalDepartements > 0 ?  $total / $totalDepartements : 0;
 
-        return view('visit.dept', compact('dept', 'pditemsByDepartment', 'total', 'totalDepartements', 'avgsummary', 'sumByDepartment', 'events'));
+        return view('visit.dept', compact('selectedEvent', 'departmentIds', 'pditemsByDepartment', 'total', 'totalDepartements', 'avgsummary', 'sumByDepartment', 'events'));
 
 
     }

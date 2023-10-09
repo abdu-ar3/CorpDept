@@ -28,6 +28,10 @@
     <!-- CSS Status -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/status.css')}}">
 
+    <!-- Tautan ke berkas CSS Slick Carousel dari CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
     <!-- BEGIN: Theme CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('visit-assets/css/bootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('visit-assets/css/bootstrap-extended.css')}}">
@@ -93,26 +97,38 @@
         <div class="content-body">
         <section class="row">
             <div class="col-sm-12">
-                <!-- Card Utama -->
-                <div class="card">
-                    <div class="card-body">
-                            <div class="from-group mb-2 ml-2 col-sm-4">
-                                        <form action="#" method="get">
-                                            <div class="form-group">
-                                                <label for="selectEvent">Selected Event</label>
-                                                <select name="selectEvent" class="form-control">
-                                                    <option value="">-- Pilih Event --</option>
-                                                    @foreach ($events as $event)
-                                                        <option value="{{ $event->id }}">{{ $event->start_event }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <button type="submit" class="btn btn-sm btn-primary">Filter</button>
-                                        </form>
-                                        <hr>
-                    
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="from-group col-sm-4">
+                                    <form action="#" method="get">
+                                        <div class="form-group" style="display: flex; align-items: center;">
+                                            <select name="selectEvent" class="form-control" style="flex: 1;">
+                                                <option value="">-- Selected Period --</option>
+                                                @foreach ($events as $event)
+                                                    <option value="{{ $event->id }}">{{ $event->start_event }}</option>
+                                                @endforeach
+                                            </select>
+                                            <button type="submit" class="btn btn-sm btn-primary" style="margin-left: 10px;">Filter</button>
                                         </div>
-                        <div class="row">
+                                    </form>
+                                </div>
+
+
+                            <!-- Card Kanan -->
+                            <div class="col-sm-8">
+                                <div id="what-is" class="card">
+                                    <h5 class="text-right">Periode : {{ $selectedEvent->start_event }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="single-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
                             <!-- Card Kiri -->
                             <div class="col-md-4">
                                 <div id="what-is" class="card">
@@ -126,63 +142,146 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                            <th scope="col">Company</th>
-                                            <th scope="col" width="35%">Director</th>
+                                                <th scope="col" style="font-weight: bold;">Company</th>
+                                                <th scope="col" style="font-weight: bold;">Director</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Prasetia</td>
+                                                <td>Prasetia Dwidharma</th>
                                                 <td>Arya Setiadharma</td>
                                             </tr>
-                                            <tr> 
-                                                <td colspan="2" class="text-center">Department Rank</td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">Larry the Bird</td>
-                                                
-                                            </tr>
-                                            <tr>
-                                            <td>
-                                    
-                                                <!-- Tabel dengan Collapse -->
-                                                <table class="table">
-                                                   <tr>
-                                                        <th>#</th>
-                                                        <th>
-                                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseA1" aria-expanded="true" aria-controls="collapseA1">
-                                                                Department
-                                                            </button>
-                                                        </th>
-                                                        <th>
-                                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseA2" aria-expanded="true" aria-controls="collapseA2">
-                                                                Persentase
-                                                            </button>
-                                                        </th>
-                                                    </tr>
- 
-                                                    <tr>
-                                                        <td>
-                                                            <div id="collapseA1" class="collapse">
-                                                                <!-- Konten yang akan muncul saat collapse terbuka -->
-                                                                <p>test</p>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                                <!-- Akhir Tabel dengan Collapse -->
+                                            <tr >
+                                                <td colspan="2">
+                                                    <table class="table table-condensed" style="border-collapse:collapse;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>&nbsp;</th>
+                                                                <th colspan="1" class="d-flex justify-content-center" style="font-weight: bold; font-size: 14px">Departement Rank</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr data-toggle="collapse" data-target="#rankDept" class="accordion-toggle">
+                                                                <td><button class="btn btn-default btn-xs"><i class="fa fa-low-vision"></i></button></td>
+                                                                <td style="font-weight: bold; font-size: 14px">Departement</td>
+                                                                <td style="font-weight: bold; font-size: 14px">Persentase</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="12" class="hiddenRow">
+                                                                    <div class="accordian-body collapse" id="rankDept">
+                                                                        <table class="table table-striped">
+                                                                            <tbody>
+                                                                                @foreach ($sumByDepartment as $departmentId => $totalPercentage)
+                                                                                    @php $department = $pditemsByDepartment[$departmentId]->first()->department; @endphp
+                                                                                    <tr>
+                                                                                        <td> <a href="#item{{ $department->name }}">{{ $department->name }}</a></th>
+                                                                                        <td>{{ number_format($totalPercentage, 2) . '%' }}</td>
+                                                                                    </tr>
+                                                                                @endforeach
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                        <tfoot>
+                                                            
+                                                        </tfoot>
+                                                    </table>
                                                 </td>
                                             </tr>
- 
                                         </tbody>
-                                        </table>
+                                    </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                            <!-- Card Kiri -->
+                            <div class="col-md-4">
+                                <div id="what-is" class="card">
+                                    <div id="contSem2"></div>
+                                                </div>
+                                </div>
+                            
+                            <!-- Card Kanan -->
+                            <div class="col-md-8">
+                                <div id="kick-start" class="card">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" style="font-weight: bold;">Company</th>
+                                                <th scope="col" style="font-weight: bold;">Director</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Prasetia Dwidharma</th>
+                                                <td>Arya Setiadharma</td>
+                                            </tr>
+                                            <tr >
+                                                <td colspan="2">
+                                                    <table class="table table-condensed" style="border-collapse:collapse;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>&nbsp;</th>
+                                                                <th colspan="1" class="d-flex justify-content-center" style="font-weight: bold; font-size: 14px">Departement Rank</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr data-toggle="collapse" data-target="#rankDept" class="accordion-toggle">
+                                                                <td><button class="btn btn-default btn-xs"><i class="fa fa-low-vision"></i></button></td>
+                                                                <td style="font-weight: bold; font-size: 14px">Departement</td>
+                                                                <td style="font-weight: bold; font-size: 14px">Persentase</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="12" class="hiddenRow">
+                                                                    <div class="accordian-body collapse" id="rankDept">
+                                                                        <table class="table table-striped">
+                                                                            <tbody>
+                                                                                @foreach ($sumByDepartment as $departmentId => $totalPercentage)
+                                                                                    @php $department = $pditemsByDepartment[$departmentId]->first()->department; @endphp
+                                                                                    <tr>
+                                                                                        <td> <a href="#item{{ $department->name }}">{{ $department->name }}</a></th>
+                                                                                        <td>{{ number_format($totalPercentage, 2) . '%' }}</td>
+                                                                                    </tr>
+                                                                                @endforeach
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                        <tfoot>
+                                                            
+                                                        </tfoot>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <!-- Tambahkan lebih banyak slide sesuai kebutuhan -->
                     </div>
-                </div>
+
+                <!-- Card Utama -->
+                <!-- <div class="card">
+                    <div class="card-body"> 
+                    </div>
+                </div> -->
  
-    @forelse($pditemsByDepartment as $departmentId => $pditems)
+    @forelse ($pditemsByDepartment as $departmentId => $pditems)
+        @if ($pditems->count() > 0) 
     <div class="card" id="item{{ $pditemsByDepartment[$departmentId]->first()->department['name'] }}">
         <div class="row">
             <div class="col-md-4">
@@ -294,6 +393,7 @@
         </div>
     </div>
     {{-- @break --}}
+    @endif
     @empty
     <div>Data Not Found</div>
 @endforelse
@@ -343,7 +443,7 @@
 
     <!-- Script Js-->
     <!-- Chart Js-->
-  <script src="https://code.highcharts.com/highcharts.js"></script><script src="https://code.highcharts.com/highcharts-more.js"></script><script src="https://code.highcharts.com/highcharts-3d.js"></script><script src="https://code.highcharts.com/modules/stock.js"></script><script src="https://code.highcharts.com/maps/modules/map.js"></script><script src="https://code.highcharts.com/modules/gantt.js"></script><script src="https://code.highcharts.com/modules/exporting.js"></script><script src="https://code.highcharts.com/modules/parallel-coordinates.js"></script><script src="https://code.highcharts.com/modules/accessibility.js"></script><script src="https://code.highcharts.com/modules/annotations-advanced.js"></script><script src="https://code.highcharts.com/modules/data.js"></script><script src="https://code.highcharts.com/modules/draggable-points.js"></script><script src="https://code.highcharts.com/modules/static-scale.js"></script><script src="https://code.highcharts.com/modules/broken-axis.js"></script><script src="https://code.highcharts.com/modules/heatmap.js"></script><script src="https://code.highcharts.com/modules/tilemap.js"></script><script src="https://code.highcharts.com/modules/timeline.js"></script><script src="https://code.highcharts.com/modules/treemap.js"></script><script src="https://code.highcharts.com/modules/treegraph.js"></script><script src="https://code.highcharts.com/modules/item-series.js"></script><script src="https://code.highcharts.com/modules/drilldown.js"></script><script src="https://code.highcharts.com/modules/histogram-bellcurve.js"></script><script src="https://code.highcharts.com/modules/bullet.js"></script><script src="https://code.highcharts.com/modules/funnel.js"></script><script src="https://code.highcharts.com/modules/funnel3d.js"></script><script src="https://code.highcharts.com/modules/pyramid3d.js"></script><script src="https://code.highcharts.com/modules/networkgraph.js"></script><script src="https://code.highcharts.com/modules/pareto.js"></script><script src="https://code.highcharts.com/modules/pattern-fill.js"></script><script src="https://code.highcharts.com/modules/price-indicator.js"></script><script src="https://code.highcharts.com/modules/sankey.js"></script><script src="https://code.highcharts.com/modules/arc-diagram.js"></script><script src="https://code.highcharts.com/modules/dependency-wheel.js"></script><script src="https://code.highcharts.com/modules/series-label.js"></script><script src="https://code.highcharts.com/modules/solid-gauge.js"></script><script src="https://code.highcharts.com/modules/sonification.js"></script><script src="https://code.highcharts.com/modules/stock-tools.js"></script><script src="https://code.highcharts.com/modules/streamgraph.js"></script><script src="https://code.highcharts.com/modules/sunburst.js"></script><script src="https://code.highcharts.com/modules/variable-pie.js"></script><script src="https://code.highcharts.com/modules/variwide.js"></script><script src="https://code.highcharts.com/modules/vector.js"></script><script src="https://code.highcharts.com/modules/venn.js"></script><script src="https://code.highcharts.com/modules/windbarb.js"></script><script src="https://code.highcharts.com/modules/wordcloud.js"></script><script src="https://code.highcharts.com/modules/xrange.js"></script><script src="https://code.highcharts.com/modules/no-data-to-display.js"></script><script src="https://code.highcharts.com/modules/drag-panes.js"></script><script src="https://code.highcharts.com/modules/debugger.js"></script><script src="https://code.highcharts.com/modules/dumbbell.js"></script><script src="https://code.highcharts.com/modules/lollipop.js"></script><script src="https://code.highcharts.com/modules/cylinder.js"></script><script src="https://code.highcharts.com/modules/organization.js"></script><script src="https://code.highcharts.com/modules/dotplot.js"></script><script src="https://code.highcharts.com/modules/marker-clusters.js"></script><script src="https://code.highcharts.com/modules/hollowcandlestick.js"></script><script src="https://code.highcharts.com/modules/heikinashi.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script><script src="https://code.highcharts.com/highcharts-more.js"></script><script src="https://code.highcharts.com/highcharts-3d.js"></script><script src="https://code.highcharts.com/modules/stock.js"></script><script src="https://code.highcharts.com/maps/modules/map.js"></script><script src="https://code.highcharts.com/modules/gantt.js"></script><script src="https://code.highcharts.com/modules/exporting.js"></script><script src="https://code.highcharts.com/modules/parallel-coordinates.js"></script><script src="https://code.highcharts.com/modules/accessibility.js"></script><script src="https://code.highcharts.com/modules/annotations-advanced.js"></script><script src="https://code.highcharts.com/modules/data.js"></script><script src="https://code.highcharts.com/modules/draggable-points.js"></script><script src="https://code.highcharts.com/modules/static-scale.js"></script><script src="https://code.highcharts.com/modules/broken-axis.js"></script><script src="https://code.highcharts.com/modules/heatmap.js"></script><script src="https://code.highcharts.com/modules/tilemap.js"></script><script src="https://code.highcharts.com/modules/timeline.js"></script><script src="https://code.highcharts.com/modules/treemap.js"></script><script src="https://code.highcharts.com/modules/treegraph.js"></script><script src="https://code.highcharts.com/modules/item-series.js"></script><script src="https://code.highcharts.com/modules/drilldown.js"></script><script src="https://code.highcharts.com/modules/histogram-bellcurve.js"></script><script src="https://code.highcharts.com/modules/bullet.js"></script><script src="https://code.highcharts.com/modules/funnel.js"></script><script src="https://code.highcharts.com/modules/funnel3d.js"></script><script src="https://code.highcharts.com/modules/pyramid3d.js"></script><script src="https://code.highcharts.com/modules/networkgraph.js"></script><script src="https://code.highcharts.com/modules/pareto.js"></script><script src="https://code.highcharts.com/modules/pattern-fill.js"></script><script src="https://code.highcharts.com/modules/price-indicator.js"></script><script src="https://code.highcharts.com/modules/sankey.js"></script><script src="https://code.highcharts.com/modules/arc-diagram.js"></script><script src="https://code.highcharts.com/modules/dependency-wheel.js"></script><script src="https://code.highcharts.com/modules/series-label.js"></script><script src="https://code.highcharts.com/modules/solid-gauge.js"></script><script src="https://code.highcharts.com/modules/sonification.js"></script><script src="https://code.highcharts.com/modules/stock-tools.js"></script><script src="https://code.highcharts.com/modules/streamgraph.js"></script><script src="https://code.highcharts.com/modules/sunburst.js"></script><script src="https://code.highcharts.com/modules/variable-pie.js"></script><script src="https://code.highcharts.com/modules/variwide.js"></script><script src="https://code.highcharts.com/modules/vector.js"></script><script src="https://code.highcharts.com/modules/venn.js"></script><script src="https://code.highcharts.com/modules/windbarb.js"></script><script src="https://code.highcharts.com/modules/wordcloud.js"></script><script src="https://code.highcharts.com/modules/xrange.js"></script><script src="https://code.highcharts.com/modules/no-data-to-display.js"></script><script src="https://code.highcharts.com/modules/drag-panes.js"></script><script src="https://code.highcharts.com/modules/debugger.js"></script><script src="https://code.highcharts.com/modules/dumbbell.js"></script><script src="https://code.highcharts.com/modules/lollipop.js"></script><script src="https://code.highcharts.com/modules/cylinder.js"></script><script src="https://code.highcharts.com/modules/organization.js"></script><script src="https://code.highcharts.com/modules/dotplot.js"></script><script src="https://code.highcharts.com/modules/marker-clusters.js"></script><script src="https://code.highcharts.com/modules/hollowcandlestick.js"></script><script src="https://code.highcharts.com/modules/heikinashi.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- End Chart Js-->
 
@@ -351,8 +451,21 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    
+    <!-- Tautan ke berkas JavaScript Slick Carousel dari CDN -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
     @yield('script')
 
+    
+
+    <script>
+            // Di dalam berkas JavaScript Anda
+        $(document).ready(function(){
+            $('.single-item').slick();
+        });
+
+    </script>
     <script>
       // Data target dan pencapaian
       const labels = ["Target", "Pencapaian"];
@@ -575,6 +688,7 @@
 
 
  <script>
+ 
                                             Highcharts.setOptions({
                                     chart: {
                                         type: 'gauge',
@@ -585,7 +699,7 @@
                                         height: '80%'
                                     },
                                     title: {
-                                        text: 'Summary'
+                                        text: 'Semester 1'
                                     },
                                     pane: {
                                         startAngle: -90,
@@ -658,9 +772,98 @@
                                         }
                                     }]
                                 });
- 
+
                                 Highcharts.chart('container', {});
                                                 </script>
+
+<script>
+     Highcharts.setOptions({
+                                    chart: {
+                                        type: 'gauge',
+                                        plotBackgroundColor: null,
+                                        plotBackgroundImage: null,
+                                        plotBorderWidth: 0,
+                                        plotShadow: false,
+                                        height: '80%'
+                                    },
+                                    title: {
+                                        text: 'Semester 2'
+                                    },
+                                    pane: {
+                                        startAngle: -90,
+                                        endAngle: 89.9,
+                                        background: null,
+                                        center: ['50%', '75%'],
+                                        size: '110%'
+                                    },
+                                    yAxis: {
+                                        min: 0,
+                                        max: 100,
+                                        tickPixelInterval: 72,
+                                        tickPosition: 'inside',
+                                        tickColor: Highcharts.getOptions().chart.backgroundColor || '#FFFFFF',
+                                        tickLength: 20,
+                                        tickWidth: 2,
+                                        minorTickInterval: null,
+                                        labels: {
+                                            distance: 20,
+                                            style: {
+                                                fontSize: '14px'
+                                            }
+                                        },
+                                        lineWidth: 0,
+                                        plotBands: [{
+                                            from: 0,
+                                            to: 59,
+                                            color: '#DF5353', // red
+                                            thickness: 20
+                                        }, {
+                                            from: 60,
+                                            to: 79,
+                                            color: '#DDDF0D', // yellow
+                                            thickness: 20
+                                        }, {
+                                            from: 80,
+                                            to: 100,
+                                            color: '#55BF3B', // green
+                                            thickness: 20
+                                        }]
+                                    },
+                                    series: [{
+                                        name: 'Speed',
+                                        data: [50], // Nilai default diatur ke 50
+                                        tooltip: {
+                                            valueSuffix: '%'
+                                        },
+                                        dataLabels: {
+                                            format: '{y} %',
+                                            borderWidth: 0,
+                                            color: (
+                                                Highcharts.getOptions().title &&
+                                                Highcharts.getOptions().title.style &&
+                                                Highcharts.getOptions().title.style.color
+                                            ) || '#333333',
+                                            style: {
+                                                fontSize: '16px'
+                                            }
+                                        },
+                                        dial: {
+                                            radius: '80%',
+                                            backgroundColor: 'gray',
+                                            baseWidth: 12,
+                                            baseLength: '0%',
+                                            rearLength: '0%'
+                                        },
+                                        pivot: {
+                                            backgroundColor: 'gray',
+                                            radius: 6
+                                        }
+                                    }]
+                                });
+
+                                Highcharts.chart('contSem2', {});
+</script>
+
 
 </body>
 <!-- END: Body-->

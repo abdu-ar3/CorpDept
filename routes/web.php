@@ -43,6 +43,7 @@ Route::get('/user', function () {
 
 
 Route::post('/custom', [LoginController::class, 'customLogin'])->name('custom.login');
+Route::get("/cust-logout", [LoginController::class, "customLogout"])->name('custom.logout');
 
 
 // Route Admin
