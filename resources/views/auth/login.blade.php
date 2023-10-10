@@ -91,8 +91,8 @@
             </div>
 
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email" :value="old('email')" required autofocus autocomplete="username"  class="form-control">
+                <label for="noreg">Noreg:</label>
+                <input type="noreg" name="noreg" id="noreg" :value="old('noreg')" required autofocus autocomplete="username"  class="form-control">
             </div>
 
             <div class="form-group">

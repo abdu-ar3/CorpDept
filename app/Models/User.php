@@ -20,6 +20,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'noreg',
         'email',
         'password',
         'department_id', // Tambahkan kolom department_id

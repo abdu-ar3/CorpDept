@@ -15,11 +15,11 @@ class LoginController extends Controller
         // Validasi request
         $request->validate([
             'login_type' => 'required|in:admin,department',
-            'email' => 'required|email',
+            'noreg' => 'required',
             'password' => 'required',
         ]);
 
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('noreg', 'password');
 
         // Cek apakah pengguna mencoba login sebagai admin
         if ($request->input('login_type') === 'admin') {
@@ -28,7 +28,7 @@ class LoginController extends Controller
                 return redirect()->route('admin.users.index');
             } else {
                 // Gagal login sebagai admin, tampilkan pesan error
-                return back()->withErrors(['email' => 'Email atau password salah']);
+                return back()->withErrors(['noreg' => 'Noreg atau password salah']);
             }
         }
 
@@ -47,7 +47,7 @@ class LoginController extends Controller
                 return redirect()->route($routeName, ['departmentId' => $departmentId]);
             } else {
                 // Gagal login sebagai departemen, tampilkan pesan error
-                return back()->withErrors(['email' => 'Email atau password salah']);
+                return back()->withErrors(['noreg' => 'Noreg atau password salah']);
             }
         }
 

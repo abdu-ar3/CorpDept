@@ -31,14 +31,20 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'name' => ['required', 'max:255'],
+            'noreg' => ['required', 'integer', 'digits:7', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ],
+        [
+            'noreg.required' => 'Kolom Noreg harus diisi.',
+            'noreg.integer' => 'Noreg harus berupa angka.',
+            'noreg.digits' => 'Noreg harus terdiri dari 7 angka.',
+            // ... pesan kesalahan kustom lainnya ...
         ]);
 
         $user = User::create([
             'name' => $request->name,
-            'email' => $request->email,
+            'noreg' => $request->noreg,
             'password' => Hash::make($request->password),
         ]);
 
