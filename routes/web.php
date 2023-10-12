@@ -12,6 +12,8 @@ use App\Http\Controllers\Improve\ItemKpiController;
 use App\Http\Controllers\Improve\RealisasiController;
 use App\Http\Controllers\Improve\RealizationController;
 use App\Http\Controllers\User\VisitController;
+use App\Http\Controllers\User\DashController;
+use App\Http\Controllers\Aging\AgingStatusController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +46,13 @@ Route::get('/user', function () {
 
 Route::post('/custom', [LoginController::class, 'customLogin'])->name('custom.login');
 Route::get("/cust-logout", [LoginController::class, "customLogout"])->name('custom.logout');
+Route::get('/user/dash', [DashController::class, 'index'])->name('user.dash');
+Route::get('/grafik/rev', [DashController::class, 'grafikRev'])->name('grafik.rev');
+Route::get('/grafik/po', [DashController::class, 'grafikPo'])->name('grafik.po');
+
+// Aging
+Route::get('aging/stat', [AgingStatusController::class, 'index'])->name('aging.stat');
+
 
 
 // Route Admin
