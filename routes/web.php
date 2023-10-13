@@ -14,6 +14,7 @@ use App\Http\Controllers\Improve\RealizationController;
 use App\Http\Controllers\User\VisitController;
 use App\Http\Controllers\User\DashController;
 use App\Http\Controllers\Aging\AgingStatusController;
+use App\Http\Controllers\Aging\AgingCalculateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,7 +53,7 @@ Route::get('/grafik/po', [DashController::class, 'grafikPo'])->name('grafik.po')
 
 // Aging
 Route::get('aging/stat', [AgingStatusController::class, 'index'])->name('aging.stat');
-
+Route::resource('/aging/calculate', AgingCalculateController::class);
 
 
 // Route Admin
