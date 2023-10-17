@@ -68,7 +68,7 @@
                                     <div class="arrow_box">
                                         <li data-menu=""><a class="dropdown-item" href="" data-toggle="dropdown">2022</a>
                                         </li>
-                                        <li data-menu=""><a class="dropdown-item" href="" data-toggle="dropdown">2023</a>
+                                        <li data-menu=""><a class="dropdown-item" href="{{ route('rev.index') }}" data-toggle="dropdown">2023</a>
                                         </li>
                                     </div>
                                 </ul>
@@ -112,14 +112,14 @@
                                 <ul class="dropdown-menu">
                                     <div class="arrow_box">
                                         </li>
-                                        <li data-menu=""><a class="dropdown-item" href="" data-toggle="dropdown">2023</a>
+                                        <li data-menu=""><a class="dropdown-item" href="{{ route('calculate.index') }}" data-toggle="dropdown">2023</a>
                                         </li>
                                     </div>
                                 </ul>
                             </li>
                           
                           
-                            <li data-menu=""><a class="dropdown-item" href=" 
+                            <li data-menu=""><a class="dropdown-item" href="{{ route('aging.stat') }}
                             " data-toggle="dropdown">Status Aging</a>
                             </li>
                             <li data-menu=""><a class="dropdown-item" href=" 
@@ -133,7 +133,7 @@
                 href="" data-toggle="dropdown"><i class="ft-codepen"></i><span>KPI Dept</span></a>
                     <ul class="dropdown-menu">
                         <div class="arrow_box">
-                            <li data-menu=""><a class="dropdown-item" href="https://kpi.prasetia.co.id/" data-toggle="dropdown">KPI Dept</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{ route('dept.dash') }}" data-toggle="dropdown">KPI Dept</a>
                             </li>
                          
                         </div>

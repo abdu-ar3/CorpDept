@@ -18,4 +18,9 @@ class TypeJob extends Model
     {
         return $this->hasMany(PoAchiev::class);
     }
+
+    public function hc_revenue()
+    {
+        return $this->hasMany(HcRevenue::class);
+    }
 }
