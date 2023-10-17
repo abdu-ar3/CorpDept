@@ -34,366 +34,466 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 
 @section("content")
 
-<!-- Summary AginG Project -->
-<div class="card-header text-center">
-    <h4>Summary KPI Corporate</h4>
-</div>
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-wrapper-before"></div>
+            <div class="content-header row">
+                <div class="content-header-left col-md-4 col-12 mb-2">
+                    <h3 class="content-header-title">Dashboard KPI Corporate</h3>
+                </div>
+                <div class="content-header-right col-md-8 col-12">
+                    <div class="breadcrumbs-top float-md-right">
+                        <div class="breadcrumb-wrapper mr-1">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active">Dashboard KPI Corporate
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-body">
+                <!-- Basic Tables start -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">SUMMARY</h4>
+                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+                                    <div class="splide">
+                                    <div class="splide__track">
+                                        <ul class="splide__list">
+                                            <li class="splide__slide"> 
+                                            <section id="card-border-options">
+                                                <div class="row ml-1 mr-2">
+                                                    <div class="col-sm-12 col-md-12 col-sm-12">
+                                                        <div class="card box-shadow-0 border-info">
+                                                            <div class="card-content collapse show">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title text-center"><code>SEMESTER 1</code></h4>
+                                                                    <div class="table-responsive">
+                                                                        <table class="table">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th scope="col">KPI</th>
+                                                                                <th scope="col">BOBOT</th>
+                                                                                <th scope="col">TARGET SEMESTER 1</th>
+                                                                                <th scope="col">PENCAPAIAN</th>
+                                                                                <th scope="col">% PENCAPAIAN</th>
+                                                                                <th scope="col">NILAI AKHIR</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>Revenue Perusahaan</td>
+                                                                                <td>40%</td>
+                                                                                <td> 150.190.649.041 </td>
+                                                                                <td> 79.751.856.043 </td>
+                                                                                <td>53%</td>
+                                                                                <td>21%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Purchase Order</td>
+                                                                                <td>40%</td>
+                                                                                <td> 165.200.000.000 </td>
+                                                                                <td> 65.398.439.272 </td>
+                                                                                <td>40%</td>
+                                                                                <td>12%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Aging Pekerjaan</td>
+                                                                                <td>30%</td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td>13%</td>
+                                                                                <td>4%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Total</td>
+                                                                                <td>100%</td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td class="table-info">37%</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                    
+                                                </div>
+                                            </section></li>
+                                            <!-- ... Add more slides as needed -->
+                                            <li class="splide__slide"> <section id="card-border-options">
+                                                <div class="row ml-1 mr-2">
+                                                    <div class="col-sm-12 col-md-12 col-sm-12">
+                                                        <div class="card box-shadow-0 border-info">
+                                                            <div class="card-content collapse show">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title text-center"><code>SEMESTER 2</code></h4>
+                                                                    <div class="table-responsive">
+                                                                        <table class="table">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th scope="col">KPI</th>
+                                                                                <th scope="col">BOBOT</th>
+                                                                                <th scope="col">TARGET SEMESTER 1</th>
+                                                                                <th scope="col">PENCAPAIAN</th>
+                                                                                <th scope="col">% PENCAPAIAN</th>
+                                                                                <th scope="col">NILAI AKHIR</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>Revenue Perusahaan</td>
+                                                                                <td>40%</td>
+                                                                                <td> 150.190.649.041 </td>
+                                                                                <td></td>
+                                                                                <td>%</td>
+                                                                                <td>%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Purchase Order</td>
+                                                                                <td>40%</td>
+                                                                                <td> 165.200.000.000 </td>
+                                                                                <td>  </td>
+                                                                                <td>%</td>
+                                                                                <td>%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Aging Pekerjaan</td>
+                                                                                <td>30%</td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td>%</td>
+                                                                                <td>%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Total</td>
+                                                                                <td>100%</td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td class="table-info">%</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                    
+                                                </div>
+                                            </section></li>
+                                            <!-- ... Add more slides as needed -->
+                                        </ul>
+                                    </div>
 
-    <div class="splide">
-        <div class="splide__track">
-            <ul class="splide__list">
-                <li class="splide__slide"> <section id="card-border-options">
-                    <div class="row ml-1 mr-2">
-                        <div class="col-sm-12 col-md-12 col-sm-12">
-                            <div class="card box-shadow-0 border-info">
-                                <div class="card-content collapse show">
-                                    <div class="card-body">
-                                        <h4 class="card-title text-center"><code>SEMESTER 1</code></h4>
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">KPI</th>
-                                                    <th scope="col">BOBOT</th>
-                                                    <th scope="col">TARGET SEMESTER 1</th>
-                                                    <th scope="col">PENCAPAIAN</th>
-                                                    <th scope="col">% PENCAPAIAN</th>
-                                                    <th scope="col">NILAI AKHIR</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Revenue Perusahaan</td>
-                                                    <td>40%</td>
-                                                    <td> 150.190.649.041 </td>
-                                                    <td> 79.751.856.043 </td>
-                                                    <td>53%</td>
-                                                    <td>21%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Purchase Order</td>
-                                                    <td>40%</td>
-                                                    <td> 165.200.000.000 </td>
-                                                    <td> 65.398.439.272 </td>
-                                                    <td>40%</td>
-                                                    <td>12%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Aging Pekerjaan</td>
-                                                    <td>30%</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td>13%</td>
-                                                    <td>4%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Total</td>
-                                                    <td>100%</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td class="table-info">37%</td>
-                                                </tr>
-                                            </tbody>
-                                            </table>
+                                        <!-- Add the progress bar element -->
+                                        <div class="my-slider-progress">
+                                            <div class="my-slider-progress-bar"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-        
                     </div>
-                </section></li>
-                <!-- ... Add more slides as needed -->
-                <li class="splide__slide"> <section id="card-border-options">
-                    <div class="row ml-1 mr-2">
-                        <div class="col-sm-12 col-md-12 col-sm-12">
-                            <div class="card box-shadow-0 border-info">
-                                <div class="card-content collapse show">
-                                    <div class="card-body">
-                                        <h4 class="card-title text-center"><code>SEMESTER 2</code></h4>
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">KPI</th>
-                                                    <th scope="col">BOBOT</th>
-                                                    <th scope="col">TARGET SEMESTER 1</th>
-                                                    <th scope="col">PENCAPAIAN</th>
-                                                    <th scope="col">% PENCAPAIAN</th>
-                                                    <th scope="col">NILAI AKHIR</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Revenue Perusahaan</td>
-                                                    <td>40%</td>
-                                                    <td> 150.190.649.041 </td>
-                                                    <td></td>
-                                                    <td>%</td>
-                                                    <td>%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Purchase Order</td>
-                                                    <td>40%</td>
-                                                    <td> 165.200.000.000 </td>
-                                                    <td>  </td>
-                                                    <td>%</td>
-                                                    <td>%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Aging Pekerjaan</td>
-                                                    <td>30%</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td>%</td>
-                                                    <td>%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Total</td>
-                                                    <td>100%</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td class="table-info">%</td>
-                                                </tr>
-                                            </tbody>
-                                            </table>
+                </div>
+
+
+                    <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">History Month Corporate</h4>
+                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+                                
+
+                                    <div class="responsive">
+                                    @foreach ($data as $period => $revenueAchievs)
+                                    <div class="card pull-up ml-2 mr-2" style="background-color: #E7E7E7;">
+                                        <div class="card-header" style="background-color: #E7E7E7;">
+                                            <h4 class="card-title text-center">{{ $period }}</h4>
+                                            <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                            <span class="badge badge-pill badge-info float-right m-0">Done</span>
+                                            
+                                        </div>
+                                        <div class="card-content collapse show">
+                                            @foreach ($revenueAchievs as $rev)
+
+                                                @php
+                                                    $pencapaianrev = $rev->value_rev;
+                                                    $targetrev = 25000000000;
+                                                    $prev = ($pencapaianrev / $targetrev) * 100;
+                                                    
+                                                    $pencapaianpo = $rev->value_po;
+                                                    $targetpo = 27533333333;
+                                                    $ppo = ($pencapaianpo / $targetpo) * 100;
+
+
+
+                                                @endphp
+                                            <div class="card-body">
+                                                <h5 class="text-bold-600"><i class="bi bi-wallet2 danger font-medium-4"></i> Revenue. <span class="info"></span></h5>
+                                                <h6 class="text-muted font-small-3"> Tercapai : Rp.  <?php echo number_format("$rev->value_rev"); ?></h6>
+                                                <h6 class="text-muted font-small-3"> Nilai : {{ number_format(($prev), 1, ',') }}%</h6>
+                                                <div class="progress progress-sm mb-1 box-shadow-2">
+                                                    <div class="progress-bar bg-gradient-x-{{$prev > 40 ?$prev > 80 ? 'success' : 'warning' : 'danger' }}" 
+                                                    role="progressbar" style="width: {{$prev}}%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <h5 class="text-bold-600"><i class="bi bi-cart-check  danger font-medium-4"></i> PO. <span class="info"></span></h5>
+                                                <h6 class="text-muted font-small-3"> Tercapai : Rp.  <?php echo number_format("$rev->value_po"); ?></h6>
+                                                <h6 class="text-muted font-small-3"> Nilai : {{ number_format(($ppo), 1, ',', '.') }}%</h6>
+                                                <div class="progress progress-sm mb-1 box-shadow-2">
+                                                    <div class="progress-bar bg-gradient-x-{{$ppo > 40 ?$ppo > 80 ? 'success' : 'warning' : 'danger' }}" 
+                                                    role="progressbar" style="width: {{$ppo}}%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <h5 class="text-bold-600"><i class="bi bi-hourglass  danger font-medium-4"></i> Aging. <span class="info"></span></h5>
+                                                <h6 class="text-muted font-small-3"> Tercapai : {{ number_format(floatval(str_replace(',', '.', $rev->value_aging))) }}
+                                    </h6>
+                                                <h6 class="text-muted font-small-3"> Nilai : {{ number_format(floatval(str_replace(',', '.', $rev->value_aging))) }}%</h6>
+                                                <div class="progress progress-sm mb-1 box-shadow-2">
+                                                    <div class="progress-bar bg-gradient-x-{{$rev->value_aging > 40 ?$rev->value_aging > 80 ? 'success' : 'warning' : 'danger' }}" 
+                                                    role="progressbar" style="width: {{$rev->value_aging}}%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <!-- Anda juga bisa mengakses kolom pdash_id jika diperlukan -->
+
+                                                <!-- <h6 class="text-muted font-small-3"> pdash_id : {{ $rev->pdash_id }}</h6> -->
+                                            
+                                            </div>
+                                            @endforeach
+
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                    </div>
+
+
+                                    <div class="card text-center">
+                                        <div class="card-body">
+                                            <!-- Last Update -->
+                                            <blockquote class="blockquote mb-0">
+                                            <p>Last Update</p>
+                                                <footer class="blockquote-footer"><cite title="Source Title">
+                                                    {{date('l, d F Y',strtotime($rev->created_at))}}
+                                                #</cite></footer>
+                                            </blockquote>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-        
                     </div>
-                </section></li>
-                <!-- ... Add more slides as needed -->
-            </ul>
-        </div>
-
-        <!-- Add the progress bar element -->
-        <div class="my-slider-progress">
-            <div class="my-slider-progress-bar"></div>
-        </div>
-    </div>
-
-<div class="responsive">
- @foreach ($data as $period => $revenueAchievs)
-<div class="card pull-up ml-2 mr-2">
-    <div class="card-header">
-        <h4 class="card-title text-center">{{ $period }}</h4>
-        <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-        <span class="badge badge-pill badge-info float-right m-0">Done</span>
-        
-    </div>
-    <div class="card-content collapse show">
-        @foreach ($revenueAchievs as $rev)
-
-            @php
-                $pencapaianrev = $rev->value_rev;
-                $targetrev = 25000000000;
-                $prev = ($pencapaianrev / $targetrev) * 100;
-                
-                $pencapaianpo = $rev->value_po;
-                $targetpo = 27533333333;
-                $ppo = ($pencapaianpo / $targetpo) * 100;
+                </div>
 
 
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Revenue 2023</h4>
+                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="revenue" class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tipe Pekerjaan</b></th>
+                                                    @foreach($period_rev as $pr)
+                                                        <th>{{$pr->month_year}}</th>
+                                                    @endforeach
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                    
+                                            @foreach($type_job as $tj)
+                                                <tr>
+                                                    <td>{{$tj->name}}</td>
+                                                    @foreach($period_rev as $pr)
+                                                        <td>
+                                                            @foreach($tj->revenue_achiev as $revenue)
+                                                                @if ($revenue->pdash_id == $pr->id)
+                                                                    {{$revenue->value}}
+                                                                @endif
+                                                            @endforeach
+                                                        </td>
+                                                    @endforeach
+                                    
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
 
-            @endphp
-        <div class="card-body">
-            <h5 class="text-bold-600"><i class="bi bi-wallet2 danger font-medium-4"></i> Revenue. <span class="info"></span></h5>
-            <h6 class="text-muted font-small-3"> Tercapai : Rp.  <?php echo number_format("$rev->value_rev"); ?></h6>
-            <h6 class="text-muted font-small-3"> Nilai : {{ number_format(($prev), 1, ',') }}%</h6>
-            <div class="progress progress-sm mb-1 box-shadow-2">
-                <div class="progress-bar bg-gradient-x-{{$prev > 40 ?$prev > 80 ? 'success' : 'warning' : 'danger' }}" 
-                role="progressbar" style="width: {{$prev}}%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="card-body">
+                                    <div class="table-responsive">
+                                    <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Target</b></th>
+                                                    <th>Selisih</b></th>
+                                                    <th>Tercapai</b></th>
+                                                    <th>Action</b></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            @foreach($target_rev as $trev)
+                                            <tr>
+                                                    <td>Rp. <?php
+                                                    echo number_format("$trev->target"); ?></td>
+                                                    <td>Rp. <?php
+                                                    echo number_format("$trev->selisih"); ?></td>
+                                                    <td>Rp. <?php
+                                                    echo number_format("$trev->grand_total"); ?></td>
+                                                    <td>
+                                                    <a href="https://docs.google.com/spreadsheets/d/1bmd0AkGF0V-KrZOP5yNxgcK7R1JoCMkY/edit?usp=sharing&ouid=110546107101493557324&rtpof=true&sd=true" class="btn btn-danger btn-sm"> Excel Link</a>
+                                                    <a href="#" class="btn btn-success btn-sm"> Grafik</a>
+                                                    </td>
+                                            </tr>
+                                            @endforeach
+                                        
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                    <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Purchase Order</h4>
+                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="example" class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tipe Pekerjaan</b></th>
+                                                    @foreach($period_rev as $pr)
+                                                        <th>{{$pr->month_year}}</th>
+                                                    @endforeach
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                    
+                                            @foreach($type_job as $tj)
+                                                <tr>
+                                                    <td>{{$tj->name}}</td>
+                                                    @foreach($period_rev as $pr)
+                                                        <td>
+                                                            @foreach($tj->po_achiev as $poa)
+                                                                @if ($poa->pdash_id == $pr->id)
+                                                                    {{$poa->value}}
+                                                                @endif
+                                                            @endforeach
+                                                        </td>
+                                                    @endforeach
+                                    
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Target</b></th>
+                                                    <th>Selisih</b></th>
+                                                    <th>Tercapai</b></th>
+                                                    <th>Action</b></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $no = 1;
+                                                ?>
+
+                                            @foreach($target_po as $tpo)
+                                            <tr>
+                                                    <td>Rp. <?php
+                                                    echo number_format("$tpo->target"); ?></td>
+                                                    <td>Rp. <?php
+                                                    echo number_format("$tpo->selisih"); ?></td>
+                                                    <td>Rp. <?php
+                                                    echo number_format("$tpo->grand_total"); ?></td>
+                                                    <td>
+                                                    <a href="https://docs.google.com/spreadsheets/d/1bmd0AkGF0V-KrZOP5yNxgcK7R1JoCMkY/edit?usp=sharing&ouid=110546107101493557324&rtpof=true&sd=true" class="btn btn-danger btn-sm"> Excel Link</a>
+                                                    <a href="#" class="btn btn-success btn-sm"> Grafik</a>
+                                                    </td>
+                                            </tr>
+                                            @endforeach
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
             </div>
-            <h5 class="text-bold-600"><i class="bi bi-cart-check  danger font-medium-4"></i> PO. <span class="info"></span></h5>
-            <h6 class="text-muted font-small-3"> Tercapai : Rp.  <?php echo number_format("$rev->value_po"); ?></h6>
-            <h6 class="text-muted font-small-3"> Nilai : {{ number_format(($ppo), 1, ',', '.') }}%</h6>
-            <div class="progress progress-sm mb-1 box-shadow-2">
-                <div class="progress-bar bg-gradient-x-{{$ppo > 40 ?$ppo > 80 ? 'success' : 'warning' : 'danger' }}" 
-                role="progressbar" style="width: {{$ppo}}%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <h5 class="text-bold-600"><i class="bi bi-hourglass  danger font-medium-4"></i> Aging. <span class="info"></span></h5>
-            <h6 class="text-muted font-small-3"> Tercapai : {{ number_format(floatval(str_replace(',', '.', $rev->value_aging))) }}
-</h6>
-            <h6 class="text-muted font-small-3"> Nilai : {{ number_format(floatval(str_replace(',', '.', $rev->value_aging))) }}%</h6>
-            <div class="progress progress-sm mb-1 box-shadow-2">
-                <div class="progress-bar bg-gradient-x-{{$rev->value_aging > 40 ?$rev->value_aging > 80 ? 'success' : 'warning' : 'danger' }}" 
-                role="progressbar" style="width: {{$rev->value_aging}}%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <!-- Anda juga bisa mengakses kolom pdash_id jika diperlukan -->
-
-            <!-- <h6 class="text-muted font-small-3"> pdash_id : {{ $rev->pdash_id }}</h6> -->
-           
         </div>
-        @endforeach
-
     </div>
-</div>
-@endforeach
-</div>
-
-
-<div class="card text-center">
-    <div class="card-body">
-        <!-- Last Update -->
-        <blockquote class="blockquote mb-0">
-        <p>Last Update</p>
-            <footer class="blockquote-footer"><cite title="Source Title">
-                {{date('l, d F Y',strtotime($rev->created_at))}}
-            #</cite></footer>
-        </blockquote>
-    </div>
-</div>
-
-
-<div class="card">
-  <div class="card-header text-center">
-    KPI Revenue 2023
-  </div>
-  <div class="card-body">
-    <div class="table-responsive">
-        <table id="revenue" class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Tipe Pekerjaan</b></th>
-                    @foreach($period_rev as $pr)
-                        <th>{{$pr->month_year}}</th>
-                    @endforeach
-                </tr>
-            </thead>
-            <tbody>
-    
-            @foreach($type_job as $tj)
-                <tr>
-                    <td>{{$tj->name}}</td>
-                    @foreach($period_rev as $pr)
-                        <td>
-                            @foreach($tj->revenue_achiev as $revenue)
-                                @if ($revenue->pdash_id == $pr->id)
-                                    {{$revenue->value}}
-                                @endif
-                            @endforeach
-                        </td>
-                    @endforeach
-    
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-    </div>
-
-    <div class="card-body">
-    <div class="table-responsive">
-    <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Target</b></th>
-                    <th>Selisih</b></th>
-                    <th>Tercapai</b></th>
-                    <th>Action</b></th>
-                </tr>
-            </thead>
-            <tbody>
-
-            @foreach($target_rev as $trev)
-            <tr>
-                    <td>Rp. <?php
-                    echo number_format("$trev->target"); ?></td>
-                    <td>Rp. <?php
-                    echo number_format("$trev->selisih"); ?></td>
-                    <td>Rp. <?php
-                    echo number_format("$trev->grand_total"); ?></td>
-                    <td>
-                    <a href="https://docs.google.com/spreadsheets/d/1bmd0AkGF0V-KrZOP5yNxgcK7R1JoCMkY/edit?usp=sharing&ouid=110546107101493557324&rtpof=true&sd=true" class="btn btn-danger btn-sm"> Excel Link</a>
-                    <a href="#" class="btn btn-success btn-sm"> Grafik</a>
-                    </td>
-            </tr>
-            @endforeach
-        
-            </tbody>
-        </table>
-    </div>
-  </div>
-  </div>
-</div>
-
-
-<div class="card">
-  <div class="card-header text-center">
-    KPI Purhcase Order 2023
-  </div>
-  <div class="card-body">
-    <div class="table-responsive">
-        <table id="example" class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Tipe Pekerjaan</b></th>
-                    @foreach($period_rev as $pr)
-                        <th>{{$pr->month_year}}</th>
-                    @endforeach
-                </tr>
-            </thead>
-            <tbody>
-    
-            @foreach($type_job as $tj)
-                <tr>
-                    <td>{{$tj->name}}</td>
-                    @foreach($period_rev as $pr)
-                        <td>
-                            @foreach($tj->po_achiev as $poa)
-                                @if ($poa->pdash_id == $pr->id)
-                                    {{$poa->value}}
-                                @endif
-                            @endforeach
-                        </td>
-                    @endforeach
-    
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-    </div>
-
-<div class="card-body">
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Target</b></th>
-                    <th>Selisih</b></th>
-                    <th>Tercapai</b></th>
-                    <th>Action</b></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $no = 1;
-                ?>
-
-            @foreach($target_po as $tpo)
-            <tr>
-                    <td>Rp. <?php
-                    echo number_format("$tpo->target"); ?></td>
-                    <td>Rp. <?php
-                    echo number_format("$tpo->selisih"); ?></td>
-                    <td>Rp. <?php
-                    echo number_format("$tpo->grand_total"); ?></td>
-                    <td>
-                    <a href="https://docs.google.com/spreadsheets/d/1bmd0AkGF0V-KrZOP5yNxgcK7R1JoCMkY/edit?usp=sharing&ouid=110546107101493557324&rtpof=true&sd=true" class="btn btn-danger btn-sm"> Excel Link</a>
-                    <a href="#" class="btn btn-success btn-sm"> Grafik</a>
-                    </td>
-            </tr>
-            @endforeach
-
-            </tbody>
-        </table>
-    </div>
-  </div>
-</div>
 
 
 

@@ -185,6 +185,7 @@
                             <div class="card-content collapse show">
                                 <div class="card-body">
                                 
+                                </div>
                             </div>
                         </div>
                     </div>
