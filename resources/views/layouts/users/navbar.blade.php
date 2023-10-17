@@ -78,7 +78,7 @@
                                     <div class="arrow_box">
                                         <li data-menu=""><a class="dropdown-item" href="" data-toggle="dropdown">2022</a>
                                         </li>
-                                        <li data-menu=""><a class="dropdown-item" href="" data-toggle="dropdown">2023</a>
+                                        <li data-menu=""><a class="dropdown-item" href="{{ route('po.index') }}" data-toggle="dropdown">2023</a>
                                         </li>
                                     </div>
                                 </ul>

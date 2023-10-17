@@ -14,6 +14,7 @@ use App\Http\Controllers\Improve\RealizationController;
 use App\Http\Controllers\User\VisitController;
 use App\Http\Controllers\User\DashController;
 use App\Http\Controllers\User\HcRevenueController;
+use App\Http\Controllers\User\HcPoController;
 use App\Http\Controllers\Aging\AgingStatusController;
 use App\Http\Controllers\Aging\AgingCalculateController;
 use Illuminate\Support\Facades\Route;
@@ -58,6 +59,7 @@ Route::resource('/aging/calculate', AgingCalculateController::class);
 
 // Highchart
 Route::resource('/hc/rev', HcRevenueController::class);
+Route::resource('/hc/po', HcPoController::class);
 
 
 // Route Admin

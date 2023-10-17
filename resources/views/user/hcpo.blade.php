@@ -1,6 +1,6 @@
 @extends('layouts.users.main') 
 
-@section("title") High Chart Revenue @endsection
+@section("title") HC Purchase Order @endsection
 
 @section("content")
 <!-- BEGIN: Content-->
@@ -9,7 +9,7 @@
             <div class="content-wrapper-before"></div>
             <div class="content-header row">
                 <div class="content-header-left col-md-4 col-12 mb-2">
-                    <h3 class="content-header-title">Grafik Value Revenue</h3>
+                    <h3 class="content-header-title">Purchase Order </h3>
                 </div>
                 <div class="content-header-right col-md-8 col-12">
                     <div class="breadcrumbs-top float-md-right">
@@ -17,7 +17,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html">Home</a>
                                 </li>
-                                <li class="breadcrumb-item active">Grafik Value Revenue
+                                <li class="breadcrumb-item active">Purchase Order
                                 </li>
                             </ol>
                         </div>
@@ -30,7 +30,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Recenue</h4>
+                                <h4 class="card-title">HC PO</h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -43,7 +43,6 @@
                             </div>
                             <div class="card-content collapse show">
                                 <div class="card-body">
-
                                     <div class="row">
                                         <!-- Card Kiri -->
                                         <div class="col-md-8">
@@ -54,9 +53,9 @@
                                         <!-- Card Kiri -->
                                         <div class="col-md-4">
                                             <div id="what-is" class="card">
-                                            @foreach($hcRev as $hr)        
-                                                    <p><b><a href="#">{{ $hr->typeJob->name }}</a> = </b>Rp. <?php
-                                                        echo number_format("$hr->value")  ; ?></p>
+                                            @foreach($hcPo as $hp)        
+                                                    <p><b><a href="#">{{ $hp->typeJob->name }}</a> = </b>Rp. <?php
+                                                        echo number_format("$hp->value")  ; ?></p>
                                             @endforeach
                                             </div>
                                         </div>
@@ -67,12 +66,11 @@
                     </div>
                 </div>
 
-                
-                <div class="row">
+                     <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Reveneu Type Job Detail</h4>
+                                <h4 class="card-title">Purchase Order Type Job Detail</h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -108,31 +106,22 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Gradient Donut Chart -->
-                
-
-
-                </div>
             </div>
         </div>
     </div>
-
-   
+    </div>
 </div>
     <!-- END: Content-->
 
-
     <script src="https://code.highcharts.com/highcharts.js"></script>
-                <script src="https://code.highcharts.com/highcharts-more.js"></script>
-                <script src="https://code.highcharts.com/modules/exporting.js"></script>
-                <script src="https://code.highcharts.com/modules/export-data.js"></script>
-                <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-                <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
     
 
-
-        <script>
+         <script>
         // Set up the chart
         var categories = <?php echo json_encode($categories); ?>;
         var values = <?php echo json_encode($values); ?>.map(parseFloat);
@@ -162,7 +151,7 @@
                 pointFormat: 'Pendapatan: {point.y}%'
             },
             title: {
-                text: 'Revenue Type Jobs',
+                text: 'Purchase Type Jobs',
                 align: 'center'
             },
             legend: {
@@ -201,10 +190,9 @@
             showValues();
             chart.redraw(false);
         }));
-
     </script>
 
-    <script>
+     <script>
         // Konversi data dari PHP ke JavaScript
         var data = @json($data);
 
@@ -256,11 +244,7 @@
         Highcharts.chart('container', chartOptions);
     </script>
 
-
-
 @endsection
 
 
 
-
-            
