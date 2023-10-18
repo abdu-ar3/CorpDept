@@ -5,6 +5,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\AppsController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\AdminAgingController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Department\DashboardController;
 use App\Http\Controllers\Improve\BiodataController;
@@ -61,6 +62,8 @@ Route::resource('/aging/calculate', AgingCalculateController::class);
 Route::resource('/hc/rev', HcRevenueController::class);
 Route::resource('/hc/po', HcPoController::class);
 
+// Admin Aging
+Route::get('admin/ag', [AdminAgingController::class, 'index'])->name('admin.aging');
 
 // Route Admin
 Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {

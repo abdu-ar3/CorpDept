@@ -11,9 +11,9 @@
         <div class="navigation-background"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class=" nav-item {{ Request::routeIs('#') ?  'open' : '' }}"><a href="index.html"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span><span class="badge badge badge-info badge-pill float-right mr-2">3</span></a>
+                <li class=" nav-item {{ Request::routeIs('#') ?  'open' : '' }}"><a href="index.html"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dash Corp</span><span class="badge badge badge-info badge-pill float-right mr-2">3</span></a>
                     <ul class="menu-content">
-                        <li><a class="menu-item" href="dashboard-ecommerce.html">eCommerce</a>
+                        <li><a class="menu-item" href="">Corporate</a>
                         </li>
                         <li class=""><a class="menu-item" href="dashboard-analytics.html">Analytics</a>
                         </li>
@@ -32,6 +32,8 @@
                 <li class="nav-item {{ Request::routeIs('admin.realization') ?  'has-sub open' : '' }}"><a href="{{ route('admin.realization') }}"><i class="ft-server"></i><span class="menu-title" data-i18n="">Realization</span></a>
                 </li>
                 @endrole
+
+                
                 <li class=" nav-item {{ Request::routeIs('dashboardVI.index') ?  'has-sub open' : '' }}"><a href="#"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Apps</span></a>
                     <ul class="menu-content">
                         @role('direction')
@@ -59,6 +61,20 @@
                         @endrole
                     </ul>
                 </li>
+
+
+                <li class=" nav-item {{ Request::routeIs('dashboardVI.index') ?  'has-sub open' : '' }}"><a href="#"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Aging</span></a>
+                    <ul class="menu-content">
+                        <li class="{{ Request::routeIs('manager.index') ?  'active' : '' }}"><a class="menu-item" href="{{ route('manager.index') }}">Import</a>
+                        </li>
+                        <li class="{{ Request::routeIs('manager.index') ?  'active' : '' }}"><a class="menu-item" href="{{ route('manager.index') }}">Manager</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+
+
+
                 <li class=" nav-item"><a href="#"><i class=""></i><span class="menu-title" data-i18n="">{{Auth::user()->name}}</span></a>
                     <ul class="menu-content">
                         <li><a class="menu-item" href="invoice-template.html"><form method="POST" action="{{ route('logout') }}">

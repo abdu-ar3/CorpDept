@@ -28,3 +28,4 @@ class AgingStatusController extends Controller
         return view('aging.status', compact('agingSis', 'agingSitac', 'agingImb', 'agingCollo', 'agingFiber', 'agingNew', 'agingPfo'));
     }
 }
+
