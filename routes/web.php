@@ -64,6 +64,7 @@ Route::resource('/hc/po', HcPoController::class);
 
 // Admin Aging
 Route::get('admin/ag', [AdminAgingController::class, 'index'])->name('admin.aging');
+Route::post('/asis_import', [AgingStatusController::class, 'asis_import'])->name('asis_import');
 
 // Route Admin
 Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {

@@ -209,7 +209,7 @@
                                                 @endphp
                                                 @foreach($agingSis as $index => $asis)
                                                 <tr>
-                                                <td>{{ $asis->sub }}</td>
+                                                <td>{{ $asis->sub_type }}</td>
                                                 <td>{{ $asis->cust }}</td>
                                                 <td>{{ $asis->nama_site }}</td>
                                                 <td>Rp. <?php echo number_format("$asis->nilai_so"); ?></td>
@@ -280,7 +280,7 @@
                                             @endphp
                                             @foreach($agingSitac as $index => $asit)
                                             <tr>
-                                                <td>{{ $asit->sub }}</td>
+                                                <td>{{ $asit->sub_type }}</td>
                                                 <td>{{ $asit->cust }}</td>
                                                 <td>{{ $asit->nama_site }}</td>
                                                 <td>Rp. <?php echo number_format("$asit->nilai_so"); ?></td>
@@ -344,7 +344,7 @@
                                             @endphp
                                             @foreach($agingImb as $index => $apbc)
                                                     <tr>
-                                                        <td>{{ $apbc->sub }}</td>
+                                                        <td>{{ $apbc->sub_type }}</td>
                                                         <td>{{ $apbc->cust }}</td>
                                                         <td>{{ $apbc->nama_site }}</td>
                                                         <td>Rp. <?php echo number_format("$apbc->nilai_so"); ?></td>
@@ -409,7 +409,7 @@
                                             @endphp
                                             @foreach($agingCollo as $index => $apbc)
                                             <tr>
-                                                <td>{{ $apbc->sub }}</td>
+                                                <td>{{ $apbc->sub_type }}</td>
                                                 <td>{{ $apbc->cust }}</td>
                                                 <td>{{ $apbc->nama_site }}</td>
                                                 <td>Rp. <?php echo number_format("$apbc->nilai_so"); ?></td>
@@ -474,7 +474,7 @@
                                             @endphp
                                             @foreach($agingNew as $index => $apbc)
                                                 <tr>
-                                                    <td>{{ $apbc->sub }}</td>
+                                                    <td>{{ $apbc->sub_type }}</td>
                                                     <td>{{ $apbc->cust }}</td>
                                                     <td>{{ $apbc->nama_site }}</td>
                                                     <td>Rp. <?php echo number_format("$apbc->nilai_so"); ?></td>
@@ -539,7 +539,7 @@
                                             @endphp
                                             @foreach($agingFiber as $index => $apbc)
                                             <tr>
-                                                <td>{{ $apbc->sub }}</td>
+                                                <td>{{ $apbc->sub_type }}</td>
                                                 <td>{{ $apbc->cust }}</td>
                                                 <td>{{ $apbc->nama_site }}</td>
                                                 <td>Rp. <?php echo number_format("$apbc->nilai_so"); ?></td>
@@ -603,7 +603,7 @@
                                             @endphp
                                             @foreach($agingPfo as $index => $apbc)
                                             <tr>
-                                                <td>{{ $apbc->sub }}</td>
+                                                <td>{{ $apbc->sub_type }}</td>
                                                 <td>{{ $apbc->cust }}</td>
                                                 <td>{{ $apbc->nama_site }}</td>
                                                 <td>Rp. <?php echo number_format("$apbc->nilai_so"); ?></td>

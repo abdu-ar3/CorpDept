@@ -26,6 +26,20 @@
                     </div>
                 </div>
             </div>
+
+            {{-- Tampilkan pesan sukses jika ada --}}
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
+
+            {{-- Tampilkan pesan error jika ada --}}
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
             <div class="content-body">
 
                 <!-- Start SIS -->
@@ -55,7 +69,7 @@
                                                     <div class="card-body">
                                                         <div class="row">
                                                             <div class="col-sm-6">
-                                                                <form action="" method="POST" enctype="multipart/form-data">
+                                                                <form action="{{ route('asis_import') }}" method="POST" enctype="multipart/form-data">
                                                                 @csrf
                                                                 <div class="input-group">
                                                                     <input type="file" name="file" class="form-control" placeholder="Search By Customer" name="average">
