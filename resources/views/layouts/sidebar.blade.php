@@ -23,7 +23,7 @@
                     <ul class="menu-content">
                         <li class="{{ Request::routeIs('hcrev.index') ?  'active' : '' }}"><a class="menu-item" href="{{ route('hcrev.index') }}">Revenue</a>
                         </li>
-                        <li class=""><a class="menu-item" href="">Purchase Order</a>
+                        <li class="{{ Request::routeIs('hcpo.index') ?  'active' : '' }}"><a class="menu-item" href="{{ route('hcpo.index') }}">Purchase Order</a>
                         </li>
                     </ul>
                 </li>

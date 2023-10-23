@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminAgingController;
 use App\Http\Controllers\Admin\AdminCorpController;
 use App\Http\Controllers\Admin\AdminHcRevenueController;
+use App\Http\Controllers\Admin\AdminHcPurchaseController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Department\DashboardController;
 use App\Http\Controllers\Improve\BiodataController;
@@ -92,6 +93,8 @@ Route::get('/hcrev/ubah/{id}', [AdminHcRevenueController::class, 'ubah'])->name(
 Route::put('/hcrev/continue/{id}', [AdminHcRevenueController::class, 'continue'])->name('hcrev.continue');
 Route::delete('/hcrev/delete/{id}', [AdminHcRevenueController::class, 'delete'])->name('hcrev.delete');
 
+// Route Admin Purchase
+Route::resource('/admin/hcpo', AdminHcPurchaseController::class);
 
 // Route Admin
 Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
