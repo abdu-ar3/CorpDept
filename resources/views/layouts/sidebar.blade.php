@@ -19,11 +19,29 @@
                         </li>
                     </ul>
                 </li>
-                <li class=" nav-item {{ Request::routeIs('#') ?  'open' : '' }}"><a href="index.html"><i class="ft-home"></i><span class="menu-title" data-i18n="">Highchart</span></a>
+                <li class=" nav-item {{ Request::routeIs('#') ?  'open' : '' }}"><a href="index.html"><i class="ft-activity"></i><span class="menu-title" data-i18n="">Highchart</span></a>
                     <ul class="menu-content">
                         <li class="{{ Request::routeIs('hcrev.index') ?  'active' : '' }}"><a class="menu-item" href="{{ route('hcrev.index') }}">Revenue</a>
                         </li>
                         <li class="{{ Request::routeIs('hcpo.index') ?  'active' : '' }}"><a class="menu-item" href="{{ route('hcpo.index') }}">Purchase Order</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class=" nav-item {{ Request::routeIs('dashboardVI.index') ?  'has-sub open' : '' }}"><a href="#"><i class="ft-cpu"></i><span class="menu-title" data-i18n="">Aging</span></a>
+                    <ul class="menu-content">
+                        <li class="{{ Request::routeIs('admin.aging') ?  'active' : '' }}"><a class="menu-item" href="{{ route('admin.aging') }}">Import</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+                
+
+                <li class=" nav-item {{ Request::routeIs('#') ?  'open' : '' }}"><a href="index.html"><i class="ft-server"></i><span class="menu-title" data-i18n="">KPI DEPT</span></a>
+                    <ul class="menu-content">
+                        <li class="{{ Request::routeIs('admin.item.kpi') ?  'active' : '' }}"><a class="menu-item" href="{{ route('admin.item.kpi') }}">Item KPI OLD</a>
+                        </li>
+                        <li class="{{ Request::routeIs('admin.realization') ?  'active' : '' }}"><a class="menu-item" href="{{ route('admin.realization') }}">Realization OLD</a>
                         </li>
                     </ul>
                 </li>
@@ -34,10 +52,6 @@
                 <li class=" nav-item nav-item {{ Request::routeIs('admin.permissions.index') ?  'has-sub open' : '' }}"><a href="{{ route('admin.permissions.index') }}"><i class="ft-info"></i><span class="menu-title" data-i18n="">Permission</span></a>
                 </li>
                 <li class="nav-item {{ Request::routeIs('admin.users.index') ?  'has-sub open' : '' }}"><a href="{{ route('admin.users.index') }}"><i class="ft-user"></i><span class="menu-title" data-i18n="">Users</span></a>
-                </li>
-                <li class="nav-item {{ Request::routeIs('admin.item.kpi') ?  'has-sub open' : '' }}"><a href="{{ route('admin.item.kpi') }}"><i class="ft-server"></i><span class="menu-title" data-i18n="">Item KPI</span></a>
-                </li>
-                <li class="nav-item {{ Request::routeIs('admin.realization') ?  'has-sub open' : '' }}"><a href="{{ route('admin.realization') }}"><i class="ft-server"></i><span class="menu-title" data-i18n="">Realization</span></a>
                 </li>
                 @endrole
 
@@ -71,13 +85,7 @@
                 </li>
 
 
-                <li class=" nav-item {{ Request::routeIs('dashboardVI.index') ?  'has-sub open' : '' }}"><a href="#"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Aging</span></a>
-                    <ul class="menu-content">
-                        <li class="{{ Request::routeIs('admin.aging') ?  'active' : '' }}"><a class="menu-item" href="{{ route('admin.aging') }}">Import</a>
-                        </li>
-                        
-                    </ul>
-                </li>
+                
 
 
 
