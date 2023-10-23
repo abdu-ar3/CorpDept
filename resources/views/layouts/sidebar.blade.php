@@ -13,9 +13,17 @@
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class=" nav-item {{ Request::routeIs('#') ?  'open' : '' }}"><a href="index.html"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dash Corp</span><span class="badge badge badge-info badge-pill float-right mr-2">3</span></a>
                     <ul class="menu-content">
-                        <li><a class="menu-item" href="">Corporate</a>
+                        <li class="{{ Request::routeIs('corp.index') ?  'active' : '' }}"><a class="menu-item" href="{{ route('corp.index') }}">Corporate</a>
                         </li>
                         <li class=""><a class="menu-item" href="dashboard-analytics.html">Analytics</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class=" nav-item {{ Request::routeIs('#') ?  'open' : '' }}"><a href="index.html"><i class="ft-home"></i><span class="menu-title" data-i18n="">Highchart</span></a>
+                    <ul class="menu-content">
+                        <li class="{{ Request::routeIs('hcrev.index') ?  'active' : '' }}"><a class="menu-item" href="{{ route('hcrev.index') }}">Revenue</a>
+                        </li>
+                        <li class=""><a class="menu-item" href="">Purchase Order</a>
                         </li>
                     </ul>
                 </li>
@@ -65,9 +73,7 @@
 
                 <li class=" nav-item {{ Request::routeIs('dashboardVI.index') ?  'has-sub open' : '' }}"><a href="#"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Aging</span></a>
                     <ul class="menu-content">
-                        <li class="{{ Request::routeIs('manager.index') ?  'active' : '' }}"><a class="menu-item" href="{{ route('manager.index') }}">Import</a>
-                        </li>
-                        <li class="{{ Request::routeIs('manager.index') ?  'active' : '' }}"><a class="menu-item" href="{{ route('manager.index') }}">Manager</a>
+                        <li class="{{ Request::routeIs('admin.aging') ?  'active' : '' }}"><a class="menu-item" href="{{ route('admin.aging') }}">Import</a>
                         </li>
                         
                     </ul>
