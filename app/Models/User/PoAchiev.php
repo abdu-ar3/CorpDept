@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class PoAchiev extends Model
 {
     use HasFactory;
+
+    public function pdashes()
+    {
+        return $this->belongsTo(Pdash::class, 'pdash_id');
+    }
+
+    public function typeJob()
+    {
+        return $this->belongsTo(TypeJob::class);
+    }
 }

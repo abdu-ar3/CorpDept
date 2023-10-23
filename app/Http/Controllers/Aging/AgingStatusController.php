@@ -12,6 +12,12 @@ use App\Models\Aging\AgingFiber;
 use App\Models\Aging\AgingNew;
 use App\Models\Aging\AgingPfo;
 use App\Imports\AgingSisImport;
+use App\Imports\AgingSitacImport;
+use App\Imports\AgingImbImport;
+use App\Imports\AgingColloImport;
+use App\Imports\AgingNsImport;
+use App\Imports\AgingFoImport;
+use App\Imports\AgingPerFoImport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AgingStatusController extends Controller
@@ -41,6 +47,28 @@ class AgingStatusController extends Controller
                 // Lakukan import setelah memastikan file yang valid
                 Excel::import(new AgingSisImport, request()->file('file'));
 
+                return redirect()->route('admin.aging')->with('status', 'Aging SITAC successfully imported');
+            } else {
+                // Tipe file tidak valid
+                return redirect()->route('admin.aging')->with('error', 'Invalid file type. Please upload a valid CSV or XLSX file.');
+            }
+        } else {
+            // File tidak diunggah
+            return redirect()->route('admin.aging')->with('error', 'Please upload a file.');
+        }
+    }
+
+    public function asitac_import()
+    {
+        $file = request()->file('file');
+
+        // Pastikan file telah diunggah
+        if ($file) {
+            // Validasi tipe file (misalnya, CSV atau XLSX)
+            if ($file->getClientOriginalExtension() == 'csv' || $file->getClientOriginalExtension() == 'xlsx') {
+                // Lakukan import setelah memastikan file yang valid
+                Excel::import(new AgingSitacImport, request()->file('file'));
+
                 return redirect()->route('admin.aging')->with('status', 'Aging SIS successfully imported');
             } else {
                 // Tipe file tidak valid
@@ -52,6 +80,117 @@ class AgingStatusController extends Controller
         }
     }
 
+    public function aimb_import()
+    {
+        $file = request()->file('file');
+
+        // Pastikan file telah diunggah
+        if ($file) {
+            // Validasi tipe file (misalnya, CSV atau XLSX)
+            if ($file->getClientOriginalExtension() == 'csv' || $file->getClientOriginalExtension() == 'xlsx') {
+                // Lakukan import setelah memastikan file yang valid
+                Excel::import(new AgingImbImport, request()->file('file'));
+
+                return redirect()->route('admin.aging')->with('status', 'Aging IMB successfully imported');
+            } else {
+                // Tipe file tidak valid
+                return redirect()->route('admin.aging')->with('error', 'Invalid file type. Please upload a valid CSV or XLSX file.');
+            }
+        } else {
+            // File tidak diunggah
+            return redirect()->route('admin.aging')->with('error', 'Please upload a file.');
+        }
+    }
+
+    public function acol_import()
+    {
+        // dd('Test');
+        $file = request()->file('file');
+
+        // Pastikan file telah diunggah
+        if ($file) {
+            // Validasi tipe file (misalnya, CSV atau XLSX)
+            if ($file->getClientOriginalExtension() == 'csv' || $file->getClientOriginalExtension() == 'xlsx') {
+                // Lakukan import setelah memastikan file yang valid
+                Excel::import(new AgingColloImport, request()->file('file'));
+
+                return redirect()->route('admin.aging')->with('status', 'Aging Collocation successfully imported');
+            } else {
+                // Tipe file tidak valid
+                return redirect()->route('admin.aging')->with('error', 'Invalid file type. Please upload a valid CSV or XLSX file.');
+            }
+        } else {
+            // File tidak diunggah
+            return redirect()->route('admin.aging')->with('error', 'Please upload a file.');
+        }
+    }
+
+    public function ans_import()
+    {
+        // dd('Test');
+        $file = request()->file('file');
+
+        // Pastikan file telah diunggah
+        if ($file) {
+            // Validasi tipe file (misalnya, CSV atau XLSX)
+            if ($file->getClientOriginalExtension() == 'csv' || $file->getClientOriginalExtension() == 'xlsx') {
+                // Lakukan import setelah memastikan file yang valid
+                Excel::import(new AgingNsImport, request()->file('file'));
+
+                return redirect()->route('admin.aging')->with('status', 'Aging New Site successfully imported');
+            } else {
+                // Tipe file tidak valid
+                return redirect()->route('admin.aging')->with('error', 'Invalid file type. Please upload a valid CSV or XLSX file.');
+            }
+        } else {
+            // File tidak diunggah
+            return redirect()->route('admin.aging')->with('error', 'Please upload a file.');
+        }
+    }
+
+    public function afo_import()
+    {
+        $file = request()->file('file');
+
+        // Pastikan file telah diunggah
+        if ($file) {
+            // Validasi tipe file (misalnya, CSV atau XLSX)
+            if ($file->getClientOriginalExtension() == 'csv' || $file->getClientOriginalExtension() == 'xlsx') {
+                // Lakukan import setelah memastikan file yang valid
+                Excel::import(new AgingFoImport, request()->file('file'));
+
+                return redirect()->route('admin.aging')->with('status', 'Aging Fiber Optik successfully imported');
+            } else {
+                // Tipe file tidak valid
+                return redirect()->route('admin.aging')->with('error', 'Invalid file type. Please upload a valid CSV or XLSX file.');
+            }
+        } else {
+            // File tidak diunggah
+            return redirect()->route('admin.aging')->with('error', 'Please upload a file.');
+        }
+    }
+
+    public function apfo_import()
+    {
+        $file = request()->file('file');
+
+        // Pastikan file telah diunggah
+        if ($file) {
+            // Validasi tipe file (misalnya, CSV atau XLSX)
+            if ($file->getClientOriginalExtension() == 'csv' || $file->getClientOriginalExtension() == 'xlsx') {
+                // Lakukan import setelah memastikan file yang valid
+                Excel::import(new AgingPerFoImport, request()->file('file'));
+
+                return redirect()->route('admin.aging')->with('status', 'Aging Perijinan FO successfully imported');
+            } else {
+                // Tipe file tidak valid
+                return redirect()->route('admin.aging')->with('error', 'Invalid file type. Please upload a valid CSV or XLSX file.');
+            }
+        } else {
+            // File tidak diunggah
+            return redirect()->route('admin.aging')->with('error', 'Please upload a file.');
+        }
+    }
 
 }
 

@@ -140,7 +140,7 @@
                                                     <div class="card-body">
                                                         <div class="row">
                                                             <div class="col-sm-6">
-                                                                <form action="" method="POST" enctype="multipart/form-data">
+                                                                <form action="{{ route('asitac_import') }}" method="POST" enctype="multipart/form-data">
                                                                 @csrf
                                                                 <div class="input-group">
                                                                     <input type="file" name="file" class="form-control" placeholder="Search By Customer" name="average">
@@ -209,7 +209,7 @@
                                                     <div class="card-body">
                                                         <div class="row">
                                                             <div class="col-sm-6">
-                                                                <form action="" method="POST" enctype="multipart/form-data">
+                                                                <form action="{{ route('aimb_import') }}" method="POST" enctype="multipart/form-data">
                                                                 @csrf
                                                                 <div class="input-group">
                                                                     <input type="file" name="file" class="form-control" placeholder="Search By Customer" name="average">
@@ -278,7 +278,7 @@
                                                     <div class="card-body">
                                                         <div class="row">
                                                             <div class="col-sm-6">
-                                                                <form action="" method="POST" enctype="multipart/form-data">
+                                                                <form action="{{ route('acol_import') }}" method="POST" enctype="multipart/form-data">
                                                                 @csrf
                                                                 <div class="input-group">
                                                                     <input type="file" name="file" class="form-control" placeholder="Search By Customer" name="average">
@@ -347,7 +347,7 @@
                                                     <div class="card-body">
                                                         <div class="row">
                                                             <div class="col-sm-6">
-                                                                <form action="" method="POST" enctype="multipart/form-data">
+                                                                <form action="{{ route('ans_import') }}" method="POST" enctype="multipart/form-data">
                                                                 @csrf
                                                                 <div class="input-group">
                                                                     <input type="file" name="file" class="form-control" placeholder="Search By Customer" name="average">
@@ -416,7 +416,7 @@
                                                     <div class="card-body">
                                                         <div class="row">
                                                             <div class="col-sm-6">
-                                                                <form action="" method="POST" enctype="multipart/form-data">
+                                                                <form action="{{ route('afo_import') }}" method="POST" enctype="multipart/form-data">
                                                                 @csrf
                                                                 <div class="input-group">
                                                                     <input type="file" name="file" class="form-control" placeholder="Search By Customer" name="average">
@@ -492,7 +492,7 @@
                                                     <div class="card-body">
                                                         <div class="row">
                                                             <div class="col-sm-6">
-                                                                <form action="" method="POST" enctype="multipart/form-data">
+                                                                <form action="{{ route('apfo_import') }}" method="POST" enctype="multipart/form-data">
                                                                 @csrf
                                                                 <div class="input-group">
                                                                     <input type="file" name="file" class="form-control" placeholder="Search By Customer" name="average">

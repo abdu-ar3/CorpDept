@@ -6,6 +6,8 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\AppsController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminAgingController;
+use App\Http\Controllers\Admin\AdminCorpController;
+use App\Http\Controllers\Admin\AdminHcRevenueController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Department\DashboardController;
 use App\Http\Controllers\Improve\BiodataController;
@@ -65,6 +67,31 @@ Route::resource('/hc/po', HcPoController::class);
 // Admin Aging
 Route::get('admin/ag', [AdminAgingController::class, 'index'])->name('admin.aging');
 Route::post('/asis_import', [AgingStatusController::class, 'asis_import'])->name('asis_import');
+Route::post('/asitac_import', [AgingStatusController::class, 'asitac_import'])->name('asitac_import');
+Route::post('/aimb_import', [AgingStatusController::class, 'aimb_import'])->name('aimb_import');
+Route::post('/acol_import', [AgingStatusController::class, 'acol_import'])->name('acol_import');
+Route::post('/ans_import', [AgingStatusController::class, 'ans_import'])->name('ans_import');
+Route::post('/afo_import', [AgingStatusController::class, 'afo_import'])->name('afo_import');
+Route::post('/apfo_import', [AgingStatusController::class, 'apfo_import'])->name('apfo_import');
+
+// Admin Corp 
+Route::resource('/admin/corp', AdminCorpController::class);
+Route::post('/corp.save', [AdminCorpController::class, 'save'])->name('corp.save');
+Route::get('/corp/ubah/{id}', [AdminCorpController::class, 'ubah'])->name('corp.ubah');
+Route::put('/corp/continue/{id}', [AdminCorpController::class, 'continue'])->name('corp.continue');
+Route::delete('/corp/delete/{id}', [AdminCorpController::class, 'delete'])->name('corp.delete');
+Route::post('/corp.corpsave', [AdminCorpController::class, 'corpsave'])->name('corp.corpsave');
+Route::get('/corp/corpubah/{id}', [AdminCorpController::class, 'corpubah'])->name('corp.corpubah');
+Route::put('/corp/corpupdate/{id}', [AdminCorpController::class, 'corpupdate'])->name('corp.corpupdate');
+Route::delete('/corp/corpdelete/{id}', [AdminCorpController::class, 'corpdelete'])->name('corp.corpdelete');
+
+// Admin HC 
+Route::resource('/admin/hcrev', AdminHcRevenueController::class);
+Route::post('/hcrev.save', [AdminHcRevenueController::class, 'save'])->name('hcrev.save');
+Route::get('/hcrev/ubah/{id}', [AdminHcRevenueController::class, 'ubah'])->name('hcrev.ubah');
+Route::put('/hcrev/continue/{id}', [AdminHcRevenueController::class, 'continue'])->name('hcrev.continue');
+Route::delete('/hcrev/delete/{id}', [AdminHcRevenueController::class, 'delete'])->name('hcrev.delete');
+
 
 // Route Admin
 Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {

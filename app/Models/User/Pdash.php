@@ -13,4 +13,9 @@ class Pdash extends Model
     {
         return $this->hasMany(CorpMonth::class);
     }
+
+    public function revenue_achiev()
+    {
+        return $this->hasMany(RevenueAchiev::class);
+    }
 }
