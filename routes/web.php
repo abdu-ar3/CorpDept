@@ -95,6 +95,10 @@ Route::delete('/hcrev/delete/{id}', [AdminHcRevenueController::class, 'delete'])
 
 // Route Admin Purchase
 Route::resource('/admin/hcpo', AdminHcPurchaseController::class);
+Route::post('/hcpo.save', [AdminHcPurchaseController::class, 'save'])->name('hcpo.save');
+Route::get('/hcpo/ubah/{id}', [AdminHcPurchaseController::class, 'ubah'])->name('hcpo.ubah');
+Route::put('/hcpo/continue/{id}', [AdminHcPurchaseController::class, 'continue'])->name('hcpo.continue');
+Route::delete('/hcpo/delete/{id}', [AdminHcPurchaseController::class, 'delete'])->name('hcpo.delete');
 
 // Route Admin
 Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {

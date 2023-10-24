@@ -81,7 +81,7 @@
                                                     <td>{{$hcpur->value}}</td>
                                                     <td>
                                                         <a href="{{route('hcpo.edit', [$hcpur->id])}}" class="btn btn-warning btn-sm">Update</a>
-                                                        <form onsubmit="return confirm('Delete this Revenue permanently?')" class="d-inline" action="{{route('hcpo.destroy', $hcpur->id)}}" method="POST">
+                                                        <form onsubmit="return confirm('Delete this PO permanently?')" class="d-inline" action="{{route('hcpo.destroy', $hcpur->id)}}" method="POST">
                                                             @csrf
                                                             <input type="hidden" name="_method" value="DELETE">
                                                             <input type="submit" value="Delete" class="btn btn-danger btn-sm">
@@ -121,7 +121,7 @@
                                                 href=""
                                                 class="btn btn-sm btn-info"
                                                 data-toggle="modal"
-                                                data-target="#hcRevcustModal"
+                                                data-target="#hcPocustModal"
                                                 ><span class="ft-plus-square font-medium-2"></span
                                             ></a>
                                         </div>
@@ -144,8 +144,8 @@
                                                     <td>{{$hcpur->cust}}</td>
                                                     <td>{{$hcpur->value}}</td>
                                                     <td>
-                                                        <a href="{{route('hcrev.ubah', [$hcpur->id])}}" class="btn btn-warning btn-sm">Update</a>
-                                                        <form onsubmit="return confirm('Delete this Revenue permanently?')" class="d-inline" action="{{route('hcrev.delete', $hcpur->id)}}" method="POST">
+                                                        <a href="{{route('hcpo.ubah', [$hcpur->id])}}" class="btn btn-warning btn-sm">Update</a>
+                                                        <form onsubmit="return confirm('Delete this Purchase Order Cust permanently?')" class="d-inline" action="{{route('hcpo.delete', $hcpur->id)}}" method="POST">
                                                             @csrf
                                                             <input type="hidden" name="_method" value="DELETE">
                                                             <input type="submit" value="Delete" class="btn btn-danger btn-sm">
@@ -229,16 +229,16 @@
 <!-- Modal Reveneu Cust -->
 <div
     class="modal fade"
-    id="hcRevcustModal"
+    id="hcPocustModal"
     tabindex="-1"
     role="dialog"
-    aria-labelledby="hcRevcustModalLabel"
+    aria-labelledby="hcPocustModalLabel"
     aria-hidden="true"
 >
     <div class="modal-dialog modal-lg mr-2" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="hcRevcustModalLabel">Create</h5>
+                <h5 class="modal-title" id="hcPocustModalLabel">Create</h5>
                 <button
                     type="button"
                     class="close"
@@ -253,7 +253,7 @@
                 <form
                     enctype="multipart/form-data"
                     class="bg-white shadow-sm p-3"
-                    action="{{route('hcrev.save')}}"
+                    action="{{route('hcpo.save')}}"
                     method="POST"
                 >
                     @csrf
@@ -272,7 +272,7 @@
                             <input type="text" name="nameCust" class="form-control" required>
                     </div>
                     <div class="form-group">
-                            <label for="value">Value Reveneu:</label>
+                            <label for="value">Value Purchase Order:</label>
                             <input type="number" name="value" class="form-control" required>
                     </div>
                 
