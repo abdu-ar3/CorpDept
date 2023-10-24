@@ -4,6 +4,7 @@ namespace App\Models\Aging;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User\Pdash;
 
 class Area extends Model
 {

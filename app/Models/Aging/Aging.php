@@ -9,6 +9,18 @@ class Aging extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'area_id',
+        'project',
+        'target',
+        'jumlah_site',
+        'bobot',
+        'tercapai',
+        'tidak_tercapai',
+        'persentase',
+        'final',
+    ];
+
     public function area()
     {
         return $this->belongsTo(Area::class);

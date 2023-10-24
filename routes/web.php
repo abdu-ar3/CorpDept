@@ -67,6 +67,8 @@ Route::resource('/hc/po', HcPoController::class);
 
 // Admin Aging
 Route::get('admin/ag', [AdminAgingController::class, 'index'])->name('admin.aging');
+Route::get('admin/calculate', [AdminAgingController::class, 'calculate'])->name('admin.calculate');
+Route::post('/aging_import', [AdminAgingController::class, 'aging_import'])->name('aging_import');
 Route::post('/asis_import', [AgingStatusController::class, 'asis_import'])->name('asis_import');
 Route::post('/asitac_import', [AgingStatusController::class, 'asitac_import'])->name('asitac_import');
 Route::post('/aimb_import', [AgingStatusController::class, 'aimb_import'])->name('aimb_import');
@@ -74,6 +76,9 @@ Route::post('/acol_import', [AgingStatusController::class, 'acol_import'])->name
 Route::post('/ans_import', [AgingStatusController::class, 'ans_import'])->name('ans_import');
 Route::post('/afo_import', [AgingStatusController::class, 'afo_import'])->name('afo_import');
 Route::post('/apfo_import', [AgingStatusController::class, 'apfo_import'])->name('apfo_import');
+
+Route::delete('/aging/delete/{id}', [AdminAgingController::class, 'delete'])->name('aging.delete');
+
 
 // Admin Corp 
 Route::resource('/admin/corp', AdminCorpController::class);

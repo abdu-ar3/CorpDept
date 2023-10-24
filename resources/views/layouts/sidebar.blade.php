@@ -30,9 +30,10 @@
 
                 <li class=" nav-item {{ Request::routeIs('dashboardVI.index') ?  'has-sub open' : '' }}"><a href="#"><i class="ft-cpu"></i><span class="menu-title" data-i18n="">Aging</span></a>
                     <ul class="menu-content">
-                        <li class="{{ Request::routeIs('admin.aging') ?  'active' : '' }}"><a class="menu-item" href="{{ route('admin.aging') }}">Import</a>
-                        </li>
-                    
+                        <li class="{{ Request::routeIs('admin.aging') ?  'active' : '' }}"><a class="menu-item" href="{{ route('admin.aging') }}">Import Status</a>
+                        </li>    
+                        <li class="{{ Request::routeIs('admin.aging') ?  'active' : '' }}"><a class="menu-item" href="{{ route('admin.aging') }}">Calculate Aging</a>
+                        </li>    
                     </ul>
                 </li>
                 
