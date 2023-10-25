@@ -62,7 +62,11 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('login')->with('status', 'Berhasil Logout');
 
-    
+    }
+
+    public function backLogin()
+    {
+        return view('auth.login');
     }
 
 }
