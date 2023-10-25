@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminAgingController;
 use App\Http\Controllers\Admin\AdminCorpController;
 use App\Http\Controllers\Admin\AdminHcRevenueController;
 use App\Http\Controllers\Admin\AdminHcPurchaseController;
+use App\Http\Controllers\Admin\AdminKpiDeptController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Department\DashboardController;
 use App\Http\Controllers\Improve\BiodataController;
@@ -104,6 +105,9 @@ Route::post('/hcpo.save', [AdminHcPurchaseController::class, 'save'])->name('hcp
 Route::get('/hcpo/ubah/{id}', [AdminHcPurchaseController::class, 'ubah'])->name('hcpo.ubah');
 Route::put('/hcpo/continue/{id}', [AdminHcPurchaseController::class, 'continue'])->name('hcpo.continue');
 Route::delete('/hcpo/delete/{id}', [AdminHcPurchaseController::class, 'delete'])->name('hcpo.delete');
+
+// Admin KPI Dept
+Route::resource('/admin/kpidept', AdminKpiDeptController::class);
 
 // Route Admin
 Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {

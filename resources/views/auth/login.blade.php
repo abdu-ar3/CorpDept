@@ -65,7 +65,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="text-center mb-4">
+        <div class="text-center mb-2">
             <img src="{{asset('app-assets/images/logo/prasetia.png')}}" alt="Logo" width="150px">
         </div>
 
@@ -99,12 +99,30 @@
                 <label for="password">Password:</label>
                 <input type="password" name="password" id="password" class="form-control" required>
             </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="show_password" name="show_password">
+                <label class="form-check-label" for="show_password">{{ __('Show Password') }}</label>
+            </div>
 
             <div class="form-group">
                 <button type="submit" class="btn btn-danger">Login</button>
             </div>
         </form>
         <p class="card-subtitle text-muted text-right font-small-3 mx-2 my-1"><span>Don't have an account ? <a href="{{ route('register') }}" class="card-link">Register</a></span></p>
+        <p class="card-subtitle text-muted text-right font-small-3 mx-2 my-1"><span>Forget an account ? <a href="{{ route('password.request') }}" class="card-link">Forget</a></span></p>
     </div>
 </body>
 </html>
+
+<script>
+    const showPasswordCheckbox = document.getElementById('show_password');
+    const passwordInput = document.getElementById('password');
+
+    showPasswordCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    });
+</script>

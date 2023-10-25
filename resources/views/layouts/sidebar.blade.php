@@ -13,10 +13,11 @@
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class=" nav-item {{ Request::routeIs('#') ?  'open' : '' }}"><a href="index.html"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dash Corp</span><span class="badge badge badge-info badge-pill float-right mr-2">3</span></a>
                     <ul class="menu-content">
-                        <li class="{{ Request::routeIs('corp.index') ?  'active' : '' }}"><a class="menu-item" href="{{ route('corp.index') }}">Corporate</a>
-                        </li>
                         <li class=""><a class="menu-item" href="dashboard-analytics.html">Analytics</a>
                         </li>
+                        <li class="{{ Request::routeIs('corp.index') ?  'active' : '' }}"><a class="menu-item" href="{{ route('corp.index') }}">Corporate</a>
+                        </li>
+                    
                     </ul>
                 </li>
                 <li class=" nav-item {{ Request::routeIs('#') ?  'open' : '' }}"><a href="index.html"><i class="ft-activity"></i><span class="menu-title" data-i18n="">Highchart</span></a>
@@ -32,7 +33,7 @@
                     <ul class="menu-content">
                         <li class="{{ Request::routeIs('admin.aging') ?  'active' : '' }}"><a class="menu-item" href="{{ route('admin.aging') }}">Import Status</a>
                         </li>    
-                        <li class="{{ Request::routeIs('admin.aging') ?  'active' : '' }}"><a class="menu-item" href="{{ route('admin.aging') }}">Calculate Aging</a>
+                        <li class="{{ Request::routeIs('admin.calculate') ?  'active' : '' }}"><a class="menu-item" href="{{ route('admin.calculate') }}">Calculate Aging</a>
                         </li>    
                     </ul>
                 </li>
