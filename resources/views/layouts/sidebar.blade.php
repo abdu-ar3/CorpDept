@@ -46,6 +46,8 @@
                         </li>
                         <li class="{{ Request::routeIs('admin.realization') ?  'active' : '' }}"><a class="menu-item" href="{{ route('admin.realization') }}">Realization OLD</a>
                         </li>
+                        <li class="{{ Request::routeIs('kpidept.index') ?  'active' : '' }}"><a class="menu-item" href="{{ route('kpidept.index') }}">New Admin</a>
+                        </li>
                     </ul>
                 </li>
                 
