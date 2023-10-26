@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdminCorpController;
 use App\Http\Controllers\Admin\AdminHcRevenueController;
 use App\Http\Controllers\Admin\AdminHcPurchaseController;
 use App\Http\Controllers\Admin\AdminKpiDeptController;
+use App\Http\Controllers\Admin\AnalyticController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Department\DashboardController;
 use App\Http\Controllers\Improve\BiodataController;
@@ -109,6 +110,9 @@ Route::delete('/hcpo/delete/{id}', [AdminHcPurchaseController::class, 'delete'])
 
 // Admin KPI Dept
 Route::resource('/admin/kpidept', AdminKpiDeptController::class);
+
+// Admin Analytic
+Route::resource('/admin/analytic', AnalyticController::class);
 
 // Route Admin
 Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {

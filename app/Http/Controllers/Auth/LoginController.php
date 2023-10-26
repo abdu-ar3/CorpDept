@@ -25,7 +25,7 @@ class LoginController extends Controller
         if ($request->input('login_type') === 'admin') {
             if (Auth::attempt($credentials)) {
                 // Login sukses sebagai admin, arahkan ke halaman admin
-                return redirect()->route('admin.users.index');
+                return redirect()->route('analytic.index');
             } else {
                 // Gagal login sebagai admin, tampilkan pesan error
                 return back()->withErrors(['noreg' => 'Noreg atau password salah']);
