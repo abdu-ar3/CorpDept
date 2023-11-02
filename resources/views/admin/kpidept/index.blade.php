@@ -45,7 +45,39 @@
                             </div>
                             <div class="card-content collapse show">
                                 <div class="card-body">
-                                
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>KPI</th>
+                                                    <th>TARGET</th>
+                                                    <th>REALIZATION</th>
+                                                    <th>WEIGHT</th>
+                                                    <th>ACTION</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($itemKpi as $ik)
+                                                <tr>
+                                                    <td>{{$ik->kpi}}</td>
+                                                    <td>{{$ik->target}}</td>
+                                                    <td>{{$ik->realization}}</td>
+                                                    <td>{{$ik->weight}}</td>
+                                                    <td>
+                                                        @can('admin')
+                                                            <form onsubmit="return confirm('Really ??')" class="d-inline" action="#" method="POST">
+                                                                @csrf
+                                                                <input type="hidden" name="_method" value="DELETE">
+                                                                <button class="btn btn-sm btn-danger"><span class="ft-trash-2"></span></button>
+                                                            </form>
+                                                        @endcan
+                                                    </td>
+
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>

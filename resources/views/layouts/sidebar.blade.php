@@ -21,6 +21,7 @@
                     
                     </ul>
                 </li>
+                <li class=" nav-item {{ Request::routeIs('dept.dash') ?  'has-sub open' : '' }}"><a href="{{ route('dept.dash') }}" ><i class="ft-info"></i><span class="menu-title" data-i18n="">Pages User</span></a>
                 <li class=" nav-item {{ Request::routeIs('#') ?  'open' : '' }}"><a href="index.html"><i class="ft-activity"></i><span class="menu-title" data-i18n="">Highchart</span></a>
                     <ul class="menu-content">
                         <li class="{{ Request::routeIs('hcrev.index') ?  'active' : '' }}"><a class="menu-item" href="{{ route('hcrev.index') }}">Revenue</a>

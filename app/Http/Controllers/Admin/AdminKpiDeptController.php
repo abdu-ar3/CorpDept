@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\KpiItem;
+use App\Models\Department;
 
 class AdminKpiDeptController extends Controller
 {
@@ -15,7 +17,9 @@ class AdminKpiDeptController extends Controller
     public function index()
     {
         // dd('test');
-        return view('admin.kpidept.index');
+        $itemKpi = KpiItem::all();
+
+        return view('admin.kpidept.index', compact('itemKpi'));
     }
 
     /**

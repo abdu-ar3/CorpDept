@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 
 class LoginController extends Controller
@@ -20,6 +21,13 @@ class LoginController extends Controller
         ]);
 
         $credentials = $request->only('noreg', 'password');
+
+          // Jika autentikasi berhasil, update last_login
+            if (Auth::check()) {
+                $user = Auth::user();
+                $user->last_login = Carbon::now();
+                $user->save();
+            }
 
         // Cek apakah pengguna mencoba login sebagai admin
         if ($request->input('login_type') === 'admin') {

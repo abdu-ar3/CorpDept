@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Department;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Carbon;
 
 class AnalyticController extends Controller
 {
@@ -19,12 +20,25 @@ class AnalyticController extends Controller
     public function index(Request $request)
     {
         // dd('test');
-      // Cek apakah total login sudah disimpan di cache
+ // Jika autentikasi berhasil, update last_login
+    if (Auth::check()) {
+        $user = Auth::user();
+        $user->last_login = Carbon::now();
+        $user->login_count += 1; // Tambahkan 1 ke login_count
+        $user->save();
+    }
+
+        // Setelah login, lanjutkan dengan tindakan setelah login
+
+        // Cek apakah total login sudah disimpan di cache
         if (Cache::has('totalLogin')) {
             $totalLogin = Cache::get('totalLogin');
         } else {
-            // Hitung total login dari database
-            $totalLogin = User::sum('login_count');
+            // Tanggal satu bulan yang lalu dari sekarang
+            $oneMonthAgo = Carbon::now()->subMonth();
+
+            // Hitung total login dari database hanya untuk periode satu bulan terakhir
+            $totalLogin = User::where('last_login', '>=', $oneMonthAgo)->sum('login_count');
 
             // Simpan total login dalam cache selama misalnya 1 jam
             Cache::put('totalLogin', $totalLogin, now()->addHour());
