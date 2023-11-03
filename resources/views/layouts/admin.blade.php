@@ -3,6 +3,27 @@
 <!-- BEGIN: Head-->
 
 <head>
+
+        <style>
+            .spinner-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 0.7);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 9999; /* Pastikan lebih tinggi dari elemen lain */
+            }
+
+            .spinner {
+                width: 4rem;
+                height: 4rem;
+            }
+        </style>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -42,6 +63,12 @@
 <body class="vertical-layout vertical-menu 2-columns   fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
 
 
+        <div class="spinner-overlay">
+            <div class="spinner-border text-danger" role="status">
+                <span class="visually-hidden"></span>
+            </div>
+        </div>
+
     <!-- BEGIN: Header-->
     @include('layouts.navbar')
     <!-- END: Header-->
@@ -79,6 +106,15 @@
     <!-- END: Page JS-->
 
     @yield('script')
+
+    <script>
+        document.onreadystatechange = function () {
+            if (document.readyState === "complete") {
+                // Sembunyikan spinner saat halaman selesai dimuat
+                document.querySelector(".spinner-overlay").style.display = "none";
+            }
+        };
+    </script>
 
 
 </body>

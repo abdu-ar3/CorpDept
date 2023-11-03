@@ -4,6 +4,26 @@
 
 <head>
 
+        <style>
+            .spinner-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 0.7);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 9999; /* Pastikan lebih tinggi dari elemen lain */
+            }
+
+            .spinner {
+                width: 4rem;
+                height: 4rem;
+            }
+        </style>
+
     @yield('style')
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -59,6 +79,12 @@
 <!-- BEGIN: Body-->
 
 <body class="horizontal-layout horizontal-menu 2-columns  " data-open="hover" data-menu="horizontal-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
+    <!-- Tambahkan spinner di sini -->
+        <div class="spinner-overlay">
+            <div class="spinner-border text-danger" role="status">
+                <span class="visually-hidden"></span>
+            </div>
+        </div>
 
     <!-- BEGIN: Header-->
     <!-- fixed-top-->
@@ -103,6 +129,16 @@
     <script type="text/javascript" src="{{asset('visit-assets/vendors/charts/chart.js')}}"></script>
 
     <script src="https://cdn.datatables.net/v/bs4/dt-1.13.4/datatables.min.js"></script>
+
+    <script>
+        document.onreadystatechange = function () {
+            if (document.readyState === "complete") {
+                // Sembunyikan spinner saat halaman selesai dimuat
+                document.querySelector(".spinner-overlay").style.display = "none";
+            }
+        };
+    </script>
+
 
     @yield('script')
 
