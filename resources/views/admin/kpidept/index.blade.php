@@ -26,8 +26,51 @@
                     </div>
                 </div>
             </div>
+
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
+
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
             <div class="content-body">
                 <!-- Basic Tables start -->
+
+                <!-- Start SIS -->
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-content collapse show">
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <form action="{{ route('import_Kpiitem') }}" method="POST" enctype="multipart/form-data">
+                                                                @csrf
+                                                                <div class="input-group">
+                                                                    <input type="file" name="file" class="form-control" placeholder="Search By Customer" name="average">
+                                                                    <div class="input-group-append">
+                                                                        <input type="submit" value="Import" class="btn btn-primary">
+                                                                    </div>
+                                                                    </div>
+                                                                </form> 
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <blockquote class="blockquote mb-0">
+                                                                    
+                                                                </blockquote>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End SIS -->
                 <div class="row">
                     <div class="col-12">
                         <div class="card">

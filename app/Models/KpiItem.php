@@ -9,6 +9,17 @@ class KpiItem extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'event_id',
+        'department_id',
+        'area',
+        'kpi',
+        'calculation',
+        'target',
+        'realization',
+        'weight',
+    ];
+
     public function event()
     {
         return $this->belongsTo(Event::class);

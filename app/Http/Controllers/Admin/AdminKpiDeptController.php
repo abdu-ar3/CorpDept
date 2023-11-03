@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\KpiItem;
 use App\Models\Department;
+use App\Imports\ItemKpiImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminKpiDeptController extends Controller
 {
@@ -18,6 +20,7 @@ class AdminKpiDeptController extends Controller
     {
         // dd('test');
         $itemKpi = KpiItem::all();
+
 
         return view('admin.kpidept.index', compact('itemKpi'));
     }
@@ -87,4 +90,28 @@ class AdminKpiDeptController extends Controller
     {
         //
     }
+
+    public function import_Kpiitem()
+    {
+        // dd('Test');
+        $file = request()->file('file');
+
+        // Pastikan file telah diunggah
+        if ($file) {
+            // Validasi tipe file (misalnya, CSV atau XLSX)
+            if ($file->getClientOriginalExtension() == 'csv' || $file->getClientOriginalExtension() == 'xlsx') {
+                // Lakukan import setelah memastikan file yang valid
+                Excel::import(new ItemKpiImport, request()->file('file'));
+
+                return redirect()->route('kpidept.index')->with('status', 'KPI Item successfully imported');
+            } else {
+                // Tipe file tidak valid
+                return redirect()->route('kpidept.index')->with('error', 'Invalid file type. Please upload a valid CSV or XLSX file.');
+            }
+        } else {
+            // File tidak diunggah
+            return redirect()->route('kpidept.index')->with('error', 'Please upload a file.');
+        }
+    }
+
 }

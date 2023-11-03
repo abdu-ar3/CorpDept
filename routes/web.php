@@ -110,6 +110,7 @@ Route::delete('/hcpo/delete/{id}', [AdminHcPurchaseController::class, 'delete'])
 
 // Admin KPI Dept
 Route::resource('/admin/kpidept', AdminKpiDeptController::class);
+Route::post('/import/kpiitem', [AdminKpiDeptController::class, 'import_Kpiitem'])->name('import_Kpiitem');
 
 // Admin Analytic
 Route::resource('/admin/analytic', AnalyticController::class);

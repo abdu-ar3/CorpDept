@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Department;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\KpiItem;
-use App\Models\Department;
-use App\Models\Event;
+    use App\Models\Department;
+    use App\Models\Event;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\DB;
