@@ -336,31 +336,74 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                                         <table id="revenue" class="table table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th>Tipe Pekerjaan</b></th>
+                                                    <th>Tipe Pekerjaan</th>
                                                     @foreach($period_rev as $pr)
                                                         <th>{{$pr->month_year}}</th>
                                                     @endforeach
+                                                    <th>Total</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                    
-                                            @foreach($type_job as $tj)
+
+                                                @foreach($type_job as $tj)
+                                                    <tr>
+                                                        <td>{{$tj->name}}</td>
+                                                        @php
+                                                            $totalByType = 0; // Total sesuai tipe pekerjaan
+                                                        @endphp
+                                                        @foreach($period_rev as $pr)
+                                                            <td>
+                                                                @php
+                                                                    $total = 0;
+                                                                @endphp
+                                                                @foreach($tj->revenue_achiev as $revenue)
+                                                                    @if ($revenue->pdash_id == $pr->id)
+                                                                        Rp. {{ number_format($revenue->value, 0, ',', '.') }}
+                                                                        @php
+                                                                            $total += $revenue->value;
+                                                                        @endphp
+                                                                    @endif
+                                                                @endforeach
+                                                                @php
+                                                                    $totalByType += $total;
+                                                                @endphp
+                                                            </td>
+                                                        @endforeach
+                                                        <td>Rp. {{ number_format($totalByType, 0, ',', '.') }}</td>
+                                                    </tr>
+                                                @endforeach
                                                 <tr>
-                                                    <td>{{$tj->name}}</td>
+                                                    <th>Grand Total</th>
                                                     @foreach($period_rev as $pr)
-                                                        <td>
-                                                            @foreach($tj->revenue_achiev as $revenue)
-                                                                @if ($revenue->pdash_id == $pr->id)
-                                                                    {{$revenue->value}}
-                                                                @endif
-                                                            @endforeach
-                                                        </td>
+                                                        <th>
+                                                            <?php
+                                                            $total = 0;
+                                                            foreach ($type_job as $tj) {
+                                                                foreach ($tj->revenue_achiev as $revenue) {
+                                                                    if ($revenue->pdash_id == $pr->id) {
+                                                                        $total += $revenue->value;
+                                                                    }
+                                                                }
+                                                            }
+                                                            echo 'Rp. '.number_format($total, 0, ',', '.');
+                                                            ?>
+                                                        </th>
                                                     @endforeach
-                                    
+                                                    <th>
+                                                        @php
+                                                            $grandTotal = 0;
+                                                            foreach ($type_job as $tj) {
+                                                                foreach ($tj->revenue_achiev as $revenue) {
+                                                                    $grandTotal += $revenue->value;
+                                                                }
+                                                            }
+                                                            echo 'Rp. '.number_format($grandTotal, 0, ',', '.');
+                                                        @endphp
+                                                    </th>
                                                 </tr>
-                                            @endforeach
                                             </tbody>
                                         </table>
+
                                     </div>
 
                                     <div class="card-body">
@@ -420,34 +463,79 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                             <div class="card-content collapse show">
                                 <div class="card-body">
                                     <div class="table-responsive">
+                                    <table id="example" class="table table-striped">
                                         <table id="example" class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Tipe Pekerjaan</b></th>
-                                                    @foreach($period_rev as $pr)
-                                                        <th>{{$pr->month_year}}</th>
-                                                    @endforeach
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                    
+                                        <thead>
+                                            <tr>
+                                                <th>Tipe Pekerjaan</b></th>
+                                                @foreach($period_rev as $pr)
+                                                    <th>{{$pr->month_year}}</th>
+                                                @endforeach
+                                                <th>Total</b></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
                                             @foreach($type_job as $tj)
                                                 <tr>
                                                     <td>{{$tj->name}}</td>
+                                                    @php
+                                                        $totalByType = 0; // Total sesuai tipe pekerjaan
+                                                    @endphp
                                                     @foreach($period_rev as $pr)
                                                         <td>
-                                                            @foreach($tj->po_achiev as $poa)
-                                                                @if ($poa->pdash_id == $pr->id)
-                                                                    {{$poa->value}}
+                                                            @php
+                                                                $total = 0;
+                                                            @endphp
+                                                            @foreach($tj->po_achiev as $po)
+                                                                @if ($po->pdash_id == $pr->id)
+                                                                    Rp. {{ number_format($po->value, 0, ',', '.') }}
+                                                                    @php
+                                                                        $total += $po->value;
+                                                                    @endphp
                                                                 @endif
                                                             @endforeach
+                                                            @php
+                                                                $totalByType += $total;
+                                                            @endphp
                                                         </td>
                                                     @endforeach
-                                    
+                                                    <td>Rp. {{ number_format($totalByType, 0, ',', '.') }}</td>
                                                 </tr>
                                             @endforeach
-                                            </tbody>
-                                        </table>
+                                            <tr>
+                                                <th>Grand Total</th>
+                                                @foreach($period_rev as $pr)
+                                                    <th>
+                                                        <?php
+                                                        $total = 0;
+                                                        foreach ($type_job as $tj) {
+                                                            foreach ($tj->po_achiev as $po) {
+                                                                if ($po->pdash_id == $pr->id) {
+                                                                    $total += $po->value;
+                                                                }
+                                                            }
+                                                        }
+                                                        echo 'Rp. '.number_format($total, 0, ',', '.');
+                                                        ?>
+                                                    </th>
+                                                @endforeach
+                                                <th>
+                                                    @php
+                                                        $grandTotal = 0;
+                                                        foreach ($type_job as $tj) {
+                                                            foreach ($tj->po_achiev as $po) {
+                                                                $grandTotal += $po->value;
+                                                            }
+                                                        }
+                                                        echo 'Rp. '.number_format($grandTotal, 0, ',', '.');
+                                                    @endphp
+                                                </th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+
                                     </div>
 
                                 <div class="card-body">
@@ -629,6 +717,25 @@ $(document).ready(function() {
     } );
 } );
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var totalSeluruhnyaElement = document.getElementById("totalSeluruhnya");
+        var totalElements = document.querySelectorAll("tbody tr td:nth-last-child(2)"); // Mengambil semua elemen total di kolom "Total"
+
+        function hitungTotalSeluruhnya() {
+            var grandTotal = 0;
+            totalElements.forEach(function(totalElement) {
+                grandTotal += parseFloat(totalElement.textContent);
+            });
+            totalSeluruhnyaElement.textContent = grandTotal;
+        }
+
+        // Hitung total seluruhnya saat halaman dimuat
+        hitungTotalSeluruhnya();
+    });
+</script>
+
 @endsection
 
 

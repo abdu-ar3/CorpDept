@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdminCorpController;
 use App\Http\Controllers\Admin\AdminHcRevenueController;
 use App\Http\Controllers\Admin\AdminHcPurchaseController;
 use App\Http\Controllers\Admin\AdminKpiDeptController;
+use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\AnalyticController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Department\DashboardController;
@@ -112,8 +113,9 @@ Route::delete('/hcpo/delete/{id}', [AdminHcPurchaseController::class, 'delete'])
 Route::resource('/admin/kpidept', AdminKpiDeptController::class);
 Route::post('/import/kpiitem', [AdminKpiDeptController::class, 'import_Kpiitem'])->name('import_Kpiitem');
 
-// Admin Analytic
-Route::resource('/admin/analytic', AnalyticController::class);
+// ADMIN PERIOD KPI DEPT
+Route::resource('/admin/event', EventController::class);
+
 
 // Route Admin
 Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
@@ -136,6 +138,9 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::get('/get-data-by-periode', [ItemKpiController::class, 'getDataByPeriode'])->name('item.kpi.by.periode');
     Route::get('/realisasi', [RealisasiController::class, 'index'])->name('realisasi');
     Route::get('/realization', [RealizationController::class, 'index'])->name('realization');
+
+    // Admin Analytic
+    Route::resource('/analytic', AnalyticController::class);
 });
 
 

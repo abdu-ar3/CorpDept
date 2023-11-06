@@ -13,7 +13,7 @@
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class=" nav-item {{ Request::routeIs('#') ?  'open' : '' }}"><a href="index.html"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dash Corp</span><span class="badge badge badge-info badge-pill float-right mr-2">2</span></a>
                     <ul class="menu-content">
-                        <li class="{{ Request::routeIs('analytic.index') ?  'active' : '' }}"><a class="menu-item" href="{{ route('analytic.index') }}">Analytic</li>
+                        <li class="{{ Request::routeIs('admin.analytic.index') ?  'active' : '' }}"><a class="menu-item" href="{{ route('admin.analytic.index') }}">Analytic</li>
 </a>
                         </li>
                         <li class="{{ Request::routeIs('corp.index') ?  'active' : '' }}"><a class="menu-item" href="{{ route('corp.index') }}">Corporate</a>
