@@ -464,7 +464,6 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                                 <div class="card-body">
                                     <div class="table-responsive">
                                     <table id="example" class="table table-striped">
-                                        <table id="example" class="table table-striped">
                                         <thead>
                                             <tr>
                                                 <th>Tipe Pekerjaan</b></th>
