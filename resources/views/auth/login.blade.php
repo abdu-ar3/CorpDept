@@ -108,7 +108,8 @@
                 <button type="submit" class="btn btn-danger">Login</button>
             </div>
         </form>
-        <p class="card-subtitle text-muted text-right font-small-3 mx-2 my-1"><span>Don't have an account ? <a href="{{ route('register') }}" class="card-link">Register</a></span></p>
+
+        <p class="card-subtitle text-muted text-right font-small-3 mx-2 my-1"><span>Don't have an account ? <a href="mailto:kpi@prasetia.co.id?subject=Request%20Account%20User%20KPI%20Corporate&body=Silakan%20Isi Form%20Di Bawah ini.%0ANoreg :%20......... %0AEmail :%20......... %0ANama : ........" class="card-link">Request account</a></span></p>
         <p class="card-subtitle text-muted text-right font-small-3 mx-2 my-1"><span>Forget an account ? <a href="{{ route('password.request') }}" class="card-link">Forget</a></span></p>
     </div>
 </body>
@@ -125,4 +126,18 @@
             passwordInput.type = 'password';
         }
     });
+</script>
+
+
+<script>
+  function openLarkForm() {
+    var toEmail = 'kpi@prasetia.co.id';
+    var subject = 'Request Account User KPI Corporate';
+    var body = 'Silakan Isi Form Di Bawah ini.%0AEmail : ........ %0ANama : ........';
+    
+    var larkLink = 'https://prasetia.larksuite.com/mail?to=' + encodeURIComponent(toEmail) + '&subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    
+    // Membuka jendela baru
+    window.open(larkLink, '_blank');
+  }
 </script>

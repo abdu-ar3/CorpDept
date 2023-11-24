@@ -260,7 +260,7 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr data-toggle="collapse" data-target="#rankDept" class="accordion-toggle">
-                                                                <td><button class="btn btn-default btn-xs"><i class="fa fa-low-vision"></i></button></td>
+                                                                <td><button class="btn btn-default btn-xs"><i class="ficon ft-eye-off"></i></button></td>
                                                                 <td style="font-weight: bold; font-size: 14px">Departement</td>
                                                                 <td style="font-weight: bold; font-size: 14px">Persentase</td>
                                                             </tr>
@@ -344,8 +344,13 @@
                                 <tbody id="items">
                                     @forelse ($pditems as $pditem)
                                     {{-- @dd($pditem) --}}
-                                    <tr data-toggle="collapse" data-target="#demo{{ $pditem->id }}" class="accordion-toggle">
-                                        <td width="5%"><button class="btn btn-default btn-xs"><i class="ficon ft-eye"></i></i></button></td>
+                                    <tr data-toggle="collapse" data-target="#demo{{ $pditem->id }}" class="accordion-toggle" aria-expanded="false">
+                                        <td width="5%">
+                                            <button class="btn btn-default btn-xs toggle-button">
+                                                <i class="ficon ft-eye-off toggle-icon"></i>
+                                            </button>
+                                        </td>
+
                                         {{-- <td>{{ $pditem->period['month'] }} {{ $pditem->period['year'] }}</td> --}}
                                         <td>{{ $pditem->kpi }}</td>
                                         <td>{{ number_format($pditem->percentage, 2) }}%</td>
@@ -769,7 +774,7 @@
                                     },
                                     series: [{
                                         name: 'Speed',
-                                        data: [50], // Nilai default diatur ke 50
+                                        data: [37], // Nilai default diatur ke 50
                                         tooltip: {
                                             valueSuffix: '%'
                                         },
@@ -857,7 +862,7 @@
                                     },
                                     series: [{
                                         name: 'Speed',
-                                        data: [50], // Nilai default diatur ke 50
+                                        data: [0], // Nilai default diatur ke 50
                                         tooltip: {
                                             valueSuffix: '%'
                                         },
@@ -898,6 +903,28 @@
             }
         };
     </script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('.accordion-toggle').click(function() {
+                // Cari elemen i dengan kelas "toggle-icon" di dalam baris yang diklik
+                var $icon = $(this).find('.toggle-icon');
+                
+                // Periksa nilai atribut "aria-expanded"
+                var expanded = $(this).attr('aria-expanded');
+                
+                if (expanded === "true") {
+                    // Jika collapse sedang terbuka, ubah ikon menjadi "ft-eye"
+                    $icon.removeClass('ft-eye').addClass('ft-eye-off');
+                } else {
+                    // Jika collapse sedang tertutup, ubah ikon menjadi "ft-eye-off"
+                    $icon.removeClass('ft-eye-off').addClass('ft-eye');
+                }
+            });
+        });
+    </script>
+
 
 
 

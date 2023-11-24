@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Department;
+
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -18,7 +20,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        
+    
         return view('admin.users.index', compact('users'));
     }
 
@@ -136,4 +138,47 @@ class UserController extends Controller
         return back()->with('status', 'Permission Does not exists.');
     }
 
+    public function userDept()
+    {
+        // dd('Test');
+        $users = User::all();
+        $depts = Department::get();
+
+        return view('admin.users.userDept', compact('users', 'depts'));
+    }
+
+    public function userSave(Request $request)
+    {
+        // dd('test');
+          // Validasi
+         // Validasi formulir jika diperlukan
+    $request->validate([
+        'user_id' => 'required',
+        'department_id' => 'required',
+    ]);
+
+    // Ambil input dari formulir
+    $userId = $request->input('user_id');
+    $departmentId = $request->input('department_id');
+
+    // Ambil instance user dan department yang ingin dihubungkan
+    $user = User::find($userId);
+    $department = Department::find($departmentId);
+
+    // Pastikan user dan department ditemukan sebelum menggunakan attach
+    if ($user && $department) {
+        // Gunakan metode attach pada model User untuk menambahkan ke tabel pivot
+        $user->departments()->attach($department->id);
+        
+        // Jika Anda memiliki model $new_usdept, pastikan Anda menggunakannya untuk menyimpan data
+        // Jika tidak, Anda bisa menghapus baris ini
+        // $new_usdept->save();
+
+        return redirect()->route('admin.users.dept')->with('success', 'Dept Role successfully created');
+    }
+
+    // Jika user atau department tidak ditemukan, munculkan pesan kesalahan
+    return redirect()->route('admin.users.dept')->with('error', 'User or Department not found');
+        
+    }
 }

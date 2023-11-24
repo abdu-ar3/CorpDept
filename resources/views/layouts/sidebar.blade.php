@@ -52,12 +52,19 @@
                     </ul>
                 </li>
                 
+                <li class=" nav-item {{ Request::routeIs('#') ?  'open' : '' }}"><a href="index.html"><i class="ft-user"></i><span class="menu-title" data-i18n="">Admin User</span></a>
+                    <ul class="menu-content">
+                        <li class="{{ Request::routeIs('admin.users.index') ?  'active' : '' }}"><a class="menu-item" href="{{ route('admin.users.index') }}">User Role</a>
+                        </li>
+                        <li class="{{ Request::routeIs('admin.users.dept') ?  'active' : '' }}"><a class="menu-item" href="{{ route('admin.users.dept') }}">User Dept</a>
+                        </li>
+                    </ul>
+                </li>
+
                 <!-- Role Admin -->
                 @role('admin')
                 <li class=" nav-item {{ Request::routeIs('admin.roles.index') ?  'has-sub open' : '' }}"><a href="{{ route('admin.roles.index') }}" ><i class="ft-info"></i><span class="menu-title" data-i18n="">Roles</span></a>
                 <li class=" nav-item nav-item {{ Request::routeIs('admin.permissions.index') ?  'has-sub open' : '' }}"><a href="{{ route('admin.permissions.index') }}"><i class="ft-info"></i><span class="menu-title" data-i18n="">Permission</span></a>
-                </li>
-                <li class="nav-item {{ Request::routeIs('admin.users.index') ?  'has-sub open' : '' }}"><a href="{{ route('admin.users.index') }}"><i class="ft-user"></i><span class="menu-title" data-i18n="">Users</span></a>
                 </li>
                 @endrole
 

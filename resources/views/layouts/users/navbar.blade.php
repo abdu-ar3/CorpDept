@@ -1,3 +1,18 @@
+<style>
+     /* Efek hover pada dropdown-toggle nav-link */
+    .nav-item:hover .dropdown-toggle {
+        background-color: #fa626b; /* Ganti dengan warna merah yang diinginkan */
+        color: white; /* Ganti dengan warna teks yang diinginkan */
+    }
+
+    /* Efek hover pada dropdown-toggle nav-link saat dropdown terbuka */
+    .nav-item:hover .dropdown-toggle:focus {
+        background-color: red; /* Ganti dengan warna merah yang diinginkan */
+        color: white; /* Ganti dengan warna teks yang diinginkan */
+    }
+</style>
+
+
 <!-- BEGIN: Main Menu-->
 <div class="header-navbar navbar-expand-sm navbar navbar-horizontal navbar-fixed navbar-dark navbar-without-dd-arrow navbar-shadow" role="navigation" data-menu="menu-wrapper">
         <div class="navbar-container main-menu-content" data-menu="menu-container">
@@ -63,7 +78,7 @@
                 <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="" data-toggle="dropdown"><i class="ft-bar-chart"></i><span>KPI Corporate</span></a>
                     <ul class="dropdown-menu">
                         <div class="arrow_box">
-                            <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">Revenue</a>
+                            <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu"><a class="dropdown-item" href="#" data-toggle="dropdown">Revenue</a>
                                 <ul class="dropdown-menu">
                                     <div class="arrow_box">
                                         <li data-menu=""><a class="dropdown-item" href="" data-toggle="dropdown">2022</a>
@@ -73,12 +88,12 @@
                                     </div>
                                 </ul>
                             </li>
-                            <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">Purchase Order</a>
+                            <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu"><a class="dropdown-item" href="#" data-toggle="dropdown">Purchase Order</a>
                                 <ul class="dropdown-menu">
                                     <div class="arrow_box">
                                         <li data-menu=""><a class="dropdown-item" href="" data-toggle="dropdown">2022</a>
                                         </li>
-                                        <li data-menu=""><a class="dropdown-item" href="{{ route('po.index') }}" data-toggle="dropdown">2023</a>
+                                        <li class="{{ Request::routeIs('po.index') ?  'active' : '' }}"><a class="dropdown-item" href="{{ route('po.index') }}" data-toggle="dropdown">2023</a>
                                         </li>
                                     </div>
                                 </ul>
@@ -108,7 +123,7 @@
                 href="" data-toggle="dropdown"><i class="ft-server"></i><span>Aging Project</span></a>
                     <ul class="dropdown-menu">
                         <div class="arrow_box">
-                            <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">Data Aging Project</a>
+                            <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu"><a class="dropdown-item" href="#" data-toggle="dropdown">Aging Calculate    </a>
                                 <ul class="dropdown-menu">
                                     <div class="arrow_box">
                                         </li>
@@ -118,7 +133,7 @@
                                 </ul>
                             </li>
                           
-                          
+                        
                             <li data-menu=""><a class="dropdown-item" href="{{ route('aging.stat') }}
                             " data-toggle="dropdown">Status Aging</a>
                             </li>

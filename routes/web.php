@@ -138,6 +138,8 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::delete('/users{user}/roles{role}', [UserController::class, 'removeRole'])->name('users.roles.remove');
     Route::post('/users{user}/permissions', [UserController::class, 'givePermission'])->name('users.permissions');
     Route::delete('/users{user}/permissions{permission}', [UserController::class, 'revokePermission'])->name('users.permissions.revoke');
+    Route::get('/users/dept', [UserController::class, 'userDept'])->name('users.dept');
+    Route::post('/users/save', [UserController::class, 'userSave'])->name('users.save');
     Route::get('/itemkpi', [ItemKpiController::class, 'index'])->name('item.kpi');
     Route::get('/itemkpi/filter', [ItemKpiController::class, 'filter'])->name('itemkpi.filter');
     Route::post('/itemkpi', [ItemKpiController::class, 'store'])->name('itemkpi.store');
