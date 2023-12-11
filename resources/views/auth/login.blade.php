@@ -10,13 +10,13 @@
         }
 
         .container {
-            max-width: 400px;
+            max-width: 420px;
             margin: 0 auto;
             padding: 40px;
             background-color: #fff;
             border-radius: 30px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 100px;
+            margin-top: 12px;
         }
 
         .container h2 {
@@ -24,9 +24,7 @@
             margin-bottom: 20px;
         }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+       
 
         .form-group label {
             display: block;
@@ -63,10 +61,12 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="text-center mb-2">
-            <img src="{{asset('app-assets/images/logo/prasetia.png')}}" alt="Logo" width="150px">
+            <p>Version 2.0</p> 
+            <img src="{{asset('app-assets/images/logo/prasetia.png')}}" alt="Logo" width="135px">
         </div>
 
         @if ($errors->any())
@@ -83,7 +83,7 @@
         @csrf
 
             <div class="form-group">
-                <label for="login_type">Pilih Tipe Login:</label>
+                <label for="login_type">Select Type Login:</label>
                 <select name="login_type" id="login_type" class="form-control">
                     <option value="admin">Admin</option>
                     <option value="department">Pengguna Departemen</option>
@@ -92,7 +92,7 @@
 
             <div class="form-group">
                 <label for="noreg">Noreg:</label>
-                <input type="noreg" name="noreg" id="noreg" :value="old('noreg')" required autofocus autocomplete="username"  class="form-control">
+                <input type="number" name="noreg" id="noreg" :value="old('noreg')" required autofocus autocomplete="username"  class="form-control">
             </div>
 
             <div class="form-group">
@@ -109,10 +109,11 @@
             </div>
         </form>
 
-        <p class="card-subtitle text-muted text-right font-small-3 mx-2 my-1"><span>Don't have an account ? <a href="mailto:kpi@prasetia.co.id?subject=Request%20Account%20User%20KPI%20Corporate&body=Silakan%20Isi Form%20Di Bawah ini.%0ANoreg :%20......... %0AEmail :%20......... %0ANama : ........" class="card-link">Request account</a></span></p>
-        <p class="card-subtitle text-muted text-right font-small-3 mx-2 my-1"><span>Forget an account ? <a href="{{ route('password.request') }}" class="card-link">Forget</a></span></p>
+        <p class="card-subtitle text-muted text-center font-small-3 my-1"><span>Don't have an account ? <a href="mailto:kpi@prasetia.co.id?subject=Request%20Account%20User%20KPI%20Corporate&body=Silakan%20Isi Form%20Di Bawah ini.%0ANoreg :%20......... %0AEmail :%20......... %0ANama : ........" class="card-link">Request account</a></span></p>
+        <p class="card-subtitle text-muted text-center font-small-3 my-1"><span>Forget an account ? <a href="{{ route('password.request') }}" class="card-link">Forget</a></span></p>
     </div>
 </body>
+
 </html>
 
 <script>

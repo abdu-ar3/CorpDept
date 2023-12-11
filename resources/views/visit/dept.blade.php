@@ -188,7 +188,7 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr data-toggle="collapse" data-target="#rankDept" class="accordion-toggle">
-                                                                <td><button class="btn btn-default btn-xs"><i class="fa fa-low-vision"></i></button></td>
+                                                                <td><button class="btn btn-default btn-xs"><i class="fa ft-eye-off"></i></button></td>
                                                                 <td style="font-weight: bold; font-size: 14px">Departement</td>
                                                                 <td style="font-weight: bold; font-size: 14px">Persentase</td>
                                                             </tr>

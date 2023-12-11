@@ -351,9 +351,9 @@
                         <th colspan="2">Total</th>
                         <!-- Hitung total jumlah site dan bobot sesuai dengan area -->
                         <th>{{ $totalJumlahSite }}</th>
-                        <th>{{ $totalBobot }}</th>
+                        <th>{{ $totalBobot }}%</th>
                         <th colspan="2"></th>
-                        <th>{{ $totalFinalAchiev }}</th>
+                        <th>{{ $totalFinalAchiev }}%</th>
                         <th></th>
                         <!-- Hitung total final achievement sesuai dengan area -->
                     </tr>
