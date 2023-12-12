@@ -69,6 +69,7 @@ Route::resource('/aging/calculate', AgingCalculateController::class);
 
 // Highchart
 Route::resource('/hc/rev', HcRevenueController::class);
+Route::get('/hc/revde', [HcRevenueController::class, 'grafikRevde'])->name('grafik.revde');
 Route::resource('/hc/po', HcPoController::class);
 
 // Route Auth 
