@@ -58,8 +58,10 @@ Route::post('/custom', [LoginController::class, 'customLogin'])->name('custom.lo
 Route::get("/cust-logout", [LoginController::class, "customLogout"])->name('custom.logout');
 Route::get('/backto_to_login', [LoginController::class, 'backLogin'])->name('back.login');
 Route::get('/user/dash', [DashController::class, 'index'])->name('user.dash');
+Route::get('/user/newdash', [DashController::class, 'newyear'])->name('user.newdash');
 Route::get('/grafik/rev', [DashController::class, 'grafikRev'])->name('grafik.rev');
 Route::get('/grafik/po', [DashController::class, 'grafikPo'])->name('grafik.po');
+Route::get('/grafik/ponew', [DashController::class, 'grafikPonew'])->name('grafik.ponew');
 
 // Aging
 Route::get('aging/stat', [AgingStatusController::class, 'index'])->name('aging.stat');

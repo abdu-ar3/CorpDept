@@ -23,6 +23,8 @@
                             <li data-menu=""><a class="dropdown-item" href="" data-toggle="dropdown">2022</a>
                             <li data-menu=""><a class="dropdown-item" href="{{ route('user.dash') }}" data-toggle="dropdown">2023</a>
                             </li>
+                            <li data-menu=""><a class="dropdown-item" href="{{ route('user.dash') }}" data-toggle="dropdown">2024</a>
+                            </li>
                             <!-- <li class="active" data-menu=""><a class="dropdown-item" href="dashboard-analytics.html" data-toggle="dropdown">Analytics</a>
                             </li> -->
                         </div>
