@@ -73,8 +73,8 @@ class DashController extends Controller
         // dd('Test');
         $type_job = TypeJob::all();
         $period_rev = Pdash::where('id', '>', 12)->get();
-        $target_rev = TargetRevenue::paginate(1);
-        $target_po = TargetPurchaseOrder::paginate(1);
+        $target_rev = TargetRevenue::where('id', 3)->paginate(1);
+        $target_po = TargetPurchaseOrder::where('id', 3)->paginate(1);
         $periods = DB::table('pdashes')->pluck('month_year');
         $data = [];
 
@@ -103,8 +103,6 @@ class DashController extends Controller
     public function grafikPonew()
     {
         // dd('Test');
-        
-        // Ubah menjadi
         $target_po = TargetPurchaseOrder::where('id', 3)->paginate(1);
 
         // Menghitung selisih dan tercapai
@@ -113,5 +111,18 @@ class DashController extends Controller
         $tercapai = $po->pluck('grand_total')->sum();
 
         return view('user.grafikPonew', compact('target_po', 'tercapai', 'selisih'));
+    }
+
+    public function grafikRevnew()
+    {
+        // dd('Test');
+        $target_rev = TargetRevenue::where('id', 3)->paginate(1);
+
+        // Menghitung selisih dan tercapai
+        $rev = TargetRevenue::where('id', '>', 3)->get();
+        $selisih = $rev->pluck('value_grafik')->sum();
+        $tercapai = $rev->pluck('grand_total')->sum();
+
+        return view('user.grafikRevnew', compact('target_rev', 'tercapai', 'selisih'));
     }
 }

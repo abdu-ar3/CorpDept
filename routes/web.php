@@ -73,6 +73,10 @@ Route::resource('/hc/po', HcPoController::class);
 
 // Route Auth 
 Route::group(['middleware'=>['auth']], function(){
+
+    // Dashboard 2024
+    Route::get('/grafik/revnew', [DashController::class, 'grafikRevnew'])->name('grafik.revnew');
+
     // Admin Aging
     Route::get('admin/ag', [AdminAgingController::class, 'index'])->name('admin.aging');
     Route::get('admin/calculate', [AdminAgingController::class, 'calculate'])->name('admin.calculate');
