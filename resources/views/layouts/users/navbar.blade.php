@@ -140,12 +140,12 @@
                             </li>
                           
                         
-                            <li data-menu=""><a class="dropdown-item" href="{{ route('aging.stat') }}
+                            {{-- <li data-menu=""><a class="dropdown-item" href="{{ route('aging.stat') }}
                             " data-toggle="dropdown">Status Aging</a>
-                            </li>
-                            <li data-menu=""><a class="dropdown-item" href=" 
+                            </li> --}}
+                            {{-- <li data-menu=""><a class="dropdown-item" href=" 
                             " data-toggle="dropdown">Aging Comment</a>
-                            </li>
+                            </li> --}}
                         </div>
                     </ul>
                 </li>

@@ -5,7 +5,9 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User\HcPurchase;
+use App\Models\User\HcPode;
 use App\Models\User\HcPocust;
+use App\Models\User\HcPodecust;
 use Illuminate\Support\Facades\DB;
 
 class HcPoController extends Controller
@@ -104,5 +106,30 @@ class HcPoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function grafikPode()
+    {
+        // dd('Test');
+        $hcPo = HcPode::all();
+        $data = DB::table('hc_podes')
+            ->join('type_jobs', 'hc_podes.type_job_id', '=', 'type_jobs.id')
+            ->select('hc_podes.type_job_id', 'type_jobs.name', DB::raw('SUM(hc_podes.value) as total_value'), DB::raw('(SUM(hc_podes.value) / (SELECT SUM(value) FROM hc_podes)) * 100 as percentage'))
+            ->groupBy('hc_podes.type_job_id', 'type_jobs.name')
+            ->get();
+
+        // Menginisialisasi array untuk kategori dan persentase
+        $categories = [];
+        $values = [];
+
+        // Mengisi array dengan data dari tabel
+        foreach ($data as $row) {
+            $categories[] = $row->name;
+            $values[] = $row->percentage;
+        }
+
+        $data = HcPodecust::orderBy('value', 'desc')->take(5)->get();
+
+        return view('user.hcPode', compact('hcPo', 'data', 'categories', 'values'));
     }
 }
