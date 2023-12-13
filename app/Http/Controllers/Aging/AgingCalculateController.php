@@ -37,7 +37,7 @@ class AgingCalculateController extends Controller
         } 
 
         // Ambil daftar pdashes (periodes) untuk dropdown select
-        $pdashes = Pdash::all();
+        $pdashes = Pdash::where('id', '<', 12)->get();
 
 
         return view('aging.calculate', compact('areas', 'pdashes', 'selectedPeriodeId', 'selectedPeriode'));
@@ -107,5 +107,34 @@ class AgingCalculateController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+     public function calde(Request $request)
+    {
+        
+        // Ambil ID periode yang dipilih dari permintaan GET
+        $selectedPeriodeId = $request->input('period');
+
+        // Gunakan nilai periode yang dipilih untuk mengambil data sesuai periode
+        $selectedPeriode = Pdash::find($selectedPeriodeId);
+
+        // Gunakan nilai periode yang dipilih untuk mengambil data sesuai periode
+        $pdash = Pdash::find($selectedPeriodeId);
+
+        $areas = []; // Inisialisasi array areas
+
+        if ($selectedPeriodeId) {
+            // Ambil data area "Area 1 - 4" sesuai dengan periode
+            $areas = Area::whereHas('aging', function ($query) use ($selectedPeriodeId) {
+                $query->where('pdash_id', $selectedPeriodeId)
+                    ->whereIn('area', ['Area 1', 'Area 2', 'Area 3', 'Area 4', 'Summary']);
+            })->orderBy('area')->get();
+        } 
+
+        // Ambil daftar pdashes (periodes) untuk dropdown select
+        $pdashes = Pdash::where('id', '>', 12)->get();
+
+
+        return view('aging.calde', compact('areas', 'pdashes', 'selectedPeriodeId', 'selectedPeriode'));
     }
 }

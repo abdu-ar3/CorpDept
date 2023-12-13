@@ -87,7 +87,7 @@
                                         </li>
                                         <li data-menu=""><a class="dropdown-item" href="{{ route('rev.index') }}" data-toggle="dropdown">2023</a>
                                         </li>
-                                        <li data-menu=""><a class="dropdown-item" href="{{ route('rev.index') }}" data-toggle="dropdown">2024</a>
+                                        <li data-menu=""><a class="dropdown-item" href="{{ route('grafik.revde') }}" data-toggle="dropdown">2024</a>
                                         </li>
                                     </div>
                                 </ul>
@@ -99,7 +99,7 @@
                                         </li>
                                         <li class="{{ Request::routeIs('po.index') ?  'active' : '' }}"><a class="dropdown-item" href="{{ route('po.index') }}" data-toggle="dropdown">2023</a>
                                         </li>
-                                        <li class="{{ Request::routeIs('po.index') ?  'active' : '' }}"><a class="dropdown-item" href="{{ route('po.index') }}" data-toggle="dropdown">2024</a>
+                                        <li class="{{ Request::routeIs('grafik.pode') ?  'active' : '' }}"><a class="dropdown-item" href="{{ route('grafik.pode') }}" data-toggle="dropdown">2024</a>
                                         </li>
                                     </div>
                                 </ul>
@@ -132,9 +132,8 @@
                             <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu"><a class="dropdown-item" href="#" data-toggle="dropdown">Aging Calculate    </a>
                                 <ul class="dropdown-menu">
                                     <div class="arrow_box">
-                                        </li>
-                                        <li data-menu=""><a class="dropdown-item" href="{{ route('calculate.index') }}" data-toggle="dropdown">2023</a>
-                                        </li>
+                                        <li data-menu=""><a class="dropdown-item" href="{{ route('calculate.index') }}" data-toggle="dropdown">2023</a> </li>
+                                        <li data-menu=""><a class="dropdown-item" href="{{ route('aging.calde') }}" data-toggle="dropdown">2024</a> </li>
                                     </div>
                                 </ul>
                             </li>

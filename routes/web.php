@@ -65,6 +65,7 @@ Route::get('/grafik/ponew', [DashController::class, 'grafikPonew'])->name('grafi
 
 // Aging
 Route::get('aging/stat', [AgingStatusController::class, 'index'])->name('aging.stat');
+Route::get('aging/calde', [AgingCalculateController::class, 'calde'])->name('aging.calde');
 Route::resource('/aging/calculate', AgingCalculateController::class);
 
 // Highchart
@@ -79,7 +80,7 @@ Route::group(['middleware'=>['auth']], function(){
     Route::get('/grafik/revnew', [DashController::class, 'grafikRevnew'])->name('grafik.revnew');
 
     // HC 2024
-    Route::get('/hc/pode', [HcRevenueController::class, 'grafikRevde'])->name('grafik.revde');
+    Route::get('/hc/revde', [HcRevenueController::class, 'grafikRevde'])->name('grafik.revde');
     Route::get('/hc/pode', [HcPoController::class, 'grafikPode'])->name('grafik.pode');
 
     // Admin Aging
