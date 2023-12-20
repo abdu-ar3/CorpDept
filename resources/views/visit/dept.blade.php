@@ -19,8 +19,20 @@
             }
 
             .spinner {
-                width: 4rem;
-                height: 4rem;
+                width: 100px; /* Sesuaikan lebar spinner sesuai kebutuhan */
+                height: 20px; /* Sesuaikan tinggi spinner sesuai kebutuhan */
+                background-color: #007bff; /* Warna latar belakang spinner */
+                border-radius: 5px;
+                animation: spin 1s linear infinite; /* Animasi pergerakan horizontal */
+            }
+
+            @keyframes spin {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(100%);
+                }
             }
         </style>
 
@@ -83,9 +95,7 @@
 <body class="horizontal-layout horizontal-menu 2-columns  " data-open="hover" data-menu="horizontal-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
 
         <div class="spinner-overlay">
-            <div class="spinner-border text-danger" role="status">
-                <span class="visually-hidden"></span>
-            </div>
+            <img src="{{asset('visit-assets/images/logo/prasetia 2.png')}}">
         </div>
 
     <!-- BEGIN: Header-->
@@ -131,7 +141,7 @@
                                         <div class="form-group" style="display: flex; align-items: center;">
                                             <select name="selectEvent" class="form-control" style="flex: 1;">
                                                 <option value="">-- Selected Period --</option>
-                                                @foreach ($events as $event)
+                                                @foreach ($latestEvents as $event)
                                                     <option value="{{ $event->id }}">{{ $event->start_event }}</option>
                                                 @endforeach
                                             </select>
@@ -719,93 +729,94 @@
 
 
  <script>
- 
-                                            Highcharts.setOptions({
-                                    chart: {
-                                        type: 'gauge',
-                                        plotBackgroundColor: null,
-                                        plotBackgroundImage: null,
-                                        plotBorderWidth: 0,
-                                        plotShadow: false,
-                                        height: '80%'
-                                    },
-                                    title: {
-                                        text: 'Semester 1'
-                                    },
-                                    pane: {
-                                        startAngle: -90,
-                                        endAngle: 89.9,
-                                        background: null,
-                                        center: ['50%', '75%'],
-                                        size: '110%'
-                                    },
-                                    yAxis: {
-                                        min: 0,
-                                        max: 100,
-                                        tickPixelInterval: 72,
-                                        tickPosition: 'inside',
-                                        tickColor: Highcharts.getOptions().chart.backgroundColor || '#FFFFFF',
-                                        tickLength: 20,
-                                        tickWidth: 2,
-                                        minorTickInterval: null,
-                                        labels: {
-                                            distance: 20,
-                                            style: {
-                                                fontSize: '14px'
-                                            }
-                                        },
-                                        lineWidth: 0,
-                                        plotBands: [{
-                                            from: 0,
-                                            to: 59,
-                                            color: '#DF5353', // red
-                                            thickness: 20
-                                        }, {
-                                            from: 60,
-                                            to: 79,
-                                            color: '#DDDF0D', // yellow
-                                            thickness: 20
-                                        }, {
-                                            from: 80,
-                                            to: 100,
-                                            color: '#55BF3B', // green
-                                            thickness: 20
-                                        }]
-                                    },
-                                    series: [{
-                                        name: 'Speed',
-                                        data: [37], // Nilai default diatur ke 50
-                                        tooltip: {
-                                            valueSuffix: '%'
-                                        },
-                                        dataLabels: {
-                                            format: '{y} %',
-                                            borderWidth: 0,
-                                            color: (
-                                                Highcharts.getOptions().title &&
-                                                Highcharts.getOptions().title.style &&
-                                                Highcharts.getOptions().title.style.color
-                                            ) || '#333333',
-                                            style: {
-                                                fontSize: '16px'
-                                            }
-                                        },
-                                        dial: {
-                                            radius: '80%',
-                                            backgroundColor: 'gray',
-                                            baseWidth: 12,
-                                            baseLength: '0%',
-                                            rearLength: '0%'
-                                        },
-                                        pivot: {
-                                            backgroundColor: 'gray',
-                                            radius: 6
-                                        }
-                                    }]
-                                });
+    document.addEventListener('DOMContentLoaded', function() {
+        Highcharts.setOptions({
+            chart: {
+                type: 'gauge',
+                plotBackgroundColor: null,
+                plotBackgroundImage: null,
+                plotBorderWidth: 0,
+                plotShadow: false,
+                height: '80%'
+            },
+            title: {
+                text: 'Semester ' + {!! json_encode($semesterValue) !!}
+            },
+            pane: {
+                startAngle: -90,
+                endAngle: 89.9,
+                background: null,
+                center: ['50%', '75%'],
+                size: '110%'
+            },
+            yAxis: {
+                min: 0,
+                max: 100,
+                tickPixelInterval: 72,
+                tickPosition: 'inside',
+                tickColor: Highcharts.getOptions().chart.backgroundColor || '#FFFFFF',
+                tickLength: 20,
+                tickWidth: 2,
+                minorTickInterval: null,
+                labels: {
+                    distance: 20,
+                    style: {
+                        fontSize: '14px'
+                    }
+                },
+                lineWidth: 0,
+                plotBands: [{
+                    from: 0,
+                    to: 59,
+                    color: '#DF5353', // red
+                    thickness: 20
+                }, {
+                    from: 60,
+                    to: 79,
+                    color: '#DDDF0D', // yellow
+                    thickness: 20
+                }, {
+                    from: 80,
+                    to: 100,
+                    color: '#55BF3B', // green
+                    thickness: 20
+                }]
+            },
+            series: [{
+                name: 'Speed',
+                data: {!! json_encode($data) !!},
+                tooltip: {
+                    valueSuffix: '%'
+                },
+                dataLabels: {
+                    format: '{y} %',
+                    borderWidth: 0,
+                    color: (
+                        Highcharts.getOptions().title &&
+                        Highcharts.getOptions().title.style &&
+                        Highcharts.getOptions().title.style.color
+                    ) || '#333333',
+                    style: {
+                        fontSize: '16px'
+                    }
+                },
+                dial: {
+                    radius: '80%',
+                    backgroundColor: 'gray',
+                    baseWidth: 12,
+                    baseLength: '0%',
+                    rearLength: '0%'
+                },
+                pivot: {
+                    backgroundColor: 'gray',
+                    radius: 6
+                }
+            }]
+        });
 
-                                Highcharts.chart('container', {});
-                                                </script>
+        Highcharts.chart('container', {});
+    });
+</script>
 
 <script>
      Highcharts.setOptions({

@@ -11,16 +11,17 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background-color: rgba(255, 255, 255, 0.7);
+                background: transparent; /* Set latar belakang menjadi transparan */
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                z-index: 9999; /* Pastikan lebih tinggi dari elemen lain */
+                z-index: 9999;
             }
 
             .spinner {
                 width: 4rem;
                 height: 4rem;
+                background: url('path/to/your/image.gif') no-repeat center center; /* Ganti path sesuai dengan path gambar GIF Anda */
             }
         </style>
 
@@ -81,9 +82,7 @@
 <body class="horizontal-layout horizontal-menu 2-columns  " data-open="hover" data-menu="horizontal-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
     <!-- Tambahkan spinner di sini -->
         <div class="spinner-overlay">
-            <div class="spinner-border text-danger" role="status">
-                <span class="visually-hidden"></span>
-            </div>
+            <img src="{{asset('visit-assets/images/logo/prasetia 2.png')}}">
         </div>
 
     <!-- BEGIN: Header-->
@@ -138,6 +137,7 @@
             }
         };
     </script>
+    
 
 
     @yield('script')
