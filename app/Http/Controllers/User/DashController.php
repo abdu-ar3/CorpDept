@@ -17,7 +17,7 @@ class DashController extends Controller
     public function index()
     {   
         $type_job = TypeJob::all();
-        $period_rev = Pdash::all();
+        $period_rev = Pdash::where('id', '<=', 12)->get();
         $target_rev = TargetRevenue::paginate(1);
         $target_po = TargetPurchaseOrder::paginate(1);
         $periods = DB::table('pdashes')->pluck('month_year');
@@ -72,6 +72,7 @@ class DashController extends Controller
     {
         // dd('Test');
         $type_job = TypeJob::all();
+        $revdate = RevenueAchiev::get();
         $period_rev = Pdash::where('id', '>', 12)->get();
         $target_rev = TargetRevenue::where('id', 3)->paginate(1);
         $target_po = TargetPurchaseOrder::where('id', 3)->paginate(1);
@@ -97,7 +98,7 @@ class DashController extends Controller
         }
 
 
-        return view('user.newdash', compact('data', 'type_job', 'period_rev', 'target_rev', 'target_po'));
+        return view('user.newdash', compact('data', 'type_job', 'period_rev', 'target_rev', 'target_po', 'revdate'));
     }
 
     public function grafikPonew()

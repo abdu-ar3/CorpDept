@@ -100,26 +100,26 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                                                                             <tr>
                                                                                 <td>Revenue Perusahaan</td>
                                                                                 <td>40%</td>
-                                                                                <td> 150.190.649.041 </td>
-                                                                                <td> 79.751.856.043 </td>
-                                                                                <td>53%</td>
-                                                                                <td>21%</td>
+                                                                                <td> </td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td>Purchase Order</td>
                                                                                 <td>40%</td>
-                                                                                <td> 165.200.000.000 </td>
-                                                                                <td> 65.398.439.272 </td>
-                                                                                <td>40%</td>
-                                                                                <td>12%</td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td>Aging Pekerjaan</td>
                                                                                 <td>30%</td>
                                                                                 <td></td>
                                                                                 <td></td>
-                                                                                <td>13%</td>
-                                                                                <td>4%</td>
+                                                                                <td></td>
+                                                                                <td></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td>Total</td>
@@ -127,7 +127,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                                                                                 <td></td>
                                                                                 <td></td>
                                                                                 <td></td>
-                                                                                <td class="table-info">37%</td>
+                                                                                <td class="table-info">%</td>
                                                                             </tr>
                                                                         </tbody>
                                                                         </table>
@@ -153,7 +153,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                                                                             <tr>
                                                                                 <th scope="col">KPI</th>
                                                                                 <th scope="col">BOBOT</th>
-                                                                                <th scope="col">TARGET SEMESTER 1</th>
+                                                                                <th scope="col">TARGET SEMESTER 2</th>
                                                                                 <th scope="col">PENCAPAIAN</th>
                                                                                 <th scope="col">% PENCAPAIAN</th>
                                                                                 <th scope="col">NILAI AKHIR</th>
@@ -163,7 +163,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                                                                             <tr>
                                                                                 <td>Revenue Perusahaan</td>
                                                                                 <td>40%</td>
-                                                                                <td> 150.190.649.041 </td>
+                                                                                <td></td>
                                                                                 <td></td>
                                                                                 <td>%</td>
                                                                                 <td>%</td>
@@ -171,7 +171,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                                                                             <tr>
                                                                                 <td>Purchase Order</td>
                                                                                 <td>40%</td>
-                                                                                <td> 165.200.000.000 </td>
+                                                                                <td>  </td>
                                                                                 <td>  </td>
                                                                                 <td>%</td>
                                                                                 <td>%</td>
@@ -300,11 +300,17 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 
 
                                     <div class="card text-center">
+
+                                    @foreach ($revdate as $rd)
+                                    @endforeach
+                                    
                                         <div class="card-body">
                                             <!-- Last Update -->
                                             <blockquote class="blockquote mb-0">
                                             <p>Last Update</p>
-                                               
+                                                <footer class="blockquote-footer"><cite title="Source Title">
+                                                    {{date('l, d F Y',strtotime($rd->created_at))}}
+                                                #</cite></footer>
                                             </blockquote>
                                         </div>
                                     </div>
