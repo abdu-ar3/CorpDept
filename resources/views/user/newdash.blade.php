@@ -574,7 +574,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                                                     echo number_format("$tpo->grand_total"); ?></td>
                                                     <td>
                                                     <a href="https://docs.google.com/spreadsheets/d/1bmd0AkGF0V-KrZOP5yNxgcK7R1JoCMkY/edit?usp=sharing&ouid=110546107101493557324&rtpof=true&sd=true" class="btn btn-danger btn-sm"> Excel Link</a>
-                                                    <a href="{{ route('grafik.pode') }}" class="btn btn-success btn-sm"> Grafik</a>
+                                                    <a href="{{ route('grafik.ponew') }}" class="btn btn-success btn-sm"> Grafik</a>
                                                     </td>
                                             </tr>
                                             @endforeach

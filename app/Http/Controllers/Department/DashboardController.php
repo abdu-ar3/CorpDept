@@ -25,7 +25,7 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
 
-        $events = Event::all(); // Ganti $periods
+       $events = Event::all(); // Ganti $periods
         $latestEvents = Event::orderBy('id', 'desc')->get();
 
         // Ambil event terakhir sebagai event default

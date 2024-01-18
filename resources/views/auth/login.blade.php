@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="app-assets/css/bootstrap.css">
     <style>
+       /* Gaya umum */
         body {
             font-family: Arial, sans-serif;
             background-color: #f1f1f1;
+            margin: 0; /* Hapus margin bawaan dari body */
         }
 
         .container {
@@ -23,8 +26,6 @@
             text-align: center;
             margin-bottom: 20px;
         }
-
-       
 
         .form-group label {
             display: block;
@@ -59,6 +60,16 @@
             color: #ff0000;
             margin-top: 5px;
         }
+
+        /* Media Query untuk perangkat berukuran kecil (seperti handphone) */
+        @media only screen and (min-width: 601px) and (max-width: 1024px) {
+            .container {
+                max-width: 80%; 
+                padding: 30px;
+            }
+        }
+
+
     </style>
 </head>
 

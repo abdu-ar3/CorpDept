@@ -37,7 +37,7 @@ class AgingCalculateController extends Controller
         } 
 
         // Ambil daftar pdashes (periodes) untuk dropdown select
-        $pdashes = Pdash::where('id', '<', 12)->get();
+        $pdashes = Pdash::where('id', '<=', 12)->get();
 
 
         return view('aging.calculate', compact('areas', 'pdashes', 'selectedPeriodeId', 'selectedPeriode'));
