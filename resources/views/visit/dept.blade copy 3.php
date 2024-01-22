@@ -4,8 +4,7 @@
 
 <head>
 
-        <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.2/dist/echarts.min.js"></script>
-        <style>
+     <style>
             .spinner-overlay {
                 position: fixed;
                 top: 0;
@@ -109,11 +108,6 @@
     <!-- END: Main Menu-->
 
     <!-- BEGIN: Content-->
-
-    
-
-
- 
     <div class="app-content content">
         <div class="content-wrapper">
             <div class="content-wrapper-before"></div>
@@ -174,9 +168,9 @@
                             <!-- Card Kiri -->
                             <div class="col-md-4">
                                 <div id="what-is" class="card">
-                                    <div id="tester" style="height: 400px;"></div>
+                                    <div id="container"></div>
+                                                </div>
                                 </div>
-                            </div>
                             
                             <!-- Card Kanan -->
                             <div class="col-md-8">
@@ -240,7 +234,78 @@
                                 </div>
                             </div>
                         </div>
-                       
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                            <!-- Card Kiri -->
+                            <div class="col-md-4">
+                                <div id="what-is" class="card">
+                                    <div id="contSem2"></div>
+                                                </div>
+                                </div>
+                            
+                            <!-- Card Kanan -->
+                            <div class="col-md-8">
+                                <div id="kick-start" class="card">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" style="font-weight: bold;">Company</th>
+                                                <th scope="col" style="font-weight: bold;">Director</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Prasetia Dwidharma</th>
+                                                <td>Arya Setiadharma</td>
+                                            </tr>
+                                            <tr >
+                                                <td colspan="2">
+                                                    <table class="table table-condensed" style="border-collapse:collapse;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>&nbsp;</th>
+                                                                <th colspan="1" class="d-flex justify-content-center" style="font-weight: bold; font-size: 14px">Departement Rank</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr data-toggle="collapse" data-target="#rankDept" class="accordion-toggle">
+                                                                <td><button class="btn btn-default btn-xs"><i class="ficon ft-eye-off"></i></button></td>
+                                                                <td style="font-weight: bold; font-size: 14px">Departement</td>
+                                                                <td style="font-weight: bold; font-size: 14px">Persentase</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="12" class="hiddenRow">
+                                                                    <div class="accordian-body collapse" id="rankDept">
+                                                                        <table class="table table-striped">
+                                                                            <tbody>
+                                                                                @foreach ($sumByDepartment as $departmentId => $totalPercentage)
+                                                                                    @php $department = $pditemsByDepartment[$departmentId]->first()->department; @endphp
+                                                                                    <tr>
+                                                                                        <td> <a href="#item{{ $department->name }}">{{ $department->name }}</a></th>
+                                                                                        <td>{{ number_format($totalPercentage, 2) . '%' }}</td>
+                                                                                    </tr>
+                                                                                @endforeach
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                        <tfoot>
+                                                            
+                                                        </tfoot>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     
                         <!-- Tambahkan lebih banyak slide sesuai kebutuhan -->
                     </div>
@@ -390,103 +455,6 @@
     <!-- END: Content-->
 
 
-       <script>
-        // Inisialisasi chart pada container dengan ID 'tester'
-        var myChart = echarts.init(document.getElementById('tester'));
-
-        // Konfigurasi gauge chart
-        var option = {
-            series: [
-                        {
-                        type: 'gauge',
-                        startAngle: 180,
-                        endAngle: 0,
-                        min: 0,
-                        max: 100,
-                        splitNumber: 4,
-                    
-                        pointer: {
-                            icon: 'path://M2090.36389,615.30999 L2090.36389,615.30999 C2091.48372,615.30999 2092.40383,616.194028 2092.44859,617.312956 L2096.90698,728.755929 C2097.05155,732.369577 2094.2393,735.416212 2090.62566,735.56078 C2090.53845,735.564269 2090.45117,735.566014 2090.36389,735.566014 L2090.36389,735.566014 C2086.74736,735.566014 2083.81557,732.63423 2083.81557,729.017692 C2083.81557,728.930412 2083.81732,728.84314 2083.82081,728.755929 L2088.2792,617.312956 C2088.32396,616.194028 2089.24407,615.30999 2090.36389,615.30999 Z',
-                            length: '75%',
-                            width: 16,
-                            offsetCenter: [0, '5%']
-                        },
-                        axisLine: {
-                            roundCap: true,
-                            lineStyle: {
-                            width: 18,
-                            color: [
-                                [0.59, '#DF5353'],   // Merah
-                                [0.79, '#FFA500'], // Orange
-                                [1, '#55BF3B']     // Hijau
-                            ]
-                            }
-                        },
-                        axisTick: {
-                            splitNumber: 2,
-                            lineStyle: {
-                            width: 2,
-                            color: '#999'
-                            }
-                        },
-                        splitLine: {
-                            length: 12,
-                            lineStyle: {
-                            width: 3,
-                            color: [
-                                [0, '#DF5353'],   // Merah
-                                [0.5, '#FFA500'], // Orange
-                                [1, '#55BF3B']     // Hijau
-                            ]
-                            }
-                        },
-                        axisLabel: {
-                            distance: 30,
-                            color: '#999',
-                            fontSize: 20
-                        },
-                        title: {
-                            show: false
-                        },
-                        detail: {
-                            backgroundColor: '#fff',
-                            borderColor: '#999',
-                            borderWidth: 2,
-                            width: '50%',
-                            lineHeight: 40,
-                            height: 40,
-                            borderRadius: 25,
-                            offsetCenter: [0, '35%'],
-                            valueAnimation: true,
-                            formatter: function (value) {
-                            return '{value|' + value.toFixed(0) + '}';
-                            },
-                            rich: {
-                            value: {
-                                fontSize: 28,
-                                fontWeight: 'bolder',
-                                color: '#777'
-                            },
-                            unit: {
-                                fontSize: 20,
-                                color: '#999',
-                            }
-                            }
-                        },
-                        data: [
-                            {
-                            value: 100
-                            }
-                        ]
-                        }
-                    ]
-
-
-        };
-
-        // Terapkan konfigurasi pada chart
-        myChart.setOption(option);
-    </script>
     <!-- BEGIN: Footer-->
     @include('layouts.users.footer')
     <!-- END: Footer-->
@@ -516,7 +484,8 @@
 
     <!-- Script Js-->
     <!-- Chart Js-->
-   
+    <script src="https://code.highcharts.com/highcharts.js"></script><script src="https://code.highcharts.com/highcharts-more.js"></script><script src="https://code.highcharts.com/highcharts-3d.js"></script><script src="https://code.highcharts.com/modules/stock.js"></script><script src="https://code.highcharts.com/maps/modules/map.js"></script><script src="https://code.highcharts.com/modules/gantt.js"></script><script src="https://code.highcharts.com/modules/exporting.js"></script><script src="https://code.highcharts.com/modules/parallel-coordinates.js"></script><script src="https://code.highcharts.com/modules/accessibility.js"></script><script src="https://code.highcharts.com/modules/annotations-advanced.js"></script><script src="https://code.highcharts.com/modules/data.js"></script><script src="https://code.highcharts.com/modules/draggable-points.js"></script><script src="https://code.highcharts.com/modules/static-scale.js"></script><script src="https://code.highcharts.com/modules/broken-axis.js"></script><script src="https://code.highcharts.com/modules/heatmap.js"></script><script src="https://code.highcharts.com/modules/tilemap.js"></script><script src="https://code.highcharts.com/modules/timeline.js"></script><script src="https://code.highcharts.com/modules/treemap.js"></script><script src="https://code.highcharts.com/modules/treegraph.js"></script><script src="https://code.highcharts.com/modules/item-series.js"></script><script src="https://code.highcharts.com/modules/drilldown.js"></script><script src="https://code.highcharts.com/modules/histogram-bellcurve.js"></script><script src="https://code.highcharts.com/modules/bullet.js"></script><script src="https://code.highcharts.com/modules/funnel.js"></script><script src="https://code.highcharts.com/modules/funnel3d.js"></script><script src="https://code.highcharts.com/modules/pyramid3d.js"></script><script src="https://code.highcharts.com/modules/networkgraph.js"></script><script src="https://code.highcharts.com/modules/pareto.js"></script><script src="https://code.highcharts.com/modules/pattern-fill.js"></script><script src="https://code.highcharts.com/modules/price-indicator.js"></script><script src="https://code.highcharts.com/modules/sankey.js"></script><script src="https://code.highcharts.com/modules/arc-diagram.js"></script><script src="https://code.highcharts.com/modules/dependency-wheel.js"></script><script src="https://code.highcharts.com/modules/series-label.js"></script><script src="https://code.highcharts.com/modules/solid-gauge.js"></script><script src="https://code.highcharts.com/modules/sonification.js"></script><script src="https://code.highcharts.com/modules/stock-tools.js"></script><script src="https://code.highcharts.com/modules/streamgraph.js"></script><script src="https://code.highcharts.com/modules/sunburst.js"></script><script src="https://code.highcharts.com/modules/variable-pie.js"></script><script src="https://code.highcharts.com/modules/variwide.js"></script><script src="https://code.highcharts.com/modules/vector.js"></script><script src="https://code.highcharts.com/modules/venn.js"></script><script src="https://code.highcharts.com/modules/windbarb.js"></script><script src="https://code.highcharts.com/modules/wordcloud.js"></script><script src="https://code.highcharts.com/modules/xrange.js"></script><script src="https://code.highcharts.com/modules/no-data-to-display.js"></script><script src="https://code.highcharts.com/modules/drag-panes.js"></script><script src="https://code.highcharts.com/modules/debugger.js"></script><script src="https://code.highcharts.com/modules/dumbbell.js"></script><script src="https://code.highcharts.com/modules/lollipop.js"></script><script src="https://code.highcharts.com/modules/cylinder.js"></script><script src="https://code.highcharts.com/modules/organization.js"></script><script src="https://code.highcharts.com/modules/dotplot.js"></script><script src="https://code.highcharts.com/modules/marker-clusters.js"></script><script src="https://code.highcharts.com/modules/hollowcandlestick.js"></script><script src="https://code.highcharts.com/modules/heikinashi.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- End Chart Js-->
 
     <!-- Add Bootstrap JS and jQuery -->
@@ -529,104 +498,6 @@
 
     @yield('script')
 
-    <script>
-        // Inisialisasi chart pada container dengan ID 'chart-container'
-        var myChart = echarts.init(document.getElementById('chart-container'));
-
-        // Konfigurasi gauge chart
-        var option = {
-            series: [
-                    {
-                    type: 'gauge',
-                    startAngle: 180,
-                    endAngle: 0,
-                    min: 0,
-                    max: 240,
-                    splitNumber: 12,
-                    itemStyle: {
-                        color: '#58D9F9',
-                        shadowColor: 'rgba(0,138,255,0.45)',
-                        shadowBlur: 10,
-                        shadowOffsetX: 2,
-                        shadowOffsetY: 2
-                    },
-                    progress: {
-                        show: true,
-                        roundCap: true,
-                        width: 18
-                    },
-                    pointer: {
-                        icon: 'path://M2090.36389,615.30999 L2090.36389,615.30999 C2091.48372,615.30999 2092.40383,616.194028 2092.44859,617.312956 L2096.90698,728.755929 C2097.05155,732.369577 2094.2393,735.416212 2090.62566,735.56078 C2090.53845,735.564269 2090.45117,735.566014 2090.36389,735.566014 L2090.36389,735.566014 C2086.74736,735.566014 2083.81557,732.63423 2083.81557,729.017692 C2083.81557,728.930412 2083.81732,728.84314 2083.82081,728.755929 L2088.2792,617.312956 C2088.32396,616.194028 2089.24407,615.30999 2090.36389,615.30999 Z',
-                        length: '75%',
-                        width: 16,
-                        offsetCenter: [0, '5%']
-                    },
-                    axisLine: {
-                        roundCap: true,
-                        lineStyle: {
-                        width: 18
-                        }
-                    },
-                    axisTick: {
-                        splitNumber: 2,
-                        lineStyle: {
-                        width: 2,
-                        color: '#999'
-                        }
-                    },
-                    splitLine: {
-                        length: 12,
-                        lineStyle: {
-                        width: 3,
-                        color: '#999'
-                        }
-                    },
-                    axisLabel: {
-                        distance: 30,
-                        color: '#999',
-                        fontSize: 20
-                    },
-                    title: {
-                        show: false
-                    },
-                    detail: {
-                        backgroundColor: '#fff',
-                        borderColor: '#999',
-                        borderWidth: 2,
-                        width: '60%',
-                        lineHeight: 40,
-                        height: 40,
-                        borderRadius: 8,
-                        offsetCenter: [0, '35%'],
-                        valueAnimation: true,
-                        formatter: function (value) {
-                        return '{value|' + value.toFixed(0) + '}{unit|km/h}';
-                        },
-                        rich: {
-                        value: {
-                            fontSize: 50,
-                            fontWeight: 'bolder',
-                            color: '#777'
-                        },
-                        unit: {
-                            fontSize: 20,
-                            color: '#999',
-                            padding: [0, 0, -20, 10]
-                        }
-                        }
-                    },
-                    data: [
-                        {
-                        value: 100
-                        }
-                    ]
-                    }
-                ]
-        };
-
-        // Terapkan konfigurasi pada chart
-        myChart.setOption(option);
-    </script>
     
 
     <script>
@@ -636,7 +507,6 @@
         });
 
     </script>
-    
     <script>
       // Data target dan pencapaian
       const labels = ["Target", "Pencapaian"];
@@ -1066,7 +936,6 @@
         });
     </script>
 
-    
 
 
 
