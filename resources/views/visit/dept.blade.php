@@ -204,7 +204,8 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr data-toggle="collapse" data-target="#rankDept" class="accordion-toggle">
-                                                                <td><button class="btn btn-default btn-xs"><i class="fa ft-eye-off"></i></button></td>
+                                                        
+                                                                <td><button class="btn btn-default btn-xs"><i class="fa ft-eye-off toggle-eyes"></i></button></td>
                                                                 <td style="font-weight: bold; font-size: 14px">Departement</td>
                                                                 <td style="font-weight: bold; font-size: 14px">Persentase</td>
                                                             </tr>
@@ -266,7 +267,7 @@
                     <div class="panel-body">
                         <div id="filteredItems">
                             <table class="table table-condensed" style="border-collapse:collapse;">
-                                {{-- ini table untuk isi table kpi pd --}}
+                                
                                 <thead>
                                     <tr>
                                         <th></th>
@@ -278,7 +279,6 @@
                                 </thead>
                                 <tbody id="items">
                                     @forelse ($pditems as $pditem)
-                                    {{-- @dd($pditem) --}}
                                     <tr data-toggle="collapse" data-target="#demo{{ $pditem->id }}" class="accordion-toggle" aria-expanded="false">
                                         <td width="5%">
                                             <button class="btn btn-default btn-xs toggle-button">
@@ -286,7 +286,6 @@
                                             </button>
                                         </td>
 
-                                        {{-- <td>{{ $pditem->period['month'] }} {{ $pditem->period['year'] }}</td> --}}
                                         <td>{{ $pditem->kpi }}</td>
                                         <td>{{ number_format($pditem->percentage, 2) }}%</td>
                                         <td>
@@ -640,7 +639,11 @@
 
     <!-- Script Js-->
     <!-- Chart Js-->
-   
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <!-- End Chart Js-->
 
     <!-- Add Bootstrap JS and jQuery -->
@@ -761,42 +764,9 @@
 
     </script>
     
-    <script>
-      // Data target dan pencapaian
-      const labels = ["Target", "Pencapaian"];
-      const data = [80, 60]; // Sesuaikan dengan nilai target dan pencapaian Anda
-      const colors = ["blue", "red"]; // Warna biru dan merah
- 
-      // Inisialisasi grafik
-      const ctx = document.getElementById("barChart").getContext("2d");
-      const myBarChart = new Chart(ctx, {
-        type: "bar",
-        data: {
-          labels: labels,
-          datasets: [
-            {
-              data: data,
-              backgroundColor: colors, // Warna batang
-              borderColor: colors, // Warna garis batas batang
-              borderWidth: 1, // Lebar garis batas
-            },
-          ],
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true,
-              max: 100, // Sesuaikan dengan rentang nilai yang sesuai
-            },
-          },
-        },
-      });
-    </script>
     
     
 
- 
- 
 @forelse ($pditemsByDepartment as $departmentId => $pditems)
     @foreach ($pditems as $pditem)
         <script>
@@ -845,221 +815,7 @@
     @endforeach
 @empty
 @endforelse
- 
- 
- 
-@forelse ($pditemsByDepartment as $departmentId => $pditems)
-    @foreach ($pditems as $pditem)
-        <script>
-            const ctx = document.getElementById("chartCanvas{{ $pditem->id }}").getContext("2d");
-            const chart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Target', 'Realization'],
-                    datasets: [{
-                        label: 'Value',
-                        backgroundColor: ['blue', 'red'],
-                        data: [{{ $pditem->target }}, {{ $pditem->realization }}],
-                    }],
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true,
-                                max: 100, // Sesuaikan dengan rentang nilai yang sesuai
-                            },
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Name Value', // Label di sumbu Y
-                            },
-                        }],
-                    },
-                },
-            });
-        </script>
-    @endforeach
-@empty
-@endforelse
 
-
- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        Highcharts.setOptions({
-            chart: {
-                type: 'gauge',
-                plotBackgroundColor: null,
-                plotBackgroundImage: null,
-                plotBorderWidth: 0,
-                plotShadow: false,
-                height: '80%'
-            },
-            title: {
-                text: 'Semester ' + {!! json_encode($semesterValue) !!}
-            },
-            pane: {
-                startAngle: -90,
-                endAngle: 89.9,
-                background: null,
-                center: ['50%', '75%'],
-                size: '110%'
-            },
-            yAxis: {
-                min: 0,
-                max: 100,
-                tickPixelInterval: 72,
-                tickPosition: 'inside',
-                tickColor: Highcharts.getOptions().chart.backgroundColor || '#FFFFFF',
-                tickLength: 20,
-                tickWidth: 2,
-                minorTickInterval: null,
-                labels: {
-                    distance: 20,
-                    style: {
-                        fontSize: '14px'
-                    }
-                },
-                lineWidth: 0,
-                plotBands: [{
-                    from: 0,
-                    to: 59,
-                    color: '#DF5353', // red
-                    thickness: 20
-                }, {
-                    from: 60,
-                    to: 79,
-                    color: '#DDDF0D', // yellow
-                    thickness: 20
-                }, {
-                    from: 80,
-                    to: 100,
-                    color: '#55BF3B', // green
-                    thickness: 20
-                }]
-            },
-            series: [{
-                name: 'Speed',
-                data: {!! json_encode($data) !!},
-                tooltip: {
-                    valueSuffix: '%'
-                },
-                dataLabels: {
-                    format: '{y} %',
-                    borderWidth: 0,
-                    color: (
-                        Highcharts.getOptions().title &&
-                        Highcharts.getOptions().title.style &&
-                        Highcharts.getOptions().title.style.color
-                    ) || '#333333',
-                    style: {
-                        fontSize: '16px'
-                    }
-                },
-                dial: {
-                    radius: '80%',
-                    backgroundColor: 'gray',
-                    baseWidth: 12,
-                    baseLength: '0%',
-                    rearLength: '0%'
-                },
-                pivot: {
-                    backgroundColor: 'gray',
-                    radius: 6
-                }
-            }]
-        });
-
-        Highcharts.chart('container', {});
-    });
-</script>
-
-<script>
-     Highcharts.setOptions({
-                                    chart: {
-                                        type: 'gauge',
-                                        plotBackgroundColor: null,
-                                        plotBackgroundImage: null,
-                                        plotBorderWidth: 0,
-                                        plotShadow: false,
-                                        height: '80%'
-                                    },
-                                    title: {
-                                        text: 'Semester 2'
-                                    },
-                                    pane: {
-                                        startAngle: -90,
-                                        endAngle: 89.9,
-                                        background: null,
-                                        center: ['50%', '75%'],
-                                        size: '110%'
-                                    },
-                                    yAxis: {
-                                        min: 0,
-                                        max: 100,
-                                        tickPixelInterval: 72,
-                                        tickPosition: 'inside',
-                                        tickColor: Highcharts.getOptions().chart.backgroundColor || '#FFFFFF',
-                                        tickLength: 20,
-                                        tickWidth: 2,
-                                        minorTickInterval: null,
-                                        labels: {
-                                            distance: 20,
-                                            style: {
-                                                fontSize: '14px'
-                                            }
-                                        },
-                                        lineWidth: 0,
-                                        plotBands: [{
-                                            from: 0,
-                                            to: 59,
-                                            color: '#DF5353', // red
-                                            thickness: 20
-                                        }, {
-                                            from: 60,
-                                            to: 79,
-                                            color: '#DDDF0D', // yellow
-                                            thickness: 20
-                                        }, {
-                                            from: 80,
-                                            to: 100,
-                                            color: '#55BF3B', // green
-                                            thickness: 20
-                                        }]
-                                    },
-                                    series: [{
-                                        name: 'Speed',
-                                        data: [0], // Nilai default diatur ke 50
-                                        tooltip: {
-                                            valueSuffix: '%'
-                                        },
-                                        dataLabels: {
-                                            format: '{y} %',
-                                            borderWidth: 0,
-                                            color: (
-                                                Highcharts.getOptions().title &&
-                                                Highcharts.getOptions().title.style &&
-                                                Highcharts.getOptions().title.style.color
-                                            ) || '#333333',
-                                            style: {
-                                                fontSize: '16px'
-                                            }
-                                        },
-                                        dial: {
-                                            radius: '80%',
-                                            backgroundColor: 'gray',
-                                            baseWidth: 12,
-                                            baseLength: '0%',
-                                            rearLength: '0%'
-                                        },
-                                        pivot: {
-                                            backgroundColor: 'gray',
-                                            radius: 6
-                                        }
-                                    }]
-                                });
-
-                                Highcharts.chart('contSem2', {});
-</script>
 
     <script>
         document.onreadystatechange = function () {
@@ -1091,8 +847,25 @@
         });
     </script>
 
-    
-
+    <script>
+        $(document).ready(function() {
+            $('.accordion-toggle').click(function() {
+                // Cari elemen i dengan kelas "toggle-icon" di dalam baris yang diklik
+                var $icon = $(this).find('.toggle-eyes');
+                
+                // Periksa nilai atribut "aria-expanded"
+                var expanded = $(this).attr('aria-expanded');
+                
+                if (expanded === "true") {
+                    // Jika collapse sedang terbuka, ubah ikon menjadi "ft-eye"
+                    $icon.removeClass('ft-eye').addClass('ft-eye-off');
+                } else {
+                    // Jika collapse sedang tertutup, ubah ikon menjadi "ft-eye-off"
+                    $icon.removeClass('ft-eye-off').addClass('ft-eye');
+                }
+            });
+        });
+    </script>
 
 
 
