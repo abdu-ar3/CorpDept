@@ -396,6 +396,17 @@
 
         // Konfigurasi gauge chart
         var option = {
+            title: {
+                show: true,
+                text: 'Semester ',  // Ganti dengan judul yang diinginkan
+                textStyle: {
+                    color: '#333',  // Ganti dengan warna teks yang diinginkan
+                    fontSize: 24,   // Ganti dengan ukuran font yang diinginkan
+                    fontWeight: 'bold'  // Sesuaikan dengan kebutuhan Anda
+                },
+                padding: 10,  // Sesuaikan dengan kebutuhan Anda
+                left: 'center'
+            },
             series: [
                         {
                         type: 'gauge',
@@ -459,7 +470,7 @@
                             offsetCenter: [0, '35%'],
                             valueAnimation: true,
                             formatter: function (value) {
-                            return '{value|' + value.toFixed(0) + '}';
+                            return '{value|' + value.toFixed(0) + '%}';
                             },
                             rich: {
                             value: {
