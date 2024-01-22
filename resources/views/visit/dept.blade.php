@@ -240,16 +240,9 @@
                                 </div>
                             </div>
                         </div>
-                       
-                    
-                        <!-- Tambahkan lebih banyak slide sesuai kebutuhan -->
+                
                     </div>
 
-                <!-- Card Utama -->
-                <!-- <div class="card">
-                    <div class="card-body"> 
-                    </div>
-                </div> -->
  
     @forelse ($pditemsByDepartment as $departmentId => $pditems)
         @if ($pditems->count() > 0) 
@@ -258,14 +251,11 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="d-flex justify-content-center mt-2"><h4></h4></div>
-                    {{-- ini untuk grafik summry --}}
-                    <div id="avg{{ $departmentId }}"></div>
-                    {{-- <div id="chart" style="width: 300px; height: 300px;"></div> --}}
-                    <canvas id="myChart"></canvas>
+                    <div id="avg{{ $departmentId }}" style="height: 400px;"></div>
                     <table class="table table-hover">
                         <tbody>
                             <tr>
-                                {{-- Untuk Nama User --}}
+
                             </tr>
                         </tbody>
                     </table>
@@ -326,7 +316,6 @@
                                                         <tr>
                                                             <td colspan="6">
                                                                 <div id="chartContainerr{{ $pditem->id }}"></div>
-                                                                
                                                             </td>
                                                         </tr>
                                                     </thead>
@@ -368,7 +357,7 @@
             </div>
         </div>
     </div>
-    {{-- @break --}}
+
     @endif
     @empty
     <div>Data Not Found</div>
@@ -390,15 +379,18 @@
     <!-- END: Content-->
 
 
-       <script>
-        // Inisialisasi chart pada container dengan ID 'tester'
-        var myChart = echarts.init(document.getElementById('tester'));
+    <script>
+    // Inisialisasi chart pada container dengan ID 'tester'
+    var myChart = echarts.init(document.getElementById('tester'));
 
-        // Konfigurasi gauge chart
-        var option = {
-            title: {
+    // Konfigurasi gauge chart
+    var semesterValue = {!! json_encode($semesterValue) !!};
+    var dataValue = {!! json_encode($data) !!};
+
+    var option = {
+        title: {
                 show: true,
-                text: 'Semester ',  // Ganti dengan judul yang diinginkan
+                text: 'Semester ' + semesterValue,  // Ganti dengan judul yang diinginkan
                 textStyle: {
                     color: '#333',  // Ganti dengan warna teks yang diinginkan
                     fontSize: 24,   // Ganti dengan ukuran font yang diinginkan
@@ -407,72 +399,185 @@
                 padding: 10,  // Sesuaikan dengan kebutuhan Anda
                 left: 'center'
             },
-            series: [
-                        {
-                        type: 'gauge',
-                        startAngle: 180,
-                        endAngle: 0,
-                        min: 0,
-                        max: 100,
-                        splitNumber: 4,
-                    
-                        pointer: {
-                            icon: 'path://M2090.36389,615.30999 L2090.36389,615.30999 C2091.48372,615.30999 2092.40383,616.194028 2092.44859,617.312956 L2096.90698,728.755929 C2097.05155,732.369577 2094.2393,735.416212 2090.62566,735.56078 C2090.53845,735.564269 2090.45117,735.566014 2090.36389,735.566014 L2090.36389,735.566014 C2086.74736,735.566014 2083.81557,732.63423 2083.81557,729.017692 C2083.81557,728.930412 2083.81732,728.84314 2083.82081,728.755929 L2088.2792,617.312956 C2088.32396,616.194028 2089.24407,615.30999 2090.36389,615.30999 Z',
-                            length: '75%',
-                            width: 16,
-                            offsetCenter: [0, '5%']
+        series: [
+            {
+                type: 'gauge',
+                startAngle: 180,
+                endAngle: 0,
+                min: 0,
+                max: 100,
+                splitNumber: 4,
+                pointer: {
+                    icon: 'path://M2090.36389,615.30999 L2090.36389,615.30999 C2091.48372,615.30999 2092.40383,616.194028 2092.44859,617.312956 L2096.90698,728.755929 C2097.05155,732.369577 2094.2393,735.416212 2090.62566,735.56078 C2090.53845,735.564269 2090.45117,735.566014 2090.36389,735.566014 L2090.36389,735.566014 C2086.74736,735.566014 2083.81557,732.63423 2083.81557,729.017692 C2083.81557,728.930412 2083.81732,728.84314 2083.82081,728.755929 L2088.2792,617.312956 C2088.32396,616.194028 2089.24407,615.30999 2090.36389,615.30999 Z',
+                    length: '75%',
+                    width: 16,
+                    offsetCenter: [0, '5%']
+                },
+                axisLine: {
+                    roundCap: true,
+                    lineStyle: {
+                        width: 18,
+                        color: [
+                            [0.59, '#DF5353'],   // Merah
+                            [0.79, '#FFA500'], // Orange
+                            [1, '#55BF3B']     // Hijau
+                        ]
+                    }
+                },
+                axisTick: {
+                    splitNumber: 2,
+                    lineStyle: {
+                        width: 2,
+                        color: '#999'
+                    }
+                },
+                splitLine: {
+                    length: 12,
+                    lineStyle: {
+                        width: 3,
+                        color: [
+                            [0, '#DF5353'],   // Merah
+                            [0.5, '#FFA500'], // Orange
+                            [1, '#55BF3B']     // Hijau
+                        ]
+                    }
+                },
+                axisLabel: {
+                    distance: 30,
+                    color: '#999',
+                    fontSize: 20
+                },
+                detail: {
+                    backgroundColor: '#fff',
+                    borderColor: '#999',
+                    borderWidth: 2,
+                    width: '50%',
+                    lineHeight: 40,
+                    height: 40,
+                    borderRadius: 25,
+                    offsetCenter: [0, '35%'],
+                    valueAnimation: true,
+                    formatter: function (value) {
+                        return '{value|' + value.toFixed(1) + '%}';
+                    },
+                    rich: {
+                        value: {
+                            fontSize: 28,
+                            fontWeight: 'bolder',
+                            color: '#777'
                         },
-                        axisLine: {
-                            roundCap: true,
-                            lineStyle: {
+                        unit: {
+                            fontSize: 20,
+                            color: '#999',
+                        }
+                    }
+                },
+                data: [
+                    {
+                        value: dataValue
+                    }
+                ]
+            }
+        ]
+    };
+
+    // Terapkan konfigurasi pada chart
+    myChart.setOption(option);
+</script>
+
+
+<!-- Dept -->
+@forelse ($pditemsByDepartment as $departmentId => $pditems)
+    @php
+        $chartId = 'avg' . $departmentId;
+        $chartData = number_format($sumByDepartment[$departmentId], 2);
+        $departmentName = $pditems->first()->department['name'];
+    @endphp
+
+    <!-- Letakkan ini di dalam tag <script> untuk memasukkan nilai PHP ke dalam skrip JavaScript -->
+    <script>
+        // Inisialisasi chart pada container dengan ID dinamis 'avg{{ $departmentId }}'
+        var myChart_{{ $chartId }} = echarts.init(document.getElementById('{{ $chartId }}'));
+
+        // Konfigurasi gauge chart
+        var option_{{ $chartId }} = {
+            title: {
+                show: true,
+                text: '{{ $departmentName }}',  // Ganti dengan judul yang diinginkan
+                textStyle: {
+                    color: '#333',  // Ganti dengan warna teks yang diinginkan
+                    fontSize: 24,   // Ganti dengan ukuran font yang diinginkan
+                    fontWeight: 'bold'  // Sesuaikan dengan kebutuhan Anda
+                },
+                padding: 10,  // Sesuaikan dengan kebutuhan Anda
+                left: 'center'
+            },
+          
+            series: [
+                {
+                    type: 'gauge',
+                    startAngle: 180,
+                    endAngle: 0,
+                    min: 0,
+                    max: 100,
+                    splitNumber: 4,
+                    pointer: {
+                        icon: 'path://M2090.36389,615.30999 L2090.36389,615.30999 C2091.48372,615.30999 2092.40383,616.194028 2092.44859,617.312956 L2096.90698,728.755929 C2097.05155,732.369577 2094.2393,735.416212 2090.62566,735.56078 C2090.53845,735.564269 2090.45117,735.566014 2090.36389,735.566014 L2090.36389,735.566014 C2086.74736,735.566014 2083.81557,732.63423 2083.81557,729.017692 C2083.81557,728.930412 2083.81732,728.84314 2083.82081,728.755929 L2088.2792,617.312956 C2088.32396,616.194028 2089.24407,615.30999 2090.36389,615.30999 Z',
+                        length: '75%',
+                        width: 16,
+                        offsetCenter: [0, '5%']
+                    },
+                    axisLine: {
+                        roundCap: true,
+                        lineStyle: {
                             width: 18,
                             color: [
                                 [0.59, '#DF5353'],   // Merah
                                 [0.79, '#FFA500'], // Orange
                                 [1, '#55BF3B']     // Hijau
                             ]
-                            }
-                        },
-                        axisTick: {
-                            splitNumber: 2,
-                            lineStyle: {
+                        }
+                    },
+                    axisTick: {
+                        splitNumber: 2,
+                        lineStyle: {
                             width: 2,
                             color: '#999'
-                            }
-                        },
-                        splitLine: {
-                            length: 12,
-                            lineStyle: {
+                        }
+                    },
+                    splitLine: {
+                        length: 12,
+                        lineStyle: {
                             width: 3,
                             color: [
                                 [0, '#DF5353'],   // Merah
                                 [0.5, '#FFA500'], // Orange
                                 [1, '#55BF3B']     // Hijau
                             ]
-                            }
+                        }
+                    },
+                    axisLabel: {
+                        distance: 30,
+                        color: '#999',
+                        fontSize: 20
+                    },
+                    title: {
+                        show: false
+                    },
+                    detail: {
+                        backgroundColor: '#fff',
+                        borderColor: '#999',
+                        borderWidth: 2,
+                        width: '50%',
+                        lineHeight: 40,
+                        height: 40,
+                        borderRadius: 25,
+                        offsetCenter: [0, '35%'],
+                        valueAnimation: true,
+                        formatter: function (value) {
+                            return '{value|' + value.toFixed(1) + '%}';
                         },
-                        axisLabel: {
-                            distance: 30,
-                            color: '#999',
-                            fontSize: 20
-                        },
-                        title: {
-                            show: false
-                        },
-                        detail: {
-                            backgroundColor: '#fff',
-                            borderColor: '#999',
-                            borderWidth: 2,
-                            width: '50%',
-                            lineHeight: 40,
-                            height: 40,
-                            borderRadius: 25,
-                            offsetCenter: [0, '35%'],
-                            valueAnimation: true,
-                            formatter: function (value) {
-                            return '{value|' + value.toFixed(0) + '%}';
-                            },
-                            rich: {
+                        rich: {
                             value: {
                                 fontSize: 28,
                                 fontWeight: 'bolder',
@@ -482,22 +587,30 @@
                                 fontSize: 20,
                                 color: '#999',
                             }
-                            }
-                        },
-                        data: [
-                            {
-                            value: 100
-                            }
-                        ]
+                        }
+                    },
+                    data: [
+                        {
+                            value: {{ $chartData }}
                         }
                     ]
-
-
+                }
+            ]
         };
 
         // Terapkan konfigurasi pada chart
-        myChart.setOption(option);
+        myChart_{{ $chartId }}.setOption(option_{{ $chartId }});
     </script>
+@empty
+    <!-- Handle jika tidak ada data -->
+    No data available.
+@endforelse
+
+
+
+
+
+
     <!-- BEGIN: Footer-->
     @include('layouts.users.footer')
     <!-- END: Footer-->
@@ -681,106 +794,7 @@
     </script>
     
     
-@forelse ($pditemsByDepartment as $departmentId => $pditems)   
-    @foreach ($pditems as $pditem)
-    
-        <script>
-            Highcharts.chart('avg{{ $departmentId }}', {
- 
-                chart: {
-                    type: 'gauge',
-                    plotBackgroundColor: null,
-                    plotBackgroundImage: null,
-                    plotBorderWidth: 0,
-                    plotShadow: false,
-                    height: '80%'
-                },
- 
-                title: {
-                    text: '{{ $pditem->department['name'] }}'
-                },
- 
-                pane: {
-                    startAngle: -90,
-                    endAngle: 89.9,
-                    background: null,
-                    center: ['50%', '75%'],
-                    size: '110%'
-                },
- 
-                // the value axis
-                yAxis: {
-                    min: 0,
-                    max: 100,
-                    tickPixelInterval: 72,
-                    tickPosition: 'inside',
-                    tickColor: Highcharts.defaultOptions.chart.backgroundColor || '#FFFFFF',
-                    tickLength: 20,
-                    tickWidth: 2,
-                    minorTickInterval: null,
-                    labels: {
-                        distance: 20,
-                        style: {
-                            fontSize: '14px'
-                        }
-                    },
-                    lineWidth: 0,
-                    plotBands: [{
-                        from: 0,
-                        to: 59,
-                        color: '#DF5353', // red
-                        thickness: 20
-                    }, {
-                        from: 60,
-                        to: 79,
-                        color: '#DDDF0D', // yellow
-                        thickness: 20
-                    }, {
-                        from: 80,
-                        to: 100,
-                        color: '#55BF3B', // green
-                        thickness: 20
-                    }]
-                },
- 
-                series: [{
-                    name: 'Speed',
-                    data:  [{{ number_format($sumByDepartment[$departmentId],2) }}],
-                    tooltip: {
-                        valueSuffix: '%'
-                    },
-                    dataLabels: {
-                        format: '{y} %',
-                        borderWidth: 0,
-                        color: (
-                            Highcharts.defaultOptions.title &&
-                            Highcharts.defaultOptions.title.style &&
-                            Highcharts.defaultOptions.title.style.color
-                        ) || '#333333',
-                        style: {
-                            fontSize: '16px'
-                        }
-                    },
-                    dial: {
-                        radius: '80%',
-                        backgroundColor: 'gray',
-                        baseWidth: 12,
-                        baseLength: '0%',
-                        rearLength: '0%'
-                    },
-                    pivot: {
-                        backgroundColor: 'gray',
-                        radius: 6
-                    }
-                }],
-                credits: {
-                    enabled: false
-                }
-            });
-        </script>
-    @endforeach
-@empty
-@endforelse
+
  
  
 @forelse ($pditemsByDepartment as $departmentId => $pditems)
