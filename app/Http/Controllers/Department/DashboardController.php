@@ -60,7 +60,7 @@ class DashboardController extends Controller
             })->sortByDesc(function ($sumPercentage, $departmentId) {
                 return $sumPercentage;
             });
-
+            
         $total = $sumByDepartment->sum();
         $totalDepartements = $sumByDepartment->count();
         $avgsummary = $totalDepartements > 0 ?  $total / $totalDepartements : 0;

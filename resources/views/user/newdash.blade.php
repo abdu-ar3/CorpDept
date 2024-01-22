@@ -252,13 +252,12 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 
                                                 @php
                                                     $pencapaianrev = $rev->value_rev;
-                                                    $targetrev = 25000000000;
+                                                    $targetrev = 17500000000;
                                                     $prev = ($pencapaianrev / $targetrev) * 100;
                                                     
                                                     $pencapaianpo = $rev->value_po;
                                                     $targetpo = 27533333333;
                                                     $ppo = ($pencapaianpo / $targetpo) * 100;
-
 
 
                                                 @endphp
